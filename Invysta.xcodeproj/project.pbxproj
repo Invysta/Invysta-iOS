@@ -24,6 +24,7 @@
 		01754A102534F35A00487C74 /* RequestURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E62534DBF400487C74 /* RequestURL.swift */; };
 		01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549EC2534EF1900487C74 /* VendorIdentifier.swift */; };
 		01754A142534F35D00487C74 /* AdvertiserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */; };
+		01754A1A2535174F00487C74 /* InvystaIdentifierTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A192535174F00487C74 /* InvystaIdentifierTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		01754A002534F34A00487C74 /* InvystaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvystaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01754A022534F34A00487C74 /* InvystaNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaNetworkTests.swift; sourceTree = "<group>"; };
 		01754A042534F34A00487C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01754A192535174F00487C74 /* InvystaIdentifierTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaIdentifierTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				01754A022534F34A00487C74 /* InvystaNetworkTests.swift */,
+				01754A192535174F00487C74 /* InvystaIdentifierTest.swift */,
 				01754A042534F34A00487C74 /* Info.plist */,
 			);
 			path = InvystaTests;
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01754A0C2534F35800487C74 /* NetworkManager.swift in Sources */,
+				01754A1A2535174F00487C74 /* InvystaIdentifierTest.swift in Sources */,
 				01754A032534F34A00487C74 /* InvystaNetworkTests.swift in Sources */,
 				01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */,
 				01754A0D2534F35800487C74 /* IdentifierManager.swift in Sources */,
