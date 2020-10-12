@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		017549CE2534D99900487C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CD2534D99900487C74 /* AppDelegate.swift */; };
+		017549D02534D99900487C74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CF2534D99900487C74 /* SceneDelegate.swift */; };
+		017549D22534D99900487C74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549D12534D99900487C74 /* ViewController.swift */; };
+		017549D52534D99900487C74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017549D32534D99900487C74 /* Main.storyboard */; };
+		017549D72534D99B00487C74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 017549D62534D99B00487C74 /* Assets.xcassets */; };
+		017549DA2534D99B00487C74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017549D82534D99B00487C74 /* LaunchScreen.storyboard */; };
+		017549E72534DBF400487C74 /* RequestURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E62534DBF400487C74 /* RequestURL.swift */; };
+		017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E92534EC9D00487C74 /* IdentifierManager.swift */; };
+		017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549EC2534EF1900487C74 /* VendorIdentifier.swift */; };
+		017549F32534EF7600487C74 /* AdvertiserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */; };
+		017549F62534F01200487C74 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F52534F01200487C74 /* NetworkManager.swift */; };
+		01754A032534F34A00487C74 /* InvystaNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A022534F34A00487C74 /* InvystaNetworkTests.swift */; };
+		01754A0C2534F35800487C74 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F52534F01200487C74 /* NetworkManager.swift */; };
+		01754A0D2534F35800487C74 /* IdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E92534EC9D00487C74 /* IdentifierManager.swift */; };
+		01754A102534F35A00487C74 /* RequestURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E62534DBF400487C74 /* RequestURL.swift */; };
+		01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549EC2534EF1900487C74 /* VendorIdentifier.swift */; };
+		01754A142534F35D00487C74 /* AdvertiserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01754A052534F34A00487C74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 017549C22534D99900487C74 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 017549C92534D99900487C74;
+			remoteInfo = Invysta;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		017549CA2534D99900487C74 /* Invysta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invysta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		017549CD2534D99900487C74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		017549CF2534D99900487C74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		017549D12534D99900487C74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		017549D42534D99900487C74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		017549D62534D99B00487C74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		017549D92534D99B00487C74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		017549DB2534D99B00487C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		017549E62534DBF400487C74 /* RequestURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestURL.swift; sourceTree = "<group>"; };
+		017549E92534EC9D00487C74 /* IdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierManager.swift; sourceTree = "<group>"; };
+		017549EC2534EF1900487C74 /* VendorIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorIdentifier.swift; sourceTree = "<group>"; };
+		017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiserIdentifier.swift; sourceTree = "<group>"; };
+		017549F52534F01200487C74 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		01754A002534F34A00487C74 /* InvystaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvystaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01754A022534F34A00487C74 /* InvystaNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaNetworkTests.swift; sourceTree = "<group>"; };
+		01754A042534F34A00487C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		017549C72534D99900487C74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		017549FD2534F34A00487C74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		017549C12534D99900487C74 = {
+			isa = PBXGroup;
+			children = (
+				017549CC2534D99900487C74 /* Invysta */,
+				01754A012534F34A00487C74 /* InvystaTests */,
+				017549CB2534D99900487C74 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		017549CB2534D99900487C74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				017549CA2534D99900487C74 /* Invysta.app */,
+				01754A002534F34A00487C74 /* InvystaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		017549CC2534D99900487C74 /* Invysta */ = {
+			isa = PBXGroup;
+			children = (
+				017549CD2534D99900487C74 /* AppDelegate.swift */,
+				017549CF2534D99900487C74 /* SceneDelegate.swift */,
+				017549D12534D99900487C74 /* ViewController.swift */,
+				017549E62534DBF400487C74 /* RequestURL.swift */,
+				017549F82534F01E00487C74 /* Managers */,
+				017549EF2534EF2300487C74 /* Identifier Source */,
+				017549D32534D99900487C74 /* Main.storyboard */,
+				017549D62534D99B00487C74 /* Assets.xcassets */,
+				017549D82534D99B00487C74 /* LaunchScreen.storyboard */,
+				017549DB2534D99B00487C74 /* Info.plist */,
+			);
+			path = Invysta;
+			sourceTree = "<group>";
+		};
+		017549EF2534EF2300487C74 /* Identifier Source */ = {
+			isa = PBXGroup;
+			children = (
+				017549EC2534EF1900487C74 /* VendorIdentifier.swift */,
+				017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */,
+			);
+			path = "Identifier Source";
+			sourceTree = "<group>";
+		};
+		017549F82534F01E00487C74 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				017549F52534F01200487C74 /* NetworkManager.swift */,
+				017549E92534EC9D00487C74 /* IdentifierManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		01754A012534F34A00487C74 /* InvystaTests */ = {
+			isa = PBXGroup;
+			children = (
+				01754A022534F34A00487C74 /* InvystaNetworkTests.swift */,
+				01754A042534F34A00487C74 /* Info.plist */,
+			);
+			path = InvystaTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		017549C92534D99900487C74 /* Invysta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 017549DE2534D99B00487C74 /* Build configuration list for PBXNativeTarget "Invysta" */;
+			buildPhases = (
+				017549C62534D99900487C74 /* Sources */,
+				017549C72534D99900487C74 /* Frameworks */,
+				017549C82534D99900487C74 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Invysta;
+			productName = Invysta;
+			productReference = 017549CA2534D99900487C74 /* Invysta.app */;
+			productType = "com.apple.product-type.application";
+		};
+		017549FF2534F34A00487C74 /* InvystaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01754A072534F34A00487C74 /* Build configuration list for PBXNativeTarget "InvystaTests" */;
+			buildPhases = (
+				017549FC2534F34A00487C74 /* Sources */,
+				017549FD2534F34A00487C74 /* Frameworks */,
+				017549FE2534F34A00487C74 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01754A062534F34A00487C74 /* PBXTargetDependency */,
+			);
+			name = InvystaTests;
+			productName = InvystaTests;
+			productReference = 01754A002534F34A00487C74 /* InvystaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		017549C22534D99900487C74 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					017549C92534D99900487C74 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					017549FF2534F34A00487C74 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 017549C92534D99900487C74;
+					};
+				};
+			};
+			buildConfigurationList = 017549C52534D99900487C74 /* Build configuration list for PBXProject "Invysta" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 017549C12534D99900487C74;
+			productRefGroup = 017549CB2534D99900487C74 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				017549C92534D99900487C74 /* Invysta */,
+				017549FF2534F34A00487C74 /* InvystaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		017549C82534D99900487C74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				017549DA2534D99B00487C74 /* LaunchScreen.storyboard in Resources */,
+				017549D72534D99B00487C74 /* Assets.xcassets in Resources */,
+				017549D52534D99900487C74 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		017549FE2534F34A00487C74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		017549C62534D99900487C74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				017549D22534D99900487C74 /* ViewController.swift in Sources */,
+				017549F32534EF7600487C74 /* AdvertiserIdentifier.swift in Sources */,
+				017549E72534DBF400487C74 /* RequestURL.swift in Sources */,
+				017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */,
+				017549F62534F01200487C74 /* NetworkManager.swift in Sources */,
+				017549CE2534D99900487C74 /* AppDelegate.swift in Sources */,
+				017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */,
+				017549D02534D99900487C74 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		017549FC2534F34A00487C74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01754A0C2534F35800487C74 /* NetworkManager.swift in Sources */,
+				01754A032534F34A00487C74 /* InvystaNetworkTests.swift in Sources */,
+				01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */,
+				01754A0D2534F35800487C74 /* IdentifierManager.swift in Sources */,
+				01754A102534F35A00487C74 /* RequestURL.swift in Sources */,
+				01754A142534F35D00487C74 /* AdvertiserIdentifier.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01754A062534F34A00487C74 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 017549C92534D99900487C74 /* Invysta */;
+			targetProxy = 01754A052534F34A00487C74 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		017549D32534D99900487C74 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				017549D42534D99900487C74 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		017549D82534D99B00487C74 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				017549D92534D99B00487C74 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		017549DC2534D99B00487C74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		017549DD2534D99B00487C74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		017549DF2534D99B00487C74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R986STKYJ7;
+				INFOPLIST_FILE = Invysta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaTechnologyGroup.Invysta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		017549E02534D99B00487C74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R986STKYJ7;
+				INFOPLIST_FILE = Invysta/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaTechnologyGroup.Invysta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		01754A082534F34A00487C74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R986STKYJ7;
+				INFOPLIST_FILE = InvystaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaTechnologyGroup.InvystaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Invysta.app/Invysta";
+			};
+			name = Debug;
+		};
+		01754A092534F34A00487C74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R986STKYJ7;
+				INFOPLIST_FILE = InvystaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaTechnologyGroup.InvystaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Invysta.app/Invysta";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		017549C52534D99900487C74 /* Build configuration list for PBXProject "Invysta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				017549DC2534D99B00487C74 /* Debug */,
+				017549DD2534D99B00487C74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		017549DE2534D99B00487C74 /* Build configuration list for PBXNativeTarget "Invysta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				017549DF2534D99B00487C74 /* Debug */,
+				017549E02534D99B00487C74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01754A072534F34A00487C74 /* Build configuration list for PBXNativeTarget "InvystaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01754A082534F34A00487C74 /* Debug */,
+				01754A092534F34A00487C74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 017549C22534D99900487C74 /* Project object */;
+}
