@@ -10,13 +10,21 @@ import AdSupport
 
 class ViewController: UIViewController {
 
+    @IBOutlet var appVersionLabel: UILabel!
+    
     private var identifierManager: IdentifierManager?
+    private var networkManager: NetworkManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        identifierManager = IdentifierManager([VendorIdentifier(), AdvertiserIdentifier()])
-        print(identifierManager!.identifiers)
+        displayAppVersion()
+   
+    }
+    
+    func displayAppVersion() {
+        guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
+        appVersionLabel.text = "App Version\n" + appVersion
     }
 
 }
