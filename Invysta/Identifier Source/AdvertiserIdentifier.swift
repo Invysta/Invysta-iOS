@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import AdSupport
 
 final class AdvertiserIdentifier: IdentifierSource {
     func identifier() -> String? {
-        return UIDevice.current.identifierForVendor?.uuidString
+        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
 }

@@ -25,6 +25,10 @@
 		01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549EC2534EF1900487C74 /* VendorIdentifier.swift */; };
 		01754A142534F35D00487C74 /* AdvertiserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */; };
 		01754A1A2535174F00487C74 /* InvystaIdentifierTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A192535174F00487C74 /* InvystaIdentifierTest.swift */; };
+		01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A2125351B8600487C74 /* CustomIdentifier.swift */; };
+		01A4745725369F2C00D19006 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4745625369F2C00D19006 /* Endpoint.swift */; };
+		2762F219420F850333EEDD95 /* Pods_Invysta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */; };
+		4F7E1711DF6232407B2D9B84 /* Pods_InvystaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,15 @@
 		01754A022534F34A00487C74 /* InvystaNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaNetworkTests.swift; sourceTree = "<group>"; };
 		01754A042534F34A00487C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01754A192535174F00487C74 /* InvystaIdentifierTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaIdentifierTest.swift; sourceTree = "<group>"; };
+		01754A2125351B8600487C74 /* CustomIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIdentifier.swift; sourceTree = "<group>"; };
+		01A4745625369F2C00D19006 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		01A4745A25369FCD00D19006 /* Invysta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invysta.entitlements; sourceTree = "<group>"; };
+		29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvystaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvystaTests.release.xcconfig"; path = "Target Support Files/Pods-InvystaTests/Pods-InvystaTests.release.xcconfig"; sourceTree = "<group>"; };
+		6417FF1A171CA93364E9B75B /* Pods-Invysta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invysta.debug.xcconfig"; path = "Target Support Files/Pods-Invysta/Pods-Invysta.debug.xcconfig"; sourceTree = "<group>"; };
+		8158F25387D00A40968CB7E2 /* Pods-InvystaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvystaTests.debug.xcconfig"; path = "Target Support Files/Pods-InvystaTests/Pods-InvystaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		85200271057ADAC93BA9B80E /* Pods-Invysta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invysta.release.xcconfig"; path = "Target Support Files/Pods-Invysta/Pods-Invysta.release.xcconfig"; sourceTree = "<group>"; };
+		8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Invysta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2762F219420F850333EEDD95 /* Pods_Invysta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F7E1711DF6232407B2D9B84 /* Pods_InvystaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +96,8 @@
 				017549CC2534D99900487C74 /* Invysta */,
 				01754A012534F34A00487C74 /* InvystaTests */,
 				017549CB2534D99900487C74 /* Products */,
+				5EE719C83BC653DA83CF37BF /* Pods */,
+				9E2F44D1C04C6D2B7C6BAB37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,10 +113,12 @@
 		017549CC2534D99900487C74 /* Invysta */ = {
 			isa = PBXGroup;
 			children = (
+				01A4745A25369FCD00D19006 /* Invysta.entitlements */,
 				017549CD2534D99900487C74 /* AppDelegate.swift */,
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
 				017549E62534DBF400487C74 /* RequestURL.swift */,
+				01A4745625369F2C00D19006 /* Endpoint.swift */,
 				017549F82534F01E00487C74 /* Managers */,
 				017549EF2534EF2300487C74 /* Identifier Source */,
 				017549D32534D99900487C74 /* Main.storyboard */,
@@ -115,6 +134,7 @@
 			children = (
 				017549EC2534EF1900487C74 /* VendorIdentifier.swift */,
 				017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */,
+				01754A2125351B8600487C74 /* CustomIdentifier.swift */,
 			);
 			path = "Identifier Source";
 			sourceTree = "<group>";
@@ -138,6 +158,27 @@
 			path = InvystaTests;
 			sourceTree = "<group>";
 		};
+		5EE719C83BC653DA83CF37BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6417FF1A171CA93364E9B75B /* Pods-Invysta.debug.xcconfig */,
+				85200271057ADAC93BA9B80E /* Pods-Invysta.release.xcconfig */,
+				8158F25387D00A40968CB7E2 /* Pods-InvystaTests.debug.xcconfig */,
+				2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9E2F44D1C04C6D2B7C6BAB37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */,
+				29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,9 +186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 017549DE2534D99B00487C74 /* Build configuration list for PBXNativeTarget "Invysta" */;
 			buildPhases = (
+				51C09BEC2E35FFF3159710CD /* [CP] Check Pods Manifest.lock */,
 				017549C62534D99900487C74 /* Sources */,
 				017549C72534D99900487C74 /* Frameworks */,
 				017549C82534D99900487C74 /* Resources */,
+				0AA1A0AA648729EB14B99033 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,6 +205,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01754A072534F34A00487C74 /* Build configuration list for PBXNativeTarget "InvystaTests" */;
 			buildPhases = (
+				5549E743BF62568E69839CB8 /* [CP] Check Pods Manifest.lock */,
 				017549FC2534F34A00487C74 /* Sources */,
 				017549FD2534F34A00487C74 /* Frameworks */,
 				017549FE2534F34A00487C74 /* Resources */,
@@ -233,6 +277,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0AA1A0AA648729EB14B99033 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Invysta/Pods-Invysta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Invysta/Pods-Invysta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Invysta/Pods-Invysta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51C09BEC2E35FFF3159710CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Invysta-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5549E743BF62568E69839CB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InvystaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		017549C62534D99900487C74 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -240,7 +348,9 @@
 			files = (
 				017549D22534D99900487C74 /* ViewController.swift in Sources */,
 				017549F32534EF7600487C74 /* AdvertiserIdentifier.swift in Sources */,
+				01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */,
 				017549E72534DBF400487C74 /* RequestURL.swift in Sources */,
+				01A4745725369F2C00D19006 /* Endpoint.swift in Sources */,
 				017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */,
 				017549F62534F01200487C74 /* NetworkManager.swift in Sources */,
 				017549CE2534D99900487C74 /* AppDelegate.swift in Sources */,
@@ -411,9 +521,11 @@
 		};
 		017549DF2534D99B00487C74 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6417FF1A171CA93364E9B75B /* Pods-Invysta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R986STKYJ7;
 				INFOPLIST_FILE = Invysta/Info.plist;
@@ -430,9 +542,11 @@
 		};
 		017549E02534D99B00487C74 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85200271057ADAC93BA9B80E /* Pods-Invysta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R986STKYJ7;
 				INFOPLIST_FILE = Invysta/Info.plist;
@@ -449,6 +563,7 @@
 		};
 		01754A082534F34A00487C74 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8158F25387D00A40968CB7E2 /* Pods-InvystaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -469,6 +584,7 @@
 		};
 		01754A092534F34A00487C74 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

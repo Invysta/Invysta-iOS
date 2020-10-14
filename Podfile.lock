@@ -1,0 +1,20 @@
+PODS:
+  - lottie-ios (3.1.6)
+  - SwiftKeychainWrapper (4.0.1)
+
+DEPENDENCIES:
+  - lottie-ios
+  - SwiftKeychainWrapper
+
+SPEC REPOS:
+  trunk:
+    - lottie-ios
+    - SwiftKeychainWrapper
+
+SPEC CHECKSUMS:
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
+
+PODFILE CHECKSUM: 2298f5e83eabc23c6fa437b9d830cec17d59be01
+
+COCOAPODS: 1.8.3
