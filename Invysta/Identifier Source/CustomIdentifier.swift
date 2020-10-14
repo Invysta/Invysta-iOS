@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CustomIdentifier: IdentifierSource {
+struct CustomIdentifier: IdentifierSource {
     func identifier() -> String? {
         let uuid = UUID().uuidString
         

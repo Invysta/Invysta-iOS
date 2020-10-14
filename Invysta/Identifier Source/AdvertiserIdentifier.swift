@@ -8,7 +8,7 @@
 import UIKit
 import AdSupport
 
-final class AdvertiserIdentifier: IdentifierSource {
+struct AdvertiserIdentifier: IdentifierSource {
     func identifier() -> String? {
         return ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }

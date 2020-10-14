@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class VendorIdentifier: IdentifierSource {
+struct VendorIdentifier: IdentifierSource {
     func identifier() -> String? {
         return UIDevice().identifierForVendor?.uuidString
     }
