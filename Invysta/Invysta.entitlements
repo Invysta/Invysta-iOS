@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:bycyril.com</string>
+		<string>applinks:snake-ai.firebaseapp.com</string>
 	</array>
 </dict>
 </plist>

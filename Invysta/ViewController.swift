@@ -17,7 +17,6 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
-        
         return label
     }()
     
