@@ -25,7 +25,6 @@
 		01754A142534F35D00487C74 /* AdvertiserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */; };
 		01754A1A2535174F00487C74 /* InvystaIdentifierTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A192535174F00487C74 /* InvystaIdentifierTest.swift */; };
 		01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A2125351B8600487C74 /* CustomIdentifier.swift */; };
-		01A4745725369F2C00D19006 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4745625369F2C00D19006 /* Endpoint.swift */; };
 		2762F219420F850333EEDD95 /* Pods_Invysta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */; };
 		4F7E1711DF6232407B2D9B84 /* Pods_InvystaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */; };
 /* End PBXBuildFile section */
@@ -58,7 +57,6 @@
 		01754A042534F34A00487C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01754A192535174F00487C74 /* InvystaIdentifierTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaIdentifierTest.swift; sourceTree = "<group>"; };
 		01754A2125351B8600487C74 /* CustomIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIdentifier.swift; sourceTree = "<group>"; };
-		01A4745625369F2C00D19006 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		01A4745A25369FCD00D19006 /* Invysta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invysta.entitlements; sourceTree = "<group>"; };
 		29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvystaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvystaTests.release.xcconfig"; path = "Target Support Files/Pods-InvystaTests/Pods-InvystaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
 				017549E62534DBF400487C74 /* RequestURL.swift */,
-				01A4745625369F2C00D19006 /* Endpoint.swift */,
 				017549F82534F01E00487C74 /* Managers */,
 				017549EF2534EF2300487C74 /* Identifier Source */,
 				017549D62534D99B00487C74 /* Assets.xcassets */,
@@ -345,7 +342,6 @@
 				017549F32534EF7600487C74 /* AdvertiserIdentifier.swift in Sources */,
 				01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */,
 				017549E72534DBF400487C74 /* RequestURL.swift in Sources */,
-				01A4745725369F2C00D19006 /* Endpoint.swift in Sources */,
 				017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */,
 				017549F62534F01200487C74 /* NetworkManager.swift in Sources */,
 				017549CE2534D99900487C74 /* AppDelegate.swift in Sources */,
