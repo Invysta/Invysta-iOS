@@ -8,13 +8,13 @@
 import Foundation
 
 enum CallType: String {
-    case register = "/register"
-    case login = "/login"
+    case register = "/register/"
+    case login = "/login/"
     case none = ""
 }
 
 struct RequestURL: Equatable {
-    let baseURL = "https://www.invystasafe.com"
+    let baseURL = "https://invystasafe.com"
     var type: CallType
     var params: [String: String]?
     

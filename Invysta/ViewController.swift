@@ -8,7 +8,7 @@
 import UIKit
 import AdSupport
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NetworkManagerDelegate {
 
     private var identifierManager: IdentifierManager?
     private var networkManager: NetworkManager?
@@ -44,6 +44,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         displayAppVersion()
+        login()
+    }
+    
+    func login() {
+
+        let requestURL = RequestURL(type: .register, params: ["caid":"mock-data"])
+        networkManager = NetworkManager()
+        networkManager?.delegate = self
+        networkManager?.call(requestURL, .get)
+
+    }
+    
+    func networkResponse(_ data: Data?, _ response: URLResponse?, _ error: Error?) {
+        guard let data = data else { return }
+        
+        let str = String(decoding: data, as: UTF8.self)
+        print(str)
     }
     
     func displayAppVersion() {
