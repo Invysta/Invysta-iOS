@@ -8,7 +8,7 @@
 import UIKit
 
 protocol URLSessionProtocol {
-    func dataTaskWithUrl(_ url: RequestURL,_ type: RequestType, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+    func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
       -> URLSessionDataTaskProtocol
 }
 
@@ -16,11 +16,6 @@ protocol URLSessionDataTaskProtocol {
     var didResume: Bool { get set }
     func resume()
     func data(_ completion: (Data?, URLResponse?, Error?) -> Void)
-}
-
-enum RequestType: String {
-    case post = "POST"
-    case get = "GET"
 }
 
 extension URLSessionDataTask: URLSessionDataTaskProtocol {
@@ -37,13 +32,8 @@ extension URLSessionDataTask: URLSessionDataTaskProtocol {
 }
 
 extension URLSession: URLSessionProtocol {
-    func dataTaskWithUrl(_ url: RequestURL, _ type: RequestType, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        switch type {
-        case .get:
-            return dataTask(with: url.url, completionHandler: completion)
-        case .post:
-            return dataTask(with: url.request, completionHandler: completion)
-        }
+    func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+        return dataTask(with: url.url, completionHandler: completion)
     }
 
 }
@@ -61,8 +51,8 @@ final class NetworkManager {
         self.session = session
     }
     
-    public func call(_ url: RequestURL,_ type: RequestType) {
-        let task = session?.dataTaskWithUrl(url, type, completion: { [weak self] (data, response, error) in
+    public func call(_ url: RequestURL) {
+        let task = session?.dataTaskWithUrl(url, completion: { [weak self] (data, response, error) in
             self?.delegate?.networkResponse(data, response, error)
         })
         task?.resume()

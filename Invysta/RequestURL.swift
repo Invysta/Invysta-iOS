@@ -13,28 +13,30 @@ enum CallType: String {
     case none = ""
 }
 
+enum RequestType: String {
+    case post = "POST"
+    case get = "GET"
+}
+
 struct RequestURL: Equatable {
     let baseURL = "https://invystasafe.com"
-    var type: CallType
+    var callType: CallType
+    var requestType: RequestType
+    
     var params: [String: String]?
+
+    var identifiers: String?
     
-    var url: URL {
-        return URL(string: baseURL + type.rawValue)!
-    }
-    
-    var request: URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+    var url: URLRequest {
+        var request = URLRequest(url: URL(string: baseURL + callType.rawValue)!)
+        request.httpMethod = requestType.rawValue
         
-        do {
-            guard let params = params else { return request }
-            let data = try JSONSerialization.data(withJSONObject: params, options: .init())
-            request.httpBody = data
-            request.setValue("application/json", forHTTPHeaderField: "content-type")
-        } catch {
-            print(error.localizedDescription)
-        }
+        guard let identifiers = self.identifiers else { return request }
+        
+        request.httpBody = Data(base64Encoded: identifiers)
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
         
         return request
     }
+    
 }

@@ -8,6 +8,8 @@
 import UIKit
 
 struct VendorIdentifier: IdentifierSource {
+    var type: String = "VendorID"
+    
     func identifier() -> String? {
         return UIDevice().identifierForVendor?.uuidString
     }

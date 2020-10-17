@@ -18,8 +18,7 @@ final class MockURLSession: URLSessionProtocol {
         nextDataTask = task
     }
     
-    func dataTaskWithUrl(_ url: RequestURL,
-                         _ type: RequestType, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+    func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
         lastRequestURL = url
         nextDataTask.data(completion)
         return nextDataTask
@@ -76,12 +75,12 @@ class InvystaNetworkTests: XCTestCase {
     let getMockDelegate = MockGETNetworkResponseDelegate()
     
     func testGETNetworkCall() {
-        let requestURL = RequestURL(type: .login)
+        let requestURL = RequestURL(callType: .login, requestType: .get)
         let mockSession = MockURLSession(MockGETURLSessionDataTask())
         
         let networkManager = NetworkManager(mockSession)
         networkManager.delegate = getMockDelegate
-        networkManager.call(requestURL, .get)
+        networkManager.call(requestURL)
         
         XCTAssertNil(mockSession.lastRequestURL?.params)
         XCTAssertTrue(mockSession.nextDataTask.didResume)
@@ -89,14 +88,13 @@ class InvystaNetworkTests: XCTestCase {
     }
     
     func testPOSTNetworkCall() {
-        var requestURL = RequestURL(type: .login)
-        requestURL.params = ["Mock": "Data"]
+        let requestURL = RequestURL(callType: .register, requestType: .post, params: ["Mock": "Data"])
         
         let mockSession = MockURLSession(MockPOSTURLSessionDataTask())
         
         let networkManager = NetworkManager(mockSession)
         networkManager.delegate = postMockDelegate
-        networkManager.call(requestURL, .post)
+        networkManager.call(requestURL)
         
         XCTAssertNotNil(mockSession.lastRequestURL?.params?["Mock"])
         XCTAssertTrue(mockSession.lastRequestURL!.params!["Mock"] == "Data")

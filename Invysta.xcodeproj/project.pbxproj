@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
 		017549CE2534D99900487C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CD2534D99900487C74 /* AppDelegate.swift */; };
 		017549D02534D99900487C74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CF2534D99900487C74 /* SceneDelegate.swift */; };
 		017549D22534D99900487C74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549D12534D99900487C74 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0114C797253A768100DD4DF2 /* BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserData.swift; sourceTree = "<group>"; };
 		017549CA2534D99900487C74 /* Invysta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invysta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		017549CD2534D99900487C74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		017549CF2534D99900487C74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
 				017549E62534DBF400487C74 /* RequestURL.swift */,
+				0114C797253A768100DD4DF2 /* BrowserData.swift */,
 				017549F82534F01E00487C74 /* Managers */,
 				017549EF2534EF2300487C74 /* Identifier Source */,
 				017549D62534D99B00487C74 /* Assets.xcassets */,
@@ -345,6 +348,7 @@
 				017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */,
 				017549F62534F01200487C74 /* NetworkManager.swift in Sources */,
 				017549CE2534D99900487C74 /* AppDelegate.swift in Sources */,
+				0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */,
 				017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */,
 				017549D02534D99900487C74 /* SceneDelegate.swift in Sources */,
 			);

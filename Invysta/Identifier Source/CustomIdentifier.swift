@@ -8,6 +8,9 @@
 import Foundation
 
 struct CustomIdentifier: IdentifierSource {
+    
+    var type: String = "CustomID"
+    
     func identifier() -> String? {
         let uuid = UUID().uuidString
         
