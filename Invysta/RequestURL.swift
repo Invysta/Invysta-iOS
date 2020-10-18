@@ -23,17 +23,15 @@ struct RequestURL: Equatable {
     var callType: CallType
     var requestType: RequestType
     
-    var params: [String: String]?
-
-    var identifiers: String?
+    var body: String?
     
     var url: URLRequest {
         var request = URLRequest(url: URL(string: baseURL + callType.rawValue)!)
         request.httpMethod = requestType.rawValue
         
-        guard let identifiers = self.identifiers else { return request }
+        guard let body = self.body else { return request }
         
-        request.httpBody = Data(base64Encoded: identifiers)
+        request.httpBody = Data(base64Encoded: body)
         request.setValue("application/json", forHTTPHeaderField: "content-type")
         
         return request

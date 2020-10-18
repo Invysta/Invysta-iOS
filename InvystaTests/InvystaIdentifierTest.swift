@@ -8,6 +8,8 @@
 import XCTest
 
 final class MockVendorIdentifier: IdentifierSource {
+    var type: String = "MockType"
+    
     func identifier() -> String? {
         return "MockVendorIdentifier"
     }
@@ -18,8 +20,13 @@ class InvystaIdentifierTest: XCTestCase {
     var identifierManager: IdentifierManager!
     
     func testIdentifierParsing() {
-        identifierManager = IdentifierManager([MockVendorIdentifier()])
-        XCTAssertTrue(identifierManager!.identifiers.first! == "MockVendorIdentifier")
+        let browserData = BrowserData(email: "MockEmail",
+                                      gateKeeper: "MockGateKeeper",
+                                      fileName: "MockFileName",
+                                      action: "MockAction",
+                                      oneTimeCode: "MockOneTimeCode")
+        identifierManager = IdentifierManager(browserData, [MockVendorIdentifier()])
+        XCTAssertTrue(identifierManager!.identifiers["MockType"] == "MockVendorIdentifier")
         
     }
     

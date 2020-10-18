@@ -29,6 +29,7 @@ class ViewController: UIViewController, NetworkManagerDelegate {
     
     init(_ browserData: BrowserData) {
         super.init(nibName: nil, bundle: nil)
+        identifierManager = IdentifierManager(browserData, [VendorIdentifier(), AdvertiserIdentifier()])
         self.browserData = browserData
     }
     
@@ -43,7 +44,11 @@ class ViewController: UIViewController, NetworkManagerDelegate {
         networkManager?.delegate = self
         displayAppVersion()
         
-        getReqReg()
+        
+        let requestURL = RequestURL(callType: .login,
+                                    requestType: .get)
+        
+        networkManager?.call(requestURL)
     }
     
     func getReqReg() {
@@ -67,6 +72,7 @@ class ViewController: UIViewController, NetworkManagerDelegate {
         
         guard let res = response as? HTTPURLResponse else { return }
         let xacid = res.allHeaderFields["X-ACID"] as? String
+        print(res)
         print(xacid)
     }
     

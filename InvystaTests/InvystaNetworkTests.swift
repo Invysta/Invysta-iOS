@@ -82,13 +82,13 @@ class InvystaNetworkTests: XCTestCase {
         networkManager.delegate = getMockDelegate
         networkManager.call(requestURL)
         
-        XCTAssertNil(mockSession.lastRequestURL?.params)
+        XCTAssertNil(mockSession.lastRequestURL?.body)
         XCTAssertTrue(mockSession.nextDataTask.didResume)
         XCTAssertTrue(mockSession.lastRequestURL == requestURL)
     }
     
     func testPOSTNetworkCall() {
-        let requestURL = RequestURL(callType: .register, requestType: .post, params: ["Mock": "Data"])
+        let requestURL = RequestURL(callType: .register, requestType: .post, body: "mock-data")
         
         let mockSession = MockURLSession(MockPOSTURLSessionDataTask())
         
@@ -96,8 +96,8 @@ class InvystaNetworkTests: XCTestCase {
         networkManager.delegate = postMockDelegate
         networkManager.call(requestURL)
         
-        XCTAssertNotNil(mockSession.lastRequestURL?.params?["Mock"])
-        XCTAssertTrue(mockSession.lastRequestURL!.params!["Mock"] == "Data")
+        XCTAssertNotNil(mockSession.lastRequestURL?.body)
+        XCTAssertTrue(mockSession.lastRequestURL!.body == "mock-data")
         XCTAssertTrue(mockSession.nextDataTask.didResume)
         XCTAssertTrue(mockSession.lastRequestURL == requestURL)
     }

@@ -10,7 +10,7 @@ import Foundation
 struct BrowserData {
     var email: String
     var gateKeeper: String
-    var password: String
+    var fileName: String
     var action: String
-    var oneTimeCode: String
+    var oneTimeCode: String?
 }

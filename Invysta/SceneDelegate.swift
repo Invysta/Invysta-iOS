@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let mockBrowserData = BrowserData(email: "cgarcia@invysta.com",
                                           gateKeeper: "https://invystasafe.com/",
-                                          password: "1234567890",
+                                          fileName: "1234567890",
                                           action: "log", //log/reg -> login/register
                                           oneTimeCode: "4342")
         
