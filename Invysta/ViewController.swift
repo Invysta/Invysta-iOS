@@ -22,11 +22,7 @@ class ViewController: UIViewController, NetworkManagerDelegate {
     }()
     
     private var url: URL?
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
+ 
     init(_ browserData: BrowserData) {
         super.init(nibName: nil, bundle: nil)
         identifierManager = IdentifierManager(browserData, [VendorIdentifier(), AdvertiserIdentifier()])
@@ -40,15 +36,11 @@ class ViewController: UIViewController, NetworkManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkManager = NetworkManager()
-        networkManager?.delegate = self
         displayAppVersion()
         
-        
-        let requestURL = RequestURL(callType: .login,
-                                    requestType: .get)
-        
-        networkManager?.call(requestURL)
+        networkManager = NetworkManager()
+        networkManager?.delegate = self
+
     }
     
     func getReqReg() {
@@ -57,23 +49,26 @@ class ViewController: UIViewController, NetworkManagerDelegate {
     }
     
     func executeCommonGet(_ browserData: BrowserData) {
-        var requestURL: RequestURL
         
-        if browserData.action == "log" {
-            requestURL = RequestURL(callType: .login, requestType: .get)
-        } else {
-            requestURL = RequestURL(callType: .register, requestType: .get)
-        }
+        let action = browserData.action == "log"
+        let requestURL = RequestURL(callType: action ? .login : .none, requestType: .get)
         
         networkManager?.call(requestURL)
+    }
+    
+    func executeCommonPost(_ browserData: BrowserData) {
+        let action = browserData.action == "log"
+        let requestURL = RequestURL(callType: action ? .login : .register, requestType: .post)
+        
     }
     
     func networkResponse(_ data: Data?, _ response: URLResponse?, _ error: Error?) {
         
         guard let res = response as? HTTPURLResponse else { return }
         let xacid = res.allHeaderFields["X-ACID"] as? String
+        let responseCode = res.statusCode
         print(res)
-        print(xacid)
+        print(xacid!, responseCode)
     }
     
     func displayAppVersion() {

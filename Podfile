@@ -8,6 +8,8 @@ target 'Invysta' do
   # Pods for Invysta
   pod 'lottie-ios'
   pod 'SwiftKeychainWrapper'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/DynamicLinks'
 
   target 'InvystaTests' do
     inherit! :search_paths

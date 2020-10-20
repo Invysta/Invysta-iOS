@@ -6,26 +6,19 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 struct CustomIdentifier: IdentifierSource {
     
     var type: String = "CustomID"
     
     func identifier() -> String? {
-        let uuid = UUID().uuidString
-        
-        return uuid
-    }
-    
-    func generateNewUUID() -> String {
-        return UUID().uuidString
-    }
-    
-    func storeUUID() {
-        
-    }
-    
-    func retrieveUUID() {
-        
+        if let uuid = KeychainWrapper.standard.string(forKey: type) {
+            return uuid
+        } else {
+            let uuid = UUID().uuidString
+            KeychainWrapper.standard.set(uuid, forKey: type)
+            return uuid
+        }
     }
 }

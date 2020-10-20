@@ -16,7 +16,7 @@ final class IdentifierManager {
     
     var identifiers = [String: String]()
     
-    var browserData: BrowserData
+    private var browserData: BrowserData
     
     init(_ browserData: BrowserData, _ sources: [IdentifierSource]) {
         self.browserData = browserData
@@ -28,7 +28,7 @@ final class IdentifierManager {
     func compileSources() -> String {
         var param: String
         
-        if let oneTimeCode = self.browserData.oneTimeCode {
+        if let oneTimeCode = browserData.oneTimeCode {
             param = "caid=" + createClientAgentId() + "&magic=" + browserData.fileName + "&otc=" + oneTimeCode
         } else {
             param = "caid=" + createClientAgentId() + "&magic=" + browserData.fileName
@@ -37,12 +37,17 @@ final class IdentifierManager {
         return param
     }
     
-    func createClientAgentId() -> String {
+    private func createClientAgentId() -> String {
         var caid = ""
         
-        if let vendorId = identifiers["VendorID"], let advertiserId = identifiers["AdvertiserID"] {
-            caid = vendorId + advertiserId
+        if let vendorId = identifiers["VendorID"] {
+            caid += vendorId
         }
+        
+        if let advertiserId = identifiers["AdvertiserID"] {
+            caid += advertiserId
+        }
+        
         return caid
     }
     

@@ -15,19 +15,43 @@ final class MockVendorIdentifier: IdentifierSource {
     }
 }
 
+struct MockVendorSource: IdentifierSource {
+    var type: String = "VendorID"
+    
+    func identifier() -> String? {
+        return "MockValue"
+    }
+    
+}
+
+struct MockAdvertisementSource: IdentifierSource {
+    var type: String = "AdvertiserID"
+    
+    func identifier() -> String? {
+        return nil
+    }
+    
+}
+
 class InvystaIdentifierTest: XCTestCase {
 
     var identifierManager: IdentifierManager!
     
+    let browserData = BrowserData(email: "MockEmail",
+                                  gateKeeper: "MockGateKeeper",
+                                  fileName: "MockFileName",
+                                  action: "MockAction",
+                                  oneTimeCode: "MockOneTimeCode")
+    
     func testIdentifierParsing() {
-        let browserData = BrowserData(email: "MockEmail",
-                                      gateKeeper: "MockGateKeeper",
-                                      fileName: "MockFileName",
-                                      action: "MockAction",
-                                      oneTimeCode: "MockOneTimeCode")
         identifierManager = IdentifierManager(browserData, [MockVendorIdentifier()])
         XCTAssertTrue(identifierManager!.identifiers["MockType"] == "MockVendorIdentifier")
-        
+    }
+    
+    func testIdentifierSources() {
+        identifierManager = IdentifierManager(browserData, [MockVendorSource(), MockAdvertisementSource()])
+        XCTAssertEqual(identifierManager.identifiers.count, 1)
+        XCTAssertEqual(identifierManager.compileSources(), "caid=MockValue&magic=MockFileName&otc=MockOneTimeCode")
     }
     
 }

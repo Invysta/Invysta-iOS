@@ -8,8 +8,8 @@
 import Foundation
 
 enum CallType: String {
-    case register = "/register/"
-    case login = "/login/"
+    case register = "/register"
+    case login = "/login"
     case none = ""
 }
 
@@ -24,15 +24,25 @@ struct RequestURL: Equatable {
     var requestType: RequestType
     
     var body: String?
+    var xacid: String?
+    var userIDAndPassword: String?
     
     var url: URLRequest {
         var request = URLRequest(url: URL(string: baseURL + callType.rawValue)!)
         request.httpMethod = requestType.rawValue
         
-        guard let body = self.body else { return request }
+        if let xacid = self.xacid {
+            request.setValue(xacid, forHTTPHeaderField: "X-ACID")
+        }
         
-        request.httpBody = Data(base64Encoded: body)
-        request.setValue("application/json", forHTTPHeaderField: "content-type")
+        if let userIDAndPassword = self.userIDAndPassword {
+            request.setValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
+        }
+        
+        if let body = self.body {
+            request.httpBody = Data(base64Encoded: body)
+            request.setValue("application/json", forHTTPHeaderField: "content-type")
+        }
         
         return request
     }
