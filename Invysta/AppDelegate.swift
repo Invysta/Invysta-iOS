@@ -15,17 +15,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
    
-
       return true
     }
     
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return false }
+        
+        var data = [String: String]()
+        
+        for component in components {
+            data[component.name] = component.value
+        }
+        
+        let mockBrowserData = BrowserData(email: data["email"] ?? "na-email",
+                                          gateKeeper: "https://invystasafe.com/",
+                                          fileName: data["pass"] ?? "na-pass",
+                                          action: data["action"] ?? "na-action",
+                                          oneTimeCode: data["otc"] ?? "na-otc")
+        
+//        LaunchManager.launchViewController(mockBrowserData)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let vc = ViewController(mockBrowserData)
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+        
+        return true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        if #available(iOS 13, *) { return true }
+        
 //        window = UIWindow(frame: UIScreen.main.bounds)
 //
-//        let vc = ViewController()
-//        window?.rootViewController = vc
-//        window?.makeKeyAndVisible()
+//        let mockBrowserData = BrowserData(email: "cgarcia@invysta.com",
+//                                          gateKeeper: "https://invystasafe.com/",
+//                                          fileName: "1234567890",
+//                                          action: "log", //log/reg -> login/register
+//                                          oneTimeCode: "4342")
 //
+//        LaunchManager.launchViewController(mockBrowserData)
+        
         return true
     }
 

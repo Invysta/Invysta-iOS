@@ -7,30 +7,65 @@
 
 import UIKit
 
+extension URL {
+    func valueOf(_ queryParamaterName: String) -> String? {
+        guard let url = URLComponents(string: self.absoluteString) else { return nil }
+        return url.queryItems?.first(where: { $0.name == queryParamaterName })?.value
+    }
+}
+
+
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willContinueUserActivityWithType userActivityType: String) {
-        
+        print("activity type",userActivityType)
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url.absoluteString else { return }
+        guard let components = URLComponents(string: url)?.queryItems else { return }
+        
+        var data = [String: String]()
+        
+        for component in components {
+            data[component.name] = component.value
+        }
+        
+        let mockBrowserData = BrowserData(email: data["email"] ?? "na-email",
+                                          gateKeeper: "https://invystasafe.com/",
+                                          fileName: data["pass"] ?? "na-pass",
+                                          action: data["action"] ?? "na-action",
+                                          oneTimeCode: data["otc"] ?? "na-otc")
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        LaunchManager.launchViewController(mockBrowserData, windowScene)
+//        let vc = ViewController(mockBrowserData)
+//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window?.rootViewController = vc
+//        window?.windowScene = windowScene
+//        window?.makeKeyAndVisible()
+        
+    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let mockBrowserData = BrowserData(email: "cgarcia@invysta.com",
-                                          gateKeeper: "https://invystasafe.com/",
-                                          fileName: "1234567890",
-                                          action: "log", //log/reg -> login/register
-                                          oneTimeCode: "4342")
-        
-        let vc = ViewController(mockBrowserData)
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.rootViewController = vc
-        window?.windowScene = windowScene
-        window?.makeKeyAndVisible()
+//        let mockBrowserData = BrowserData(email: "cgarcia@invysta.com",
+//                                          gateKeeper: "https://invystasafe.com/",
+//                                          fileName: "1234567890",
+//                                          action: "log",
+//                                          oneTimeCode: "4342")
+//
+//        let vc = ViewController(mockBrowserData)
+//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window?.rootViewController = vc
+//        window?.windowScene = windowScene
+//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -61,6 +96,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
 }
-

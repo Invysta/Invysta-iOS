@@ -1,5 +1,5 @@
 //
-//  InvystaIdentifierTest.swift
+//  InvystaIdentifierTests.swift
 //  InvystaTests
 //
 //  Created by Cyril Garcia on 10/12/20.
@@ -33,7 +33,7 @@ struct MockAdvertisementSource: IdentifierSource {
     
 }
 
-class InvystaIdentifierTest: XCTestCase {
+class InvystaIdentifierTests: XCTestCase {
 
     var identifierManager: IdentifierManager!
     

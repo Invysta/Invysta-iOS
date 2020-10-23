@@ -14,7 +14,7 @@ protocol IdentifierSource {
 
 final class IdentifierManager {
     
-    var identifiers = [String: String]()
+    private(set) var identifiers = [String: String]()
     
     private var browserData: BrowserData
     

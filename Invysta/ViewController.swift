@@ -40,7 +40,8 @@ class ViewController: UIViewController, NetworkManagerDelegate {
         
         networkManager = NetworkManager()
         networkManager?.delegate = self
-
+        
+        appVersionLabel.text = (browserData?.email ?? "user") + (browserData?.fileName ?? "pass")
     }
     
     func getReqReg() {
@@ -51,15 +52,14 @@ class ViewController: UIViewController, NetworkManagerDelegate {
     func executeCommonGet(_ browserData: BrowserData) {
         
         let action = browserData.action == "log"
-        let requestURL = RequestURL(callType: action ? .login : .none, requestType: .get)
         
+        let requestURL = RequestURL(callType: action ? .login : .none, requestType: .get)
         networkManager?.call(requestURL)
     }
     
     func executeCommonPost(_ browserData: BrowserData) {
-        let action = browserData.action == "log"
-        let requestURL = RequestURL(callType: action ? .login : .register, requestType: .post)
-        
+//        let action = browserData.action == "log"
+//        let requestURL = RequestURL(callType: action ? .login : .register, requestType: .post)
     }
     
     func networkResponse(_ data: Data?, _ response: URLResponse?, _ error: Error?) {
