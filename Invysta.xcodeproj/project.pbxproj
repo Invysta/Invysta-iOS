@@ -29,6 +29,7 @@
 		01754A1A2535174F00487C74 /* InvystaIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A192535174F00487C74 /* InvystaIdentifierTests.swift */; };
 		01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A2125351B8600487C74 /* CustomIdentifier.swift */; };
 		01817363254362390065DB52 /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01817362254362390065DB52 /* LaunchManager.swift */; };
+		01817368254372E80065DB52 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 01817367254372E80065DB52 /* loading.json */; };
 		01B4339D253A8C99001BD585 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
 		2762F219420F850333EEDD95 /* Pods_Invysta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */; };
 		4F7E1711DF6232407B2D9B84 /* Pods_InvystaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */; };
@@ -66,6 +67,7 @@
 		01754A192535174F00487C74 /* InvystaIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaIdentifierTests.swift; sourceTree = "<group>"; };
 		01754A2125351B8600487C74 /* CustomIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIdentifier.swift; sourceTree = "<group>"; };
 		01817362254362390065DB52 /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
+		01817367254372E80065DB52 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		01A4745A25369FCD00D19006 /* Invysta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invysta.entitlements; sourceTree = "<group>"; };
 		29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvystaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvystaTests.release.xcconfig"; path = "Target Support Files/Pods-InvystaTests/Pods-InvystaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				01A4745A25369FCD00D19006 /* Invysta.entitlements */,
+				01817367254372E80065DB52 /* loading.json */,
 				017549CD2534D99900487C74 /* AppDelegate.swift */,
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				012430362542706200722112 /* FeatureFlag */,
@@ -278,6 +281,7 @@
 			files = (
 				017549DA2534D99B00487C74 /* LaunchScreen.storyboard in Resources */,
 				017549D72534D99B00487C74 /* Assets.xcassets in Resources */,
+				01817368254372E80065DB52 /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

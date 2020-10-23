@@ -41,31 +41,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                           oneTimeCode: data["otc"] ?? "na-otc")
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        LaunchManager.launchViewController(mockBrowserData, windowScene)
-//        let vc = ViewController(mockBrowserData)
-//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-//        window?.rootViewController = vc
-//        window?.windowScene = windowScene
-//        window?.makeKeyAndVisible()
-        
+        launchViewController(windowScene,mockBrowserData)
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        launchViewController(windowScene)
+    }
+    
+    func launchViewController(_ windowScene: UIWindowScene, _ browserData: BrowserData? = nil) {
         
-//        let mockBrowserData = BrowserData(email: "cgarcia@invysta.com",
-//                                          gateKeeper: "https://invystasafe.com/",
-//                                          fileName: "1234567890",
-//                                          action: "log",
-//                                          oneTimeCode: "4342")
-//
-//        let vc = ViewController(mockBrowserData)
-//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-//        window?.rootViewController = vc
-//        window?.windowScene = windowScene
-//        window?.makeKeyAndVisible()
+        let vc: ViewController = (browserData == nil) ? ViewController() : ViewController(browserData!)
+        
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.rootViewController = vc
+        window?.windowScene = windowScene
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

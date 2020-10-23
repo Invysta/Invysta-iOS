@@ -33,11 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                           action: data["action"] ?? "na-action",
                                           oneTimeCode: data["otc"] ?? "na-otc")
         
-//        LaunchManager.launchViewController(mockBrowserData)
         window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = ViewController(mockBrowserData)
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
+        launchViewController(mockBrowserData)
         
         return true
     }
@@ -45,20 +42,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         if #available(iOS 13, *) { return true }
-        
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//
-//        let mockBrowserData = BrowserData(email: "cgarcia@invysta.com",
-//                                          gateKeeper: "https://invystasafe.com/",
-//                                          fileName: "1234567890",
-//                                          action: "log", //log/reg -> login/register
-//                                          oneTimeCode: "4342")
-//
-//        LaunchManager.launchViewController(mockBrowserData)
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        launchViewController()
         
         return true
     }
 
+    func launchViewController(_ browserData: BrowserData? = nil) {
+        let vc: ViewController = (browserData == nil) ? ViewController() : ViewController(browserData!)
+        
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)

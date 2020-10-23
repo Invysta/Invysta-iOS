@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import AdSupport
+import Lottie
 
 class ViewController: UIViewController, NetworkManagerDelegate {
 
@@ -21,8 +21,21 @@ class ViewController: UIViewController, NetworkManagerDelegate {
         return label
     }()
     
+    private let loadingView: AnimationView = {
+        let view = AnimationView()
+        view.animation = Animation.named("loading")
+        view.animationSpeed = 1
+        view.loopMode = .loop
+        view.play()
+        return view
+    }()
+    
     private var url: URL?
  
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     init(_ browserData: BrowserData) {
         super.init(nibName: nil, bundle: nil)
         identifierManager = IdentifierManager(browserData, [VendorIdentifier(), AdvertiserIdentifier()])
@@ -38,10 +51,12 @@ class ViewController: UIViewController, NetworkManagerDelegate {
         
         displayAppVersion()
         
+        if browserData != nil {
+            displayLoadingView()
+        }
+        
         networkManager = NetworkManager()
         networkManager?.delegate = self
-        
-        appVersionLabel.text = (browserData?.email ?? "user") + (browserData?.fileName ?? "pass")
     }
     
     func getReqReg() {
@@ -90,5 +105,18 @@ class ViewController: UIViewController, NetworkManagerDelegate {
         
         appVersionLabel.text = "App Version: " + appVersion
     }
-
+    
+    func displayLoadingView() {
+        let loadingViewFrame: CGFloat = 200
+        
+        view.addSubview(loadingView)
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([loadingView.heightAnchor.constraint(equalToConstant: loadingViewFrame),
+                                     loadingView.widthAnchor.constraint(equalToConstant: loadingViewFrame),
+                                     loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+        
+        view.layoutIfNeeded()
+    }
 }
