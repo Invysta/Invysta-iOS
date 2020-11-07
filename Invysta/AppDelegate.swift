@@ -27,14 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             data[component.name] = component.value
         }
         
-        let mockBrowserData = BrowserData(email: data["email"] ?? "na-email",
-                                          gateKeeper: "https://invystasafe.com/",
-                                          fileName: data["pass"] ?? "na-pass",
-                                          action: data["action"] ?? "na-action",
-                                          oneTimeCode: data["otc"] ?? "na-otc")
+        let browserData = BrowserData(action: data["action"],
+                                          oneTimeCode: data["otc"],
+                                          encData: data["encData"],
+                                          magic: data["magic"])
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        launchViewController(mockBrowserData)
+        
+        
+        launchViewController(browserData)
         
         return true
     }

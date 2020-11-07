@@ -8,8 +8,13 @@
 import Foundation
 
 final class FeatureFlagBrowserData: FeatureFlagType {
-    var trigger: Bool?
-    func condition() -> Bool {
-        return trigger ?? false
+    
+    var trigger: Bool = false
+    
+    func check() -> Any? {
+        if trigger {
+            return BrowserData(action: "reg", oneTimeCode: "123", encData: "encData", magic: "magicVal")
+        }
+        return nil
     }
 }

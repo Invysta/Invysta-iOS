@@ -25,6 +25,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        if let mockBrowserData = FeatureFlagBrowserData().check() as? BrowserData {
+            launchViewController(windowScene,mockBrowserData)
+            return 
+        }
+        
         guard let url = URLContexts.first?.url.absoluteString else { return }
         guard let components = URLComponents(string: url)?.queryItems else { return }
         
@@ -34,18 +42,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             data[component.name] = component.value
         }
         
-        let mockBrowserData = BrowserData(email: data["email"] ?? "na-email",
-                                          gateKeeper: "https://invystasafe.com/",
-                                          fileName: data["pass"] ?? "na-pass",
-                                          action: data["action"] ?? "na-action",
-                                          oneTimeCode: data["otc"] ?? "na-otc")
+        let browserData = BrowserData(action: data["action"],
+                                          oneTimeCode: data["otc"],
+                                          encData: data["encData"],
+                                          magic: data["magic"])
+        launchViewController(windowScene,browserData)
         
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        launchViewController(windowScene,mockBrowserData)
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        if let mockBrowserData = FeatureFlagBrowserData().check() as? BrowserData {
+            launchViewController(windowScene, mockBrowserData)
+            return
+        }
         launchViewController(windowScene)
     }
     

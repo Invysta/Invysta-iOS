@@ -8,9 +8,8 @@
 import Foundation
 
 struct BrowserData {
-    var email: String
-    var gateKeeper: String
-    var fileName: String
-    var action: String
+    var action: String?
     var oneTimeCode: String?
+    var encData: String?
+    var magic: String?
 }

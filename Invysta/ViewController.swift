@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class ViewController: UIViewController, NetworkManagerDelegate {
+class ViewController: UIViewController {
 
     private var identifierManager: IdentifierManager?
     private var networkManager: NetworkManager?
@@ -30,15 +30,18 @@ class ViewController: UIViewController, NetworkManagerDelegate {
         return view
     }()
     
-    private var url: URL?
- 
     init() {
         super.init(nibName: nil, bundle: nil)
     }
     
     init(_ browserData: BrowserData) {
         super.init(nibName: nil, bundle: nil)
-        identifierManager = IdentifierManager(browserData, [VendorIdentifier(), AdvertiserIdentifier()])
+        networkManager = NetworkManager()
+        identifierManager = IdentifierManager(browserData, [
+                                                VendorIdentifier(),
+                                                AdvertiserIdentifier(),
+                                                CustomIdentifier()])
+        self.identifierManager?.magic = browserData.magic
         self.browserData = browserData
     }
     
@@ -51,41 +54,73 @@ class ViewController: UIViewController, NetworkManagerDelegate {
         
         displayAppVersion()
         
-        if browserData != nil {
+        if let browserData = self.browserData {
             displayLoadingView()
+            requestXACIDKey(browserData)
+            
+            if FeatureFlag.showDebuggingTextField {
+                let text = """
+                            action: \(browserData.action)\n
+                            encData: \(browserData.encData)\n
+                            magic: \(browserData.magic ?? "na")\n
+                            oneTimeCode: \(browserData.oneTimeCode)
+                    """
+                createDebuggingField(text)
+            }
+            
         }
+    }
+ 
+    func requestXACIDKey(_ browserData: BrowserData) {
+        let requestURL = RequestURL(requestType: .get, action: browserData.action)
+        networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
+            guard let res = response as? HTTPURLResponse else { return }
+            if let xacid = res.allHeaderFields["X-ACID"] as? String {
+                print("Action",requestURL.action)
+                if requestURL.action! == "reg" {
+                    self?.registerDevice(with: xacid)
+                } else if requestURL.action! == "log" {
+                    self?.authenticate(with: xacid)
+                }
+                
+            }
+        })
+    }
+    
+    func registerDevice(with xacid: String) {
+        let body = identifierManager?.compileSources()
+        print("Body",body)
+        var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: "reg")
+        requestURL.userIDAndPassword = browserData?.encData ?? "encData nil"
         
-        networkManager = NetworkManager()
-        networkManager?.delegate = self
+        networkManager?.call(requestURL, completion: { (data, response, error) in
+            guard let res = response as? HTTPURLResponse else { return }
+            print("results",res,data)
+        })
     }
     
-    func getReqReg() {
-        guard let browserData = self.browserData else{ return }
-        executeCommonGet(browserData)
+    func authenticate(with xacid: String) {
+        let body = identifierManager?.compileSources()
+        let requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: browserData!.action)
+        networkManager?.call(requestURL, completion: { (data, response, error) in
+            guard let res = response as? HTTPURLResponse else { return }
+            print("AuthRes",res)
+        })
     }
     
-    func executeCommonGet(_ browserData: BrowserData) {
+    private func createDebuggingField(_ text: String) {
+        let debuggingTextField = UITextView()
+        debuggingTextField.text = text
+        debuggingTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        let action = browserData.action == "log"
+        view.addSubview(debuggingTextField)
         
-        let requestURL = RequestURL(callType: action ? .login : .none, requestType: .get)
-        networkManager?.call(requestURL)
+        NSLayoutConstraint.activate([debuggingTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     debuggingTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     debuggingTextField.heightAnchor.constraint(equalToConstant: 150),
+                                     debuggingTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
     }
-    
-    func executeCommonPost(_ browserData: BrowserData) {
-//        let action = browserData.action == "log"
-//        let requestURL = RequestURL(callType: action ? .login : .register, requestType: .post)
-    }
-    
-    func networkResponse(_ data: Data?, _ response: URLResponse?, _ error: Error?) {
-        
-        guard let res = response as? HTTPURLResponse else { return }
-        let xacid = res.allHeaderFields["X-ACID"] as? String
-        let responseCode = res.statusCode
-        print(res)
-        print(xacid!, responseCode)
-    }
-    
+
     func displayAppVersion() {
         guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
 

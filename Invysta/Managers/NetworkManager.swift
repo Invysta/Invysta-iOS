@@ -44,7 +44,7 @@ protocol NetworkManagerDelegate: AnyObject {
 
 final class NetworkManager {
     
-    var session: URLSessionProtocol?
+    private var session: URLSessionProtocol?
     weak var delegate: NetworkManagerDelegate?
     
     init(_ session: URLSessionProtocol? = URLSession.shared) {
@@ -52,10 +52,13 @@ final class NetworkManager {
     }
     
     public func call(_ url: RequestURL) {
-        let task = session?.dataTaskWithUrl(url, completion: { [weak self] (data, response, error) in
+        session?.dataTaskWithUrl(url, completion: { [weak self] (data, response, error) in
             self?.delegate?.networkResponse(data, response, error)
-        })
-        task?.resume()
+        }).resume()
+    }
+    
+    public func call(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        session?.dataTaskWithUrl(url, completion: completion).resume()
     }
  
 }

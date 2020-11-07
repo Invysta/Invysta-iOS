@@ -8,18 +8,10 @@
 import Foundation
 
 protocol FeatureFlagType {
-    var trigger: Bool? { get set }
-    func condition() -> Bool
+    var trigger: Bool { get }
+    func check() -> Any?
 }
 
 final class FeatureFlag {
-    
-    var shared = FeatureFlag()
-    
-    static func testBrowserData() -> Bool {
-        let featureFlagBrowserData = FeatureFlagBrowserData()
-        featureFlagBrowserData.trigger = true
-        return featureFlagBrowserData.condition()
-    }
-    
+    static var showDebuggingTextField: Bool = true
 }

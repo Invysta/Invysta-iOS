@@ -20,12 +20,23 @@ enum RequestType: String {
 
 struct RequestURL: Equatable {
     let baseURL = "https://invystasafe.com"
-    var callType: CallType
     var requestType: RequestType
     
     var body: String?
     var xacid: String?
     var userIDAndPassword: String?
+    var action: String?
+    
+    var callType: CallType {
+        switch action {
+        case "log":
+            return .login
+        case "reg":
+            return .register
+        default:
+            return .none
+        }
+    }
     
     var url: URLRequest {
         var request = URLRequest(url: URL(string: baseURL + callType.rawValue)!)
@@ -33,15 +44,18 @@ struct RequestURL: Equatable {
         
         if let xacid = self.xacid {
             request.setValue(xacid, forHTTPHeaderField: "X-ACID")
+            print("Set X_ACID",xacid)
         }
         
         if let userIDAndPassword = self.userIDAndPassword {
             request.setValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
+            print("Set basic","Basic " + userIDAndPassword)
         }
         
         if let body = self.body {
             request.httpBody = Data(base64Encoded: body)
             request.setValue("application/json", forHTTPHeaderField: "content-type")
+            print("Set body",body)
         }
         
         return request

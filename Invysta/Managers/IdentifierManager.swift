@@ -16,6 +16,8 @@ final class IdentifierManager {
     
     private(set) var identifiers = [String: String]()
     
+    var magic: String?
+    
     private var browserData: BrowserData
     
     init(_ browserData: BrowserData, _ sources: [IdentifierSource]) {
@@ -27,11 +29,10 @@ final class IdentifierManager {
   
     func compileSources() -> String {
         var param: String
+        param = "caid=" + createClientAgentId()
         
-        if let oneTimeCode = browserData.oneTimeCode {
-            param = "caid=" + createClientAgentId() + "&magic=" + browserData.fileName + "&otc=" + oneTimeCode
-        } else {
-            param = "caid=" + createClientAgentId() + "&magic=" + browserData.fileName
+        if let magic = self.magic {
+            param += "&magic=" + magic
         }
         
         return param
