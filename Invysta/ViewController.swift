@@ -14,13 +14,6 @@ class ViewController: UIViewController {
     private var networkManager: NetworkManager?
     private var browserData: BrowserData?
     
-    private let appVersionLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        return label
-    }()
-    
     private let loadingView: AnimationView = {
         let view = AnimationView()
         view.animation = Animation.named("loading")
@@ -52,7 +45,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        displayAppVersion()
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = UIColor.systemBackground
+        } else {
+            view.backgroundColor = UIColor.white
+        }
+        
+        displaySettingButton()
         
         if let browserData = self.browserData {
             displayLoadingView()
@@ -76,20 +75,17 @@ class ViewController: UIViewController {
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             guard let res = response as? HTTPURLResponse else { return }
             if let xacid = res.allHeaderFields["X-ACID"] as? String {
-                print("Action",requestURL.action)
                 if requestURL.action! == "reg" {
                     self?.registerDevice(with: xacid)
                 } else if requestURL.action! == "log" {
                     self?.authenticate(with: xacid)
                 }
-                
             }
         })
     }
     
     func registerDevice(with xacid: String) {
         let body = identifierManager?.compileSources()
-        print("Body",body)
         var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: "reg")
         requestURL.userIDAndPassword = browserData?.encData ?? "encData nil"
         
@@ -121,24 +117,31 @@ class ViewController: UIViewController {
                                      debuggingTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
     }
 
-    func displayAppVersion() {
-        guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return }
-
-        view.addSubview(appVersionLabel)
-        appVersionLabel.translatesAutoresizingMaskIntoConstraints = false
+    @objc
+    func moveToSettings() {
+        let vc = SettingsController()
+        let nav = UINavigationController()
+        nav.viewControllers = [vc]
+        present(nav, animated: true, completion: nil)
+    }
+    
+    func displaySettingButton() {
+        let settingButton = UIButton()
+        settingButton.setImage(UIImage(named: "settings"), for: .normal)
+        settingButton.translatesAutoresizingMaskIntoConstraints = false
+        settingButton.addTarget(self, action: #selector(moveToSettings), for: .touchUpInside)
+        view.addSubview(settingButton)
         
         let padding: CGFloat = 15
-        let height: CGFloat = 50
+        let size: CGFloat = 25
         
         NSLayoutConstraint.activate([
-            appVersionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            appVersionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            appVersionLabel.heightAnchor.constraint(equalToConstant: height),
-            appVersionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding + 5)
+            settingButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            settingButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            settingButton.heightAnchor.constraint(equalToConstant: size),
+            settingButton.widthAnchor.constraint(equalToConstant: size)
         ])
         view.layoutIfNeeded()
-        
-        appVersionLabel.text = "App Version: " + appVersion
     }
     
     func displayLoadingView() {

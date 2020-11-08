@@ -14,24 +14,18 @@ extension URL {
     }
 }
 
-
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willContinueUserActivityWithType userActivityType: String) {
-        print("activity type",userActivityType)
+
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        if let mockBrowserData = FeatureFlagBrowserData().check() as? BrowserData {
-            launchViewController(windowScene,mockBrowserData)
-            return 
-        }
         
         guard let url = URLContexts.first?.url.absoluteString else { return }
         guard let components = URLComponents(string: url)?.queryItems else { return }

@@ -9,7 +9,7 @@ import Foundation
 
 final class FeatureFlagBrowserData: FeatureFlagType {
     
-    var trigger: Bool = false
+    var trigger: Bool = true
     
     func check() -> Any? {
         if trigger {
