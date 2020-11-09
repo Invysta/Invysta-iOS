@@ -33,8 +33,10 @@ class ViewController: UIViewController {
         identifierManager = IdentifierManager(browserData, [
                                                 VendorIdentifier(),
                                                 AdvertiserIdentifier(),
-                                                CustomIdentifier()])
-        self.identifierManager?.magic = browserData.magic
+                                                CustomIdentifier(),
+                                                DeviceModelIdentifier(),
+                                                DeviceCheckIdentifier(),
+                                                AccessibilityIdentifier()])
         self.browserData = browserData
     }
     
@@ -59,10 +61,10 @@ class ViewController: UIViewController {
             
             if FeatureFlag.showDebuggingTextField {
                 let text = """
-                            action: \(browserData.action)\n
-                            encData: \(browserData.encData)\n
+                            action: \(browserData.action!)\n
+                            encData: \(browserData.encData!)\n
                             magic: \(browserData.magic ?? "na")\n
-                            oneTimeCode: \(browserData.oneTimeCode)
+                            oneTimeCode: \(browserData.oneTimeCode!)
                     """
                 createDebuggingField(text)
             }
@@ -75,6 +77,7 @@ class ViewController: UIViewController {
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             guard let res = response as? HTTPURLResponse else { return }
             if let xacid = res.allHeaderFields["X-ACID"] as? String {
+                print("X-ACID",xacid)
                 if requestURL.action! == "reg" {
                     self?.registerDevice(with: xacid)
                 } else if requestURL.action! == "log" {
@@ -91,16 +94,22 @@ class ViewController: UIViewController {
         
         networkManager?.call(requestURL, completion: { (data, response, error) in
             guard let res = response as? HTTPURLResponse else { return }
-            print("results",res,data)
+            print("Response",res)
+            if (200...299).contains(res.statusCode) {
+                print("Worked!")
+            }
         })
     }
     
     func authenticate(with xacid: String) {
         let body = identifierManager?.compileSources()
         let requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: browserData!.action)
+        
         networkManager?.call(requestURL, completion: { (data, response, error) in
             guard let res = response as? HTTPURLResponse else { return }
-            print("AuthRes",res)
+            if (200...299).contains(res.statusCode) {
+                print("Worked!")
+            }
         })
     }
     
@@ -114,7 +123,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([debuggingTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                                      debuggingTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                                      debuggingTextField.heightAnchor.constraint(equalToConstant: 150),
-                                     debuggingTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+                                     debuggingTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
     }
 
     @objc

@@ -43,18 +43,18 @@ struct RequestURL: Equatable {
         request.httpMethod = requestType.rawValue
         
         if let xacid = self.xacid {
-            request.setValue(xacid, forHTTPHeaderField: "X-ACID")
+            request.addValue(xacid, forHTTPHeaderField: "X-ACID")
             print("Set X_ACID",xacid)
         }
         
         if let userIDAndPassword = self.userIDAndPassword {
-            request.setValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
-            print("Set basic","Basic " + userIDAndPassword)
+            request.addValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
+            print("Set basic",userIDAndPassword)
         }
         
         if let body = self.body {
             request.httpBody = Data(base64Encoded: body)
-            request.setValue("application/json", forHTTPHeaderField: "content-type")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             print("Set body",body)
         }
         

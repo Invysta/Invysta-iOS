@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct DeviceModelIdentifier: IdentifierSource {
+class DeviceModelIdentifier: Identifier, IdentifierSource {
     var type: String = "DeviceModel"
     
     func identifier() -> String? {
@@ -19,7 +19,8 @@ struct DeviceModelIdentifier: IdentifierSource {
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         
-        return mapToDevice(identifier)
+        let deviceModel = Data(base64Encoded: mapToDevice(identifier))
+        return SHA256(data: deviceModel)
     }
     
     func mapToDevice(_ identifier: String) -> String { // swiftlint:disable:this cyclomatic_complexity

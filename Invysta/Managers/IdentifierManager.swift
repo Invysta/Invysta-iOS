@@ -6,17 +6,28 @@
 //
 
 import UIKit
+import CommonCrypto
 
 protocol IdentifierSource {
     var type: String { get set }
     func identifier() -> String?
 }
 
-final class IdentifierManager {
+class Identifier {
+    func SHA256(data: Data?) -> String {
+        guard let data = data else { return "SHA-err" }
+        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+        data.withUnsafeBytes {
+            _ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
+        }
+        
+        return Data(hash).map { String(format: "%02hhx", $0) }.joined()
+    }
+}
+
+final class IdentifierManager: Identifier {
     
     private(set) var identifiers = [String: String]()
-    
-    var magic: String?
     
     private var browserData: BrowserData
     
@@ -31,10 +42,18 @@ final class IdentifierManager {
         var param: String
         param = "caid=" + createClientAgentId()
         
-        if let magic = self.magic {
+        if let magic = browserData.magic {
             param += "&magic=" + magic
         }
         
+        if let otc = browserData.oneTimeCode {
+            param += "&otc=" + otc
+        }
+        
+        for (i,identifier) in identifiers.enumerated() {
+            param += "&id\(i + 1)=" + identifier.value
+        }
+
         return param
     }
     
@@ -48,8 +67,8 @@ final class IdentifierManager {
         if let advertiserId = identifiers["AdvertiserID"] {
             caid += advertiserId
         }
-        
-        return caid
+                
+        return SHA256(data: caid.data(using: .ascii))
     }
-    
+ 
 }
