@@ -39,14 +39,14 @@ struct RequestURL: Equatable {
     }
     
     var url: URLRequest {
-        var request = URLRequest(url: URL(string: baseURL + callType.rawValue)!)
-        request.httpMethod = requestType.rawValue
+        var request = URLRequest(url: URL(string: "https://invystasafe.com/register")!)
+        request.httpMethod = "POST"
         
         if let xacid = self.xacid {
-            request.addValue(xacid, forHTTPHeaderField: "X-ACID")
+            request.addValue("Basic " + xacid, forHTTPHeaderField: "X-ACID")
             print("Set X_ACID",xacid)
         }
-        
+
         if let userIDAndPassword = self.userIDAndPassword {
             request.addValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
             print("Set basic",userIDAndPassword)
@@ -54,7 +54,7 @@ struct RequestURL: Equatable {
         
         if let body = self.body {
             request.httpBody = Data(base64Encoded: body)
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("text/html", forHTTPHeaderField: "Content-Type")
             print("Set body",body)
         }
         

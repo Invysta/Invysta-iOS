@@ -35,6 +35,10 @@ extension URLSession: URLSessionProtocol {
     func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
         return dataTask(with: url.url, completionHandler: completion)
     }
+    
+    func test() {
+        
+    }
 
 }
 

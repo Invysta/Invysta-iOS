@@ -7,8 +7,9 @@
 
 import UIKit
 import Lottie
+import Alamofire
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, URLSessionDelegate {
 
     private var identifierManager: IdentifierManager?
     private var networkManager: NetworkManager?
@@ -79,7 +80,7 @@ class ViewController: UIViewController {
             if let xacid = res.allHeaderFields["X-ACID"] as? String {
                 print("X-ACID",xacid)
                 if requestURL.action! == "reg" {
-                    self?.registerDevice(with: xacid)
+                    self?.register(xacid)
                 } else if requestURL.action! == "log" {
                     self?.authenticate(with: xacid)
                 }
@@ -87,9 +88,41 @@ class ViewController: UIViewController {
         })
     }
     
+    func register(_ xacid: String) {
+        let headers: HTTPHeaders = [.authorization(bearerToken: browserData!.encData!), .accept("text/html")]
+
+//        let x: HTTPHeaders = [.authorization(bearerToken: browserData!.encData!)]
+        AF.request("https://invystasafe.com/register", method: .post, headers: headers).responseString { (response) in
+            print(response)
+        }
+        
+    }
+    
+//    func register(_ xacid: String) {
+//        let session = URLSession.shared
+//        let body = identifierManager?.compileSources()
+//        var urlRequest = URLRequest(url: URL(string: "https://invystasafe.com/register")!)
+//        urlRequest.httpMethod = "POST"
+//
+////        urlRequest.httpBody
+//        urlRequest.setValue(xacid, forHTTPHeaderField: "X-ACID")
+//        urlRequest.setValue(browserData!.encData!, forHTTPHeaderField: "Authorization")
+//        urlRequest.setValue("text/html", forHTTPHeaderField: "Content-Type")
+//
+//        session.dataTask(with: urlRequest) { (data, response, error) in
+//            guard let res = response as? HTTPURLResponse else { return }
+//            print("Response",res)
+//            if (200...299).contains(res.statusCode) {
+//                print("Worked!")
+//            }
+//        }.resume()
+//    }
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+         
+    }
     func registerDevice(with xacid: String) {
         let body = identifierManager?.compileSources()
-        var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: "reg")
+        var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: browserData!.action!)
         requestURL.userIDAndPassword = browserData?.encData ?? "encData nil"
         
         networkManager?.call(requestURL, completion: { (data, response, error) in
