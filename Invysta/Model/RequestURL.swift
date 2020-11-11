@@ -39,22 +39,33 @@ struct RequestURL: Equatable {
     }
     
     var url: URLRequest {
-        var request = URLRequest(url: URL(string: baseURL + callType.rawValue)!)
+        var urlstr: String
+        
+        if FeatureFlagBrowserData().trigger {
+            urlstr = "https://hookb.in/9X1P3EEDVdS600eMoOmw"
+        } else {
+            urlstr = baseURL + callType.rawValue
+        }
+        
+        var request = URLRequest(url: URL(string: urlstr)!)
         request.httpMethod = requestType.rawValue
         
         if let xacid = self.xacid {
             request.addValue(xacid, forHTTPHeaderField: "X-ACID")
+            
             print("Set X_ACID",xacid)
         }
         
         if let userIDAndPassword = self.userIDAndPassword {
-            request.addValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
+            request.addValue(userIDAndPassword, forHTTPHeaderField: "Authorization")
+            
             print("Set basic",userIDAndPassword)
         }
         
         if let body = self.body {
-            request.httpBody = Data(base64Encoded: body)
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = body.data(using: .utf8)
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            
             print("Set body",body)
         }
         

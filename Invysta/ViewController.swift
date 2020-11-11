@@ -57,8 +57,13 @@ class ViewController: UIViewController {
         
         if let browserData = self.browserData {
             displayLoadingView()
-            requestXACIDKey(browserData)
             
+            if FeatureFlagBrowserData().trigger {
+                registerDevice(with: "123321")
+            } else {
+                requestXACIDKey(browserData)
+            }
+
             if FeatureFlag.showDebuggingTextField {
                 let text = """
                             action: \(browserData.action!)\n
@@ -74,15 +79,20 @@ class ViewController: UIViewController {
  
     func requestXACIDKey(_ browserData: BrowserData) {
         let requestURL = RequestURL(requestType: .get, action: browserData.action)
+        
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
+            
             guard let res = response as? HTTPURLResponse else { return }
+            
             if let xacid = res.allHeaderFields["X-ACID"] as? String {
                 print("X-ACID",xacid)
+                
                 if requestURL.action! == "reg" {
                     self?.registerDevice(with: xacid)
                 } else if requestURL.action! == "log" {
                     self?.authenticate(with: xacid)
                 }
+                
             }
         })
     }

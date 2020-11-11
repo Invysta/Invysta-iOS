@@ -9,11 +9,14 @@ import Foundation
 
 final class FeatureFlagBrowserData: FeatureFlagType {
     
-    var trigger: Bool = true
+    var trigger: Bool = false
     
     func check() -> Any? {
         if trigger {
-            return BrowserData(action: "reg", oneTimeCode: "123", encData: "encData", magic: "magicVal")
+            return BrowserData(action: "reg",
+                               oneTimeCode: "123",
+                               encData: "encData",
+                               magic: "magicVal")
         }
         return nil
     }
