@@ -47,8 +47,17 @@ final class NetworkManager {
     private var session: URLSessionProtocol?
     weak var delegate: NetworkManagerDelegate?
     
-    init(_ session: URLSessionProtocol? = URLSession.shared) {
+    init(_ session: URLSessionProtocol?) {
         self.session = session
+    }
+    
+    init() {
+        let config = URLSessionConfiguration.default
+        config.urlCache = nil
+        config.timeoutIntervalForResource = 10.0
+        config.urlCredentialStorage = nil
+        
+        session = URLSession(configuration: config)
     }
     
     public func call(_ url: RequestURL) {

@@ -54,10 +54,9 @@ class ViewController: UIViewController {
         }
         
         displaySettingButton()
-        
         if let browserData = self.browserData {
             displayLoadingView()
-            
+
             if FeatureFlagBrowserData().trigger {
                 registerDevice(with: "123321")
             } else {
@@ -69,16 +68,16 @@ class ViewController: UIViewController {
                             action: \(browserData.action!)\n
                             encData: \(browserData.encData!)\n
                             magic: \(browserData.magic ?? "na")\n
-                            oneTimeCode: \(browserData.oneTimeCode!)
+                            oneTimeCode: \(browserData.oneTimeCode)
                     """
                 createDebuggingField(text)
             }
-            
+
         }
     }
  
     func requestXACIDKey(_ browserData: BrowserData) {
-        let requestURL = RequestURL(requestType: .get, action: browserData.action)
+        let requestURL = RequestURL(requestType: .get)
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             
@@ -87,9 +86,9 @@ class ViewController: UIViewController {
             if let xacid = res.allHeaderFields["X-ACID"] as? String {
                 print("X-ACID",xacid)
                 
-                if requestURL.action! == "reg" {
+                if browserData.action! == "reg" {
                     self?.registerDevice(with: xacid)
-                } else if requestURL.action! == "log" {
+                } else if browserData.action! == "log" {
                     self?.authenticate(with: xacid)
                 }
                 
@@ -99,13 +98,13 @@ class ViewController: UIViewController {
     
     func registerDevice(with xacid: String) {
         let body = identifierManager?.compileSources()
-        var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: "reg")
+        var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: browserData!.action)
         requestURL.userIDAndPassword = browserData?.encData ?? "encData nil"
         
         networkManager?.call(requestURL, completion: { (data, response, error) in
             guard let res = response as? HTTPURLResponse else { return }
             print("Response",res)
-            if (200...299).contains(res.statusCode) {
+            if (200...299) ~= res.statusCode {
                 print("Worked!")
             }
         })
@@ -113,11 +112,14 @@ class ViewController: UIViewController {
     
     func authenticate(with xacid: String) {
         let body = identifierManager?.compileSources()
-        let requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: browserData!.action)
+        var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: browserData!.action)
+        requestURL.userIDAndPassword = browserData?.encData ?? "encData nil"
         
         networkManager?.call(requestURL, completion: { (data, response, error) in
+            
             guard let res = response as? HTTPURLResponse else { return }
-            if (200...299).contains(res.statusCode) {
+            print("response",res)
+            if (200...299) ~= res.statusCode {
                 print("Worked!")
             }
         })

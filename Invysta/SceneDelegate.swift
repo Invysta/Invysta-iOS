@@ -37,9 +37,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let browserData = BrowserData(action: data["action"],
-                                          oneTimeCode: data["otc"],
-                                          encData: data["encData"],
-                                          magic: data["magic"])
+                                      oneTimeCode: data["otc"],
+                                      encData: data["encData"],
+                                      magic: data["magic"])
+        print("Launching with",browserData.see)
         launchViewController(windowScene,browserData)
         
     }

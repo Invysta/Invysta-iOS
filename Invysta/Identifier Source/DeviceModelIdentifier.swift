@@ -19,8 +19,7 @@ class DeviceModelIdentifier: Identifier, IdentifierSource {
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         
-        let deviceModel = Data(base64Encoded: mapToDevice(identifier))
-        return SHA256(data: deviceModel)
+        return SHA256(data: mapToDevice(identifier).data(using: .utf8))
     }
     
     func mapToDevice(_ identifier: String) -> String { // swiftlint:disable:this cyclomatic_complexity

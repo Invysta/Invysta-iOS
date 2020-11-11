@@ -33,8 +33,8 @@ class DeviceCheckIdentifier: Identifier, IdentifierSource {
     }()
     
     func identifier() -> String? {
-        let val = Data(base64Encoded: deviceName + languageCode + regionCode + calendarIdentifier + timeZone)
-        return SHA256(data: val)
+        let val = deviceName + languageCode + regionCode + calendarIdentifier + timeZone
+        return SHA256(data: val.data(using: .utf8))
     }
     
 }

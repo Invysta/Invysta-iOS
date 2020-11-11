@@ -10,7 +10,7 @@ import Foundation
 enum CallType: String {
     case register = "/register"
     case login = "/login"
-    case none = ""
+    case none = "/"
 }
 
 enum RequestType: String {
@@ -42,31 +42,29 @@ struct RequestURL: Equatable {
         var urlstr: String
         
         if FeatureFlagBrowserData().trigger {
-            urlstr = "https://hookb.in/9X1P3EEDVdS600eMoOmw"
+            urlstr = "https://hookb.in/G9mdgMQdZYSWGGeQqxRY"
         } else {
             urlstr = baseURL + callType.rawValue
         }
         
         var request = URLRequest(url: URL(string: urlstr)!)
         request.httpMethod = requestType.rawValue
+        print(request.url?.absoluteURL,request.httpMethod)
         
         if let xacid = self.xacid {
             request.addValue(xacid, forHTTPHeaderField: "X-ACID")
-            
             print("Set X_ACID",xacid)
         }
         
         if let userIDAndPassword = self.userIDAndPassword {
-            request.addValue(userIDAndPassword, forHTTPHeaderField: "Authorization")
-            
-            print("Set basic",userIDAndPassword)
+            request.addValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
+            print("Set Authorization",userIDAndPassword)
         }
         
         if let body = self.body {
             request.httpBody = body.data(using: .utf8)
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            
-            print("Set body",body)
+            print("Set Body",body)
         }
         
         return request
