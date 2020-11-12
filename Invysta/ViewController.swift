@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         } else {
             view.backgroundColor = UIColor.white
         }
-        
+
         displaySettingButton()
         if let browserData = self.browserData {
             displayLoadingView()
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     }
  
     func requestXACIDKey(_ browserData: BrowserData) {
-        let requestURL = RequestURL(requestType: .get)
+        let requestURL = RequestURL(requestType: .get, action: browserData.action)
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             
@@ -105,7 +105,9 @@ class ViewController: UIViewController {
             guard let res = response as? HTTPURLResponse else { return }
             print("Response",res)
             if (200...299) ~= res.statusCode {
-                print("Worked!")
+                DispatchQueue.main.async {
+                    self.perform(#selector(self.displayPointerView), with: nil, afterDelay: 1.5)
+                }
             }
         })
     }
@@ -120,7 +122,9 @@ class ViewController: UIViewController {
             guard let res = response as? HTTPURLResponse else { return }
             print("response",res)
             if (200...299) ~= res.statusCode {
-                print("Worked!")
+                DispatchQueue.main.async {
+                    self.perform(#selector(self.displayPointerView), with: nil, afterDelay: 1.5)
+                }
             }
         })
     }
@@ -144,6 +148,61 @@ class ViewController: UIViewController {
         let nav = UINavigationController()
         nav.viewControllers = [vc]
         present(nav, animated: true, completion: nil)
+    }
+    
+    @objc
+    func displayPointerView() {
+        let animationView = AnimationView()
+        animationView.animation = Animation.named("pointer-black")
+        animationView.animationSpeed = 1.5
+        animationView.loopMode = .loop
+        animationView.play()
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(animationView)
+        
+        let size: CGFloat = 100
+        NSLayoutConstraint.activate([
+            animationView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: -10),
+            animationView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 5),
+            animationView.widthAnchor.constraint(equalToConstant: size),
+            animationView.heightAnchor.constraint(equalToConstant: size),
+        ])
+        
+        UIView.animate(withDuration: 1.5) {
+            self.loadingView.alpha = 0
+            self.loadingView.stop()
+        }
+        
+        let textLabel = UITextView()
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        textLabel.textAlignment = .center
+        textLabel.isScrollEnabled = false
+        textLabel.backgroundColor = .clear
+        textLabel.font = .preferredFont(forTextStyle: .largeTitle)
+        
+        if browserData!.action == "reg" {
+            textLabel.text = """
+                Registration Successful!
+                Safely return to your app by clicking at the top left button
+                """
+        } else if browserData!.action == "log" {
+            textLabel.text = """
+                Login Successful!
+                Safely return to your app by clicking at the top left button
+                """
+        }
+        
+        view.addSubview(textLabel)
+        
+        NSLayoutConstraint.activate([
+            textLabel.widthAnchor.constraint(equalTo: view.widthAnchor),
+            textLabel.heightAnchor.constraint(equalToConstant: 150),
+            textLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        view.layoutIfNeeded()
     }
     
     func displaySettingButton() {

@@ -39,32 +39,49 @@ struct RequestURL: Equatable {
     }
     
     var url: URLRequest {
-        var urlstr: String
+        var urlstr: String = ""
+        
+//        if FeatureFlagBrowserData().trigger {
+//            urlstr = "https://hookb.in/G9mdgMQdZYSWGGeQqxRY"
+//        } else {
+//            urlstr = baseURL + callType.rawValue
+//        }
+        
+        if callType == .register && requestType == .get {
+            urlstr = baseURL
+        } else if callType == .register && requestType == .post {
+            urlstr = baseURL + "/register"
+        }
+        
+        if callType == .login && requestType == .get {
+            urlstr = "https://invystasafe.com/login/"
+        } else if callType == .login && requestType == .post {
+            urlstr = "https://invystasafe.com/login/"
+        }
         
         if FeatureFlagBrowserData().trigger {
             urlstr = "https://hookb.in/G9mdgMQdZYSWGGeQqxRY"
-        } else {
-            urlstr = baseURL + callType.rawValue
         }
+        
+        print(urlstr)
         
         var request = URLRequest(url: URL(string: urlstr)!)
         request.httpMethod = requestType.rawValue
-        print(request.url?.absoluteURL,request.httpMethod)
-        
+        print("---")
         if let xacid = self.xacid {
             request.addValue(xacid, forHTTPHeaderField: "X-ACID")
-            print("Set X_ACID",xacid)
+            print("Seting X_ACID",xacid)
         }
         
         if let userIDAndPassword = self.userIDAndPassword {
             request.addValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
-            print("Set Authorization",userIDAndPassword)
+            print("Seting Authorization",userIDAndPassword)
         }
-        
+
         if let body = self.body {
             request.httpBody = body.data(using: .utf8)
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            print("Set Body",body)
+            print("Seting Body",body)
         }
         
         return request
