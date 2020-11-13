@@ -57,7 +57,7 @@ final class NetworkManager {
         config.urlCredentialStorage = nil
         config.httpCookieStorage = .none
         config.httpCookieAcceptPolicy = .never
-        
+//        VyMTcSTTj9L8aCf0C2Jta9g5amY
         session = URLSession(configuration: config)
     }
     

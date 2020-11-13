@@ -125,7 +125,9 @@ class ViewController: UIViewController {
                     self.perform(#selector(self.displayPointerView), with: nil, afterDelay: 1.5)
                 }
             } else {
-                self.debuggingTextField.text = "Registration Error"
+                DispatchQueue.main.async {
+                    self.debuggingTextField.text = "Registration Error"
+                }
             }
         })
     }

@@ -18,10 +18,8 @@ extension URL {
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-    func scene(_ scene: UIScene, willContinueUserActivityWithType userActivityType: String) {
-
-    }
+    
+    
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         
@@ -58,12 +56,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func launchViewController(_ windowScene: UIWindowScene, _ browserData: BrowserData? = nil) {
         
         let vc: ViewController = (browserData == nil) ? ViewController() : ViewController(browserData!)
-        
-        if browserData == nil {
-            vc.debuggingTextField.text = "RegLaunch"
-        } else {
-            vc.debuggingTextField.text = "WithURL"
-        }
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.rootViewController = vc
