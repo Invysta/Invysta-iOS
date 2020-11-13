@@ -59,6 +59,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let vc: ViewController = (browserData == nil) ? ViewController() : ViewController(browserData!)
         
+        if browserData == nil {
+            vc.debuggingTextField.text = "RegLaunch"
+        } else {
+            vc.debuggingTextField.text = "WithURL"
+        }
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.rootViewController = vc
         window?.windowScene = windowScene

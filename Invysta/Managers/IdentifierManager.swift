@@ -28,6 +28,7 @@ class Identifier {
 final class IdentifierManager: Identifier {
     
     private(set) var identifiers = [String: String]()
+    private var orderedIdentifier = [String]()
     
     private var browserData: BrowserData
     
@@ -35,6 +36,7 @@ final class IdentifierManager: Identifier {
         self.browserData = browserData
         for source in sources where source.identifier() != nil {
             identifiers[source.type] = source.identifier()
+            orderedIdentifier.append(source.identifier()!)
         }
     }
   
@@ -50,8 +52,8 @@ final class IdentifierManager: Identifier {
             param += "&otc=" + otc
         }
         
-        for (i,identifier) in identifiers.enumerated() {
-            param += "&id\(i + 1)=" + identifier.value
+        for (i,identifier) in orderedIdentifier.enumerated() {
+            param += "&id\(i + 1)=" + identifier
         }
 
         return param

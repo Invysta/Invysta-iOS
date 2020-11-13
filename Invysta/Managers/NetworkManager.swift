@@ -54,8 +54,9 @@ final class NetworkManager {
     init() {
         let config = URLSessionConfiguration.default
         config.urlCache = nil
-        config.timeoutIntervalForResource = 10.0
         config.urlCredentialStorage = nil
+        config.httpCookieStorage = .none
+        config.httpCookieAcceptPolicy = .never
         
         session = URLSession(configuration: config)
     }

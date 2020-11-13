@@ -52,29 +52,29 @@ struct RequestURL: Equatable {
         } else if callType == .register && requestType == .post {
             urlstr = baseURL + "/register"
         }
-        
+
         if callType == .login && requestType == .get {
-            urlstr = "https://invystasafe.com/login/"
+            urlstr = "https://invystasafe.com/login"
         } else if callType == .login && requestType == .post {
-            urlstr = "https://invystasafe.com/login/"
+            urlstr = "https://invystasafe.com/index.html"
         }
         
         if FeatureFlagBrowserData().trigger {
-            urlstr = "https://hookb.in/G9mdgMQdZYSWGGeQqxRY"
+            urlstr = "https://hookb.in/7ZzyreDe0Vfa99D3Rg23"
         }
         
-        print(urlstr)
+        print("here",urlstr)
         
         var request = URLRequest(url: URL(string: urlstr)!)
         request.httpMethod = requestType.rawValue
         print("---")
         if let xacid = self.xacid {
-            request.addValue(xacid, forHTTPHeaderField: "X-ACID")
+            request.setValue(xacid, forHTTPHeaderField: "X-ACID")
             print("Seting X_ACID",xacid)
         }
         
         if let userIDAndPassword = self.userIDAndPassword {
-            request.addValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
+            request.setValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
             print("Seting Authorization",userIDAndPassword)
         }
 

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     private var identifierManager: IdentifierManager?
     private var networkManager: NetworkManager?
     private var browserData: BrowserData?
-    
+    let debuggingTextField = UITextView()
     private let loadingView: AnimationView = {
         let view = AnimationView()
         view.animation = Animation.named("loading")
@@ -53,27 +53,38 @@ class ViewController: UIViewController {
             view.backgroundColor = UIColor.white
         }
 
+//        if FeatureFlag.showDebuggingTextField {
+//            let text = """
+//                        action: \(browserData?.action)\n
+//                        encData: \(browserData?.encData)\n
+//                        magic: \(browserData?.magic ?? "na")\n
+//                        oneTimeCode: \(browserData?.oneTimeCode)
+//                """
+//            createDebuggingField(text)
+//        }
+        
         displaySettingButton()
-        if let browserData = self.browserData {
-            displayLoadingView()
-
-            if FeatureFlagBrowserData().trigger {
-                registerDevice(with: "123321")
-            } else {
-                requestXACIDKey(browserData)
-            }
-
-            if FeatureFlag.showDebuggingTextField {
-                let text = """
+        guard let browserData = self.browserData else { return }
+      
+        displayLoadingView()
+        
+        if FeatureFlagBrowserData().trigger {
+            authenticate(with: "123321")
+        } else {
+            requestXACIDKey(browserData)
+        }
+        
+        if FeatureFlag.showDebuggingTextField {
+            let text = """
                             action: \(browserData.action!)\n
                             encData: \(browserData.encData!)\n
                             magic: \(browserData.magic ?? "na")\n
                             oneTimeCode: \(browserData.oneTimeCode)
                     """
-                createDebuggingField(text)
-            }
-
+            createDebuggingField(text)
         }
+
+        
     }
  
     func requestXACIDKey(_ browserData: BrowserData) {
@@ -82,6 +93,7 @@ class ViewController: UIViewController {
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             
             guard let res = response as? HTTPURLResponse else { return }
+            print("request - res",res)
             
             if let xacid = res.allHeaderFields["X-ACID"] as? String {
                 print("X-ACID",xacid)
@@ -91,8 +103,12 @@ class ViewController: UIViewController {
                 } else if browserData.action! == "log" {
                     self?.authenticate(with: xacid)
                 }
-                
+            } else {
+                DispatchQueue.main.async {
+                    self?.debuggingTextField.text = "Could not get xacid"
+                }
             }
+            
         })
     }
     
@@ -108,6 +124,8 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.perform(#selector(self.displayPointerView), with: nil, afterDelay: 1.5)
                 }
+            } else {
+                self.debuggingTextField.text = "Registration Error"
             }
         })
     }
@@ -120,17 +138,25 @@ class ViewController: UIViewController {
         networkManager?.call(requestURL, completion: { (data, response, error) in
             
             guard let res = response as? HTTPURLResponse else { return }
+            
             print("response",res)
+            print("data",String(data: data!, encoding: .utf8))
+            print("error", error?.localizedDescription)
+            
             if (200...299) ~= res.statusCode {
                 DispatchQueue.main.async {
-                    self.perform(#selector(self.displayPointerView), with: nil, afterDelay: 1.5)
+                    self.perform(#selector(self.displayPointerView), with: nil, afterDelay: 0.5)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.debuggingTextField.text = "Auth Error"
                 }
             }
         })
     }
     
     private func createDebuggingField(_ text: String) {
-        let debuggingTextField = UITextView()
+        
         debuggingTextField.text = text
         debuggingTextField.translatesAutoresizingMaskIntoConstraints = false
         

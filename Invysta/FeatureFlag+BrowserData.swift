@@ -14,7 +14,6 @@ final class FeatureFlagBrowserData: FeatureFlagType {
     func check() -> Any? {
         if trigger {
             return BrowserData(action: "reg",
-                               oneTimeCode: "123",
                                encData: "encData",
                                magic: "magicVal")
         }
