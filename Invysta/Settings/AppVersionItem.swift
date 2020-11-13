@@ -8,16 +8,20 @@
 import UIKit
 
 struct AppVersionItem: SettingItem {
-    var settingTitle: String
-    var settingDetails: String?
-    var showIndicator: UITableViewCell.AccessoryType = .none
-    var highlightWhenTapped: Bool = false
     
-    init() {
-        settingTitle = "App Version"
+    var cellHeight: CGFloat = 50
+    
+    func createCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath) as? SettingsTableViewCell else { return UITableViewCell() }
+        
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        settingDetails = appVersion ?? "na"
+
+        cell.textLabel?.text = "App Version"
+        cell.detailTextLabel?.text = appVersion ?? "na"
+        cell.selectionStyle = .none
+        return cell
     }
     
-    func action(_ object: Any?) {}
+    func performSelector(_ vc: UIViewController) {}
+    
 }

@@ -37,11 +37,7 @@ class InvystaIdentifierTests: XCTestCase {
 
     var identifierManager: IdentifierManager!
     
-    let browserData = BrowserData(email: "MockEmail",
-                                  gateKeeper: "MockGateKeeper",
-                                  fileName: "MockFileName",
-                                  action: "MockAction",
-                                  oneTimeCode: "MockOneTimeCode")
+    let browserData = BrowserData(action: "reg", encData: "encdata", magic: "magic")
     
     func testIdentifierParsing() {
         identifierManager = IdentifierManager(browserData, [MockVendorIdentifier()])

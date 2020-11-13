@@ -57,14 +57,7 @@ final class NetworkManager {
         config.urlCredentialStorage = nil
         config.httpCookieStorage = .none
         config.httpCookieAcceptPolicy = .never
-//        VyMTcSTTj9L8aCf0C2Jta9g5amY
         session = URLSession(configuration: config)
-    }
-    
-    public func call(_ url: RequestURL) {
-        session?.dataTaskWithUrl(url, completion: { [weak self] (data, response, error) in
-            self?.delegate?.networkResponse(data, response, error)
-        }).resume()
     }
     
     public func call(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {

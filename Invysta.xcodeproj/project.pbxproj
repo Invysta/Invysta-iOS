@@ -14,8 +14,6 @@
 		011AC4462557D30F0044980C /* AppVersionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC4452557D30F0044980C /* AppVersionItem.swift */; };
 		012430332542704E00722112 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012430322542704E00722112 /* FeatureFlag.swift */; };
 		01243038254270AD00722112 /* FeatureFlag+BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */; };
-		01574D1A255E465F00232A5C /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574D19255E465F00232A5C /* AccessibilityIdentifier.swift */; };
-		01574D1E255E466C00232A5C /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01574D1D255E466C00232A5C /* DeviceCheckIdentifier.swift */; };
 		017549CE2534D99900487C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CD2534D99900487C74 /* AppDelegate.swift */; };
 		017549D02534D99900487C74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CF2534D99900487C74 /* SceneDelegate.swift */; };
 		017549D22534D99900487C74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549D12534D99900487C74 /* ViewController.swift */; };
@@ -38,6 +36,12 @@
 		01B4339D253A8C99001BD585 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
 		01ED2926255D04440033CAE2 /* pointer-white.json in Resources */ = {isa = PBXBuildFile; fileRef = 01ED2924255D04440033CAE2 /* pointer-white.json */; };
 		01ED2927255D04440033CAE2 /* pointer-black.json in Resources */ = {isa = PBXBuildFile; fileRef = 01ED2925255D04440033CAE2 /* pointer-black.json */; };
+		01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED7F255F170B00B50D05 /* BaseViewController.swift */; };
+		01EFED84255F199200B50D05 /* DeviceSecurityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED83255F199200B50D05 /* DeviceSecurityItem.swift */; };
+		01EFED89255F21CD00B50D05 /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED87255F21CD00B50D05 /* DeviceCheckIdentifier.swift */; };
+		01EFED8A255F21CD00B50D05 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED88255F21CD00B50D05 /* AccessibilityIdentifier.swift */; };
+		01EFED92255F273100B50D05 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED91255F273100B50D05 /* SettingManager.swift */; };
+		01EFED96255F279F00B50D05 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */; };
 		2762F219420F850333EEDD95 /* Pods_Invysta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */; };
 		4F7E1711DF6232407B2D9B84 /* Pods_InvystaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,8 +64,6 @@
 		011AC4452557D30F0044980C /* AppVersionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionItem.swift; sourceTree = "<group>"; };
 		012430322542704E00722112 /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
 		01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeatureFlag+BrowserData.swift"; sourceTree = "<group>"; };
-		01574D19255E465F00232A5C /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifier.swift; path = ../../../../../../.Trash/AccessibilityIdentifier.swift; sourceTree = "<group>"; };
-		01574D1D255E466C00232A5C /* DeviceCheckIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceCheckIdentifier.swift; path = ../../../../../../.Trash/DeviceCheckIdentifier.swift; sourceTree = "<group>"; };
 		017549CA2534D99900487C74 /* Invysta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invysta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		017549CD2534D99900487C74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		017549CF2534D99900487C74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,12 @@
 		01A4745A25369FCD00D19006 /* Invysta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invysta.entitlements; sourceTree = "<group>"; };
 		01ED2924255D04440033CAE2 /* pointer-white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pointer-white.json"; sourceTree = "<group>"; };
 		01ED2925255D04440033CAE2 /* pointer-black.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pointer-black.json"; sourceTree = "<group>"; };
+		01EFED7F255F170B00B50D05 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		01EFED83255F199200B50D05 /* DeviceSecurityItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSecurityItem.swift; sourceTree = "<group>"; };
+		01EFED87255F21CD00B50D05 /* DeviceCheckIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceCheckIdentifier.swift; path = "../../../../../../Desktop/SOS 2020-11-01 14-28-24/DeviceCheckIdentifier.swift"; sourceTree = "<group>"; };
+		01EFED88255F21CD00B50D05 /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessibilityIdentifier.swift; path = "../../../../../../Desktop/SOS 2020-11-01 14-28-24/AccessibilityIdentifier.swift"; sourceTree = "<group>"; };
+		01EFED91255F273100B50D05 /* SettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
+		01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvystaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvystaTests.release.xcconfig"; path = "Target Support Files/Pods-InvystaTests/Pods-InvystaTests.release.xcconfig"; sourceTree = "<group>"; };
 		6417FF1A171CA93364E9B75B /* Pods-Invysta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invysta.debug.xcconfig"; path = "Target Support Files/Pods-Invysta/Pods-Invysta.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +158,7 @@
 				017549CD2534D99900487C74 /* AppDelegate.swift */,
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
+				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				012430362542706200722112 /* FeatureFlag */,
 				01D671A425591943002FB92B /* Settings */,
 				01D671A925591955002FB92B /* Model */,
@@ -168,8 +177,8 @@
 				017549EC2534EF1900487C74 /* VendorIdentifier.swift */,
 				017549F22534EF7600487C74 /* AdvertiserIdentifier.swift */,
 				01754A2125351B8600487C74 /* CustomIdentifier.swift */,
-				01574D1D255E466C00232A5C /* DeviceCheckIdentifier.swift */,
-				01574D19255E465F00232A5C /* AccessibilityIdentifier.swift */,
+				01EFED88255F21CD00B50D05 /* AccessibilityIdentifier.swift */,
+				01EFED87255F21CD00B50D05 /* DeviceCheckIdentifier.swift */,
 				011AC40C255659C40044980C /* DeviceModelIdentifier.swift */,
 			);
 			path = "Identifier Source";
@@ -197,7 +206,8 @@
 		01D671A425591943002FB92B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				011AC42B2557373D0044980C /* SettingsController.swift */,
+				01EFED99255F283700B50D05 /* SettingController */,
+				01EFED9C255F284000B50D05 /* DeviceSecurity */,
 				011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */,
 				011AC4452557D30F0044980C /* AppVersionItem.swift */,
 			);
@@ -211,6 +221,24 @@
 				0114C797253A768100DD4DF2 /* BrowserData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		01EFED99255F283700B50D05 /* SettingController */ = {
+			isa = PBXGroup;
+			children = (
+				011AC42B2557373D0044980C /* SettingsController.swift */,
+				01EFED91255F273100B50D05 /* SettingManager.swift */,
+				01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */,
+			);
+			path = SettingController;
+			sourceTree = "<group>";
+		};
+		01EFED9C255F284000B50D05 /* DeviceSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				01EFED83255F199200B50D05 /* DeviceSecurityItem.swift */,
+			);
+			name = DeviceSecurity;
 			sourceTree = "<group>";
 		};
 		5EE719C83BC653DA83CF37BF /* Pods */ = {
@@ -402,14 +430,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EFED96255F279F00B50D05 /* SettingTableViewCell.swift in Sources */,
 				017549D22534D99900487C74 /* ViewController.swift in Sources */,
-				01574D1E255E466C00232A5C /* DeviceCheckIdentifier.swift in Sources */,
+				01EFED89255F21CD00B50D05 /* DeviceCheckIdentifier.swift in Sources */,
 				012430332542704E00722112 /* FeatureFlag.swift in Sources */,
 				017549F32534EF7600487C74 /* AdvertiserIdentifier.swift in Sources */,
-				01574D1A255E465F00232A5C /* AccessibilityIdentifier.swift in Sources */,
+				01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */,
 				01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */,
 				011AC4462557D30F0044980C /* AppVersionItem.swift in Sources */,
 				017549E72534DBF400487C74 /* RequestURL.swift in Sources */,
+				01EFED92255F273100B50D05 /* SettingManager.swift in Sources */,
 				017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */,
 				011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */,
 				011AC42E2557373D0044980C /* SettingsController.swift in Sources */,
@@ -419,7 +449,9 @@
 				017549CE2534D99900487C74 /* AppDelegate.swift in Sources */,
 				0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */,
 				017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */,
+				01EFED84255F199200B50D05 /* DeviceSecurityItem.swift in Sources */,
 				017549D02534D99900487C74 /* SceneDelegate.swift in Sources */,
+				01EFED8A255F21CD00B50D05 /* AccessibilityIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,7 +618,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R986STKYJ7;
 				INFOPLIST_FILE = Invysta/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -609,7 +641,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R986STKYJ7;
 				INFOPLIST_FILE = Invysta/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
