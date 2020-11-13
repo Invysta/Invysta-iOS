@@ -50,7 +50,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             launchViewController(windowScene, mockBrowserData)
             return
         }
-        launchViewController(windowScene)
+        
+        var url = ""
+        
+        for context in connectionOptions.urlContexts {
+            url = context.url.absoluteString
+        }
+        
+        guard let components = URLComponents(string: url)?.queryItems else {
+            launchViewController(windowScene)
+            return
+        }
+        
+        var data = [String: String]()
+        
+        for component in components {
+            data[component.name] = component.value
+        }
+        
+        let browserData = BrowserData(action: data["action"],
+                                      oneTimeCode: data["otc"],
+                                      encData: data["encData"],
+                                      magic: data["magic"])
+        print("Launching from here2 with",browserData.see)
+        launchViewController(windowScene,browserData)
     }
     
     func launchViewController(_ windowScene: UIWindowScene, _ browserData: BrowserData? = nil) {

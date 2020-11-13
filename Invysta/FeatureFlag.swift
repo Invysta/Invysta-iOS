@@ -13,5 +13,5 @@ protocol FeatureFlagType {
 }
 
 final class FeatureFlag {
-    static var showDebuggingTextField: Bool = true
+    static var showDebuggingTextField: Bool = false
 }
