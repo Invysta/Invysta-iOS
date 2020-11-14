@@ -26,16 +26,12 @@ final class SettingsController: UIViewController, UITableViewDataSource, UITable
     }()
     
     private let settingManager = SettingManager()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initUI()
         
         if #available(iOS 13.0, *) {
             view.backgroundColor = UIColor.systemGroupedBackground
@@ -43,15 +39,17 @@ final class SettingsController: UIViewController, UITableViewDataSource, UITable
             view.backgroundColor = UIColor.white
         }
         
-        title = "Invysta"
-        initUI()
         settingTableView.delegate = self
         settingTableView.dataSource = self
         
         settingManager.cellRegistration(to: settingTableView)
+        title = "Invysta Safe"
     }
     
     func initUI() {
+        
+        let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(dismissController))
+        navigationItem.leftBarButtonItem = backButton
         
         settingTableView.backgroundColor = .clear
         view.addSubview(settingTableView)
@@ -64,6 +62,12 @@ final class SettingsController: UIViewController, UITableViewDataSource, UITable
         ])
         
         view.layoutIfNeeded()
+        
+    }
+    
+    @objc
+    func dismissController() {
+        dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

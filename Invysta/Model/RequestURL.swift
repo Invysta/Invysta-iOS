@@ -18,17 +18,17 @@ enum RequestType: String {
     case get = "GET"
 }
 
-struct RequestURL: Equatable {
+struct RequestURL {
+ 
     let baseURL = "https://invystasafe.com"
     var requestType: RequestType
+    var browserData: BrowserData
     
     var body: String?
     var xacid: String?
-    var userIDAndPassword: String?
-    var action: String?
     
     var callType: CallType {
-        switch action {
+        switch browserData.action {
         case "log":
             return .login
         case "reg":
@@ -40,13 +40,7 @@ struct RequestURL: Equatable {
     
     var url: URLRequest {
         var urlstr: String = ""
-        
-//        if FeatureFlagBrowserData().trigger {
-//            urlstr = "https://hookb.in/G9mdgMQdZYSWGGeQqxRY"
-//        } else {
-//            urlstr = baseURL + callType.rawValue
-//        }
-        
+  
         if callType == .register && requestType == .get {
             urlstr = baseURL
         } else if callType == .register && requestType == .post {
@@ -68,16 +62,15 @@ struct RequestURL: Equatable {
         var request = URLRequest(url: URL(string: urlstr)!)
         request.httpMethod = requestType.rawValue
         print("---")
+        
+        request.setValue("Basic " + browserData.encData, forHTTPHeaderField: "Authorization")
+        print("Seting Authorization",browserData.encData)
+        
         if let xacid = self.xacid {
             request.setValue(xacid, forHTTPHeaderField: "X-ACID")
             print("Seting X_ACID",xacid)
         }
         
-        if let userIDAndPassword = self.userIDAndPassword {
-            request.setValue("Basic " + userIDAndPassword, forHTTPHeaderField: "Authorization")
-            print("Seting Authorization",userIDAndPassword)
-        }
-
         if let body = self.body {
             request.httpBody = body.data(using: .utf8)
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")

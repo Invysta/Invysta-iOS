@@ -55,8 +55,8 @@ class BaseViewController: UIViewController {
     @objc
     func moveToSettings() {
         let vc = SettingsController()
-        let nav = UINavigationController()
-        nav.viewControllers = [vc]
+        let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.prefersLargeTitles = true
         present(nav, animated: true, completion: nil)
     }
     
@@ -138,7 +138,7 @@ class BaseViewController: UIViewController {
         view.addSubview(settingButton)
         
         let padding: CGFloat = 20
-        let size: CGFloat = 35
+        let size: CGFloat = 30
         
         NSLayoutConstraint.activate([
             settingButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),

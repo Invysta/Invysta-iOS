@@ -43,10 +43,7 @@ final class IdentifierManager: Identifier {
     func compileSources() -> String {
         var param: String
         param = "caid=" + createClientAgentId()
-        
-        if let magic = browserData.magic {
-            param += "&magic=" + magic
-        }
+        param += "&magic=" + browserData.magic
         
         if let otc = browserData.oneTimeCode {
             param += "&otc=" + otc

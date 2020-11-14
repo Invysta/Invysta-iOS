@@ -14,27 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-   
       return true
     }
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
-        guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return false }
-        
-        var data = [String: String]()
-        
-        for component in components {
-            data[component.name] = component.value
-        }
-        
-        let browserData = BrowserData(action: data["action"],
-                                          oneTimeCode: data["otc"],
-                                          encData: data["encData"],
-                                          magic: data["magic"])
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        launchViewController(browserData)
+        launchViewController(process(url))
         
         return true
     }
@@ -49,6 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func process(_ url: URL) -> BrowserData? {
+        guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
+        var data = [String: String]()
+        
+        for component in components {
+            data[component.name] = component.value
+        }
+        
+        return BrowserData(action: data["action"]!, oneTimeCode: data["otc"], encData: data["encData"]!, magic: data["magic"]!)
+    }
+    
     func launchViewController(_ browserData: BrowserData? = nil) {
         let vc: ViewController = (browserData == nil) ? ViewController() : ViewController(browserData!)
         

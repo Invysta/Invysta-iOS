@@ -19,28 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    
-
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        guard let url = URLContexts.first?.url.absoluteString else { return }
-        guard let components = URLComponents(string: url)?.queryItems else { return }
-        
-        var data = [String: String]()
-        
-        for component in components {
-            data[component.name] = component.value
+        if let url = URLContexts.first?.url {
+            let browserData = process(url)
+            launchViewController(windowScene, browserData)
+        } else {
+            launchViewController(windowScene)
         }
-        
-        let browserData = BrowserData(action: data["action"],
-                                      oneTimeCode: data["otc"],
-                                      encData: data["encData"],
-                                      magic: data["magic"])
-        print("Launching with",browserData.see)
-        launchViewController(windowScene,browserData)
-        
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -51,29 +39,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        var url = ""
-        
-        for context in connectionOptions.urlContexts {
-            url = context.url.absoluteString
-        }
-        
-        guard let components = URLComponents(string: url)?.queryItems else {
+        if let url = connectionOptions.urlContexts.first?.url.absoluteURL {
+            let browserData = process(url)
+            launchViewController(windowScene,browserData)
+        } else {
             launchViewController(windowScene)
-            return
         }
-        
+     
+    }
+    
+    func process(_ url: URL) -> BrowserData? {
+        guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
         var data = [String: String]()
         
         for component in components {
             data[component.name] = component.value
         }
         
-        let browserData = BrowserData(action: data["action"],
-                                      oneTimeCode: data["otc"],
-                                      encData: data["encData"],
-                                      magic: data["magic"])
-        print("Launching from here2 with",browserData.see)
-        launchViewController(windowScene,browserData)
+        return BrowserData(action: data["action"]!, oneTimeCode: data["otc"], encData: data["encData"]!, magic: data["magic"]!)
     }
     
     func launchViewController(_ windowScene: UIWindowScene, _ browserData: BrowserData? = nil) {
