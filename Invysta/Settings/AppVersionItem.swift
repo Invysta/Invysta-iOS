@@ -17,7 +17,7 @@ struct AppVersionItem: SettingItem {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
         cell.textLabel?.text = "App Version"
-        cell.detailTextLabel?.text = appVersion ?? "na"
+        cell.detailTextLabel?.text = appVersion ?? "NA"
         cell.selectionStyle = .none
         return cell
     }

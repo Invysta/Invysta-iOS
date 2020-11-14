@@ -211,6 +211,7 @@
 			children = (
 				01EFED99255F283700B50D05 /* SettingController */,
 				01EFED9C255F284000B50D05 /* DeviceSecurity */,
+				01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */,
 				011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */,
 				011AC4452557D30F0044980C /* AppVersionItem.swift */,
 			);
@@ -231,7 +232,6 @@
 			children = (
 				011AC42B2557373D0044980C /* SettingsController.swift */,
 				01EFED91255F273100B50D05 /* SettingManager.swift */,
-				01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */,
 			);
 			path = SettingController;
 			sourceTree = "<group>";

@@ -11,6 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var vc: ViewController?
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
@@ -48,10 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func launchViewController(_ browserData: BrowserData? = nil) {
-        let vc: ViewController = (browserData == nil) ? ViewController() : ViewController(browserData!)
+        vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
         
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        vc?.removeUneededElements()
     }
     
     // MARK: UISceneSession Lifecycle

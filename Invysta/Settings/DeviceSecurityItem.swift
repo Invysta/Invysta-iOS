@@ -8,12 +8,14 @@
 import UIKit
 import LocalAuthentication
 
-final class DeviceSecurityCell: SettingsTableViewCell {
+final class DeviceSecurityCell: UITableViewCell {
     
     let toggle = UISwitch()
     let context = LAContext()
     var error: NSError?
 
+    var deviceAuthenticationIsOn = UserDefaults.standard.bool(forKey: "DeviceSecurity")
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: "DeviceSecurityCell")
         customUI()
@@ -55,15 +57,18 @@ final class DeviceSecurityCell: SettingsTableViewCell {
     
     @objc
     func turnOnDeviceSecurity(_ tog: UISwitch) {
-
+        
         context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authorize Invysta to Authenticate") { (success, error) in
             DispatchQueue.main.async { [weak self] in
                 
-                if !success {
-                    self?.toggle.setOn(false, animated: true)
+                if success == false {
+                    self?.toggle.setOn(self!.deviceAuthenticationIsOn, animated: true)
+                } else {
+                    self?.deviceAuthenticationIsOn = success
+                    self?.toggle.setOn(tog.isOn, animated: true)
+                    UserDefaults.standard.setValue(tog.isOn, forKey: "DeviceSecurity")
                 }
                 
-                UserDefaults.standard.set(self!.toggle.isOn, forKey: "DeviceSecurity")
             }
         }
     }
