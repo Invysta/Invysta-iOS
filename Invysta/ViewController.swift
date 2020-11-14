@@ -103,8 +103,7 @@ class ViewController: BaseViewController {
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             guard let res = response as? HTTPURLResponse else { return }
-            
-            self?.networkManagerResponse(with: res, and: "Failed to register device. Please try again.")
+            self?.networkManagerResponse(with: res)
         })
     }
     
@@ -114,13 +113,12 @@ class ViewController: BaseViewController {
         requestURL.userIDAndPassword = browserData?.encData ?? "encData nil"
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
-            
             guard let res = response as? HTTPURLResponse else { return }
-            self?.networkManagerResponse(with: res, and: "Failed to authenticate. Please try again.")
+            self?.networkManagerResponse(with: res)
         })
     }
     
-    private func networkManagerResponse(with response: HTTPURLResponse, and error: String) {
+    private func networkManagerResponse(with response: HTTPURLResponse) {
         DispatchQueue.main.async { [weak self] in
             if (200...299) ~= response.statusCode {
                 self?.perform(#selector(self!.successfulRequest), with: self, afterDelay: 1.5)
