@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		011AC4462557D30F0044980C /* AppVersionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC4452557D30F0044980C /* AppVersionItem.swift */; };
 		012430332542704E00722112 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012430322542704E00722112 /* FeatureFlag.swift */; };
 		01243038254270AD00722112 /* FeatureFlag+BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */; };
+		012774CF255FDAF7009C1B8D /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 012774CE255FDAF7009C1B8D /* SwiftKeychainWrapper */; };
+		012774D4255FDB05009C1B8D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 012774D3255FDB05009C1B8D /* Lottie */; };
 		017549CE2534D99900487C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CD2534D99900487C74 /* AppDelegate.swift */; };
 		017549D02534D99900487C74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CF2534D99900487C74 /* SceneDelegate.swift */; };
 		017549D22534D99900487C74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549D12534D99900487C74 /* ViewController.swift */; };
@@ -43,8 +45,6 @@
 		01EFED96255F279F00B50D05 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */; };
 		01EFEDA6255F52FF00B50D05 /* pointer-white.json in Resources */ = {isa = PBXBuildFile; fileRef = 01EFEDA5255F52FF00B50D05 /* pointer-white.json */; };
 		01EFEDAA255F600200B50D05 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFEDA9255F600200B50D05 /* LoadingView.swift */; };
-		2762F219420F850333EEDD95 /* Pods_Invysta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */; };
-		4F7E1711DF6232407B2D9B84 /* Pods_InvystaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,12 +93,6 @@
 		01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		01EFEDA5255F52FF00B50D05 /* pointer-white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pointer-white.json"; sourceTree = "<group>"; };
 		01EFEDA9255F600200B50D05 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InvystaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvystaTests.release.xcconfig"; path = "Target Support Files/Pods-InvystaTests/Pods-InvystaTests.release.xcconfig"; sourceTree = "<group>"; };
-		6417FF1A171CA93364E9B75B /* Pods-Invysta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invysta.debug.xcconfig"; path = "Target Support Files/Pods-Invysta/Pods-Invysta.debug.xcconfig"; sourceTree = "<group>"; };
-		8158F25387D00A40968CB7E2 /* Pods-InvystaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InvystaTests.debug.xcconfig"; path = "Target Support Files/Pods-InvystaTests/Pods-InvystaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		85200271057ADAC93BA9B80E /* Pods-Invysta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Invysta.release.xcconfig"; path = "Target Support Files/Pods-Invysta/Pods-Invysta.release.xcconfig"; sourceTree = "<group>"; };
-		8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Invysta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2762F219420F850333EEDD95 /* Pods_Invysta.framework in Frameworks */,
+				012774CF255FDAF7009C1B8D /* SwiftKeychainWrapper in Frameworks */,
+				012774D4255FDB05009C1B8D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F7E1711DF6232407B2D9B84 /* Pods_InvystaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,8 +130,6 @@
 				017549CC2534D99900487C74 /* Invysta */,
 				01754A012534F34A00487C74 /* InvystaTests */,
 				017549CB2534D99900487C74 /* Products */,
-				5EE719C83BC653DA83CF37BF /* Pods */,
-				9E2F44D1C04C6D2B7C6BAB37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,26 +236,6 @@
 			name = DeviceSecurity;
 			sourceTree = "<group>";
 		};
-		5EE719C83BC653DA83CF37BF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6417FF1A171CA93364E9B75B /* Pods-Invysta.debug.xcconfig */,
-				85200271057ADAC93BA9B80E /* Pods-Invysta.release.xcconfig */,
-				8158F25387D00A40968CB7E2 /* Pods-InvystaTests.debug.xcconfig */,
-				2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		9E2F44D1C04C6D2B7C6BAB37 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8E08A40C5B26B2B7C93EB071 /* Pods_Invysta.framework */,
-				29EC2D378453B81E85540D96 /* Pods_InvystaTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -271,17 +243,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 017549DE2534D99B00487C74 /* Build configuration list for PBXNativeTarget "Invysta" */;
 			buildPhases = (
-				51C09BEC2E35FFF3159710CD /* [CP] Check Pods Manifest.lock */,
 				017549C62534D99900487C74 /* Sources */,
 				017549C72534D99900487C74 /* Frameworks */,
 				017549C82534D99900487C74 /* Resources */,
-				0AA1A0AA648729EB14B99033 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Invysta;
+			packageProductDependencies = (
+				012774CE255FDAF7009C1B8D /* SwiftKeychainWrapper */,
+				012774D3255FDB05009C1B8D /* Lottie */,
+			);
 			productName = Invysta;
 			productReference = 017549CA2534D99900487C74 /* Invysta.app */;
 			productType = "com.apple.product-type.application";
@@ -290,7 +264,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01754A072534F34A00487C74 /* Build configuration list for PBXNativeTarget "InvystaTests" */;
 			buildPhases = (
-				5549E743BF62568E69839CB8 /* [CP] Check Pods Manifest.lock */,
 				017549FC2534F34A00487C74 /* Sources */,
 				017549FD2534F34A00487C74 /* Frameworks */,
 				017549FE2534F34A00487C74 /* Resources */,
@@ -312,7 +285,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					017549C92534D99900487C74 = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -332,6 +305,10 @@
 				Base,
 			);
 			mainGroup = 017549C12534D99900487C74;
+			packageReferences = (
+				012774CD255FDAF7009C1B8D /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				012774D2255FDB05009C1B8D /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 017549CB2534D99900487C74 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -363,70 +340,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0AA1A0AA648729EB14B99033 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Invysta/Pods-Invysta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Invysta/Pods-Invysta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Invysta/Pods-Invysta-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		51C09BEC2E35FFF3159710CD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Invysta-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5549E743BF62568E69839CB8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-InvystaTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		017549C62534D99900487C74 /* Sources */ = {
@@ -614,7 +527,6 @@
 		};
 		017549DF2534D99B00487C74 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6417FF1A171CA93364E9B75B /* Pods-Invysta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -622,7 +534,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R986STKYJ7;
 				INFOPLIST_FILE = Invysta/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -637,7 +549,6 @@
 		};
 		017549E02534D99B00487C74 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85200271057ADAC93BA9B80E /* Pods-Invysta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -645,7 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R986STKYJ7;
 				INFOPLIST_FILE = Invysta/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -660,7 +571,6 @@
 		};
 		01754A082534F34A00487C74 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8158F25387D00A40968CB7E2 /* Pods-InvystaTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -681,7 +591,6 @@
 		};
 		01754A092534F34A00487C74 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C07DFC1F3ECEDC6FF057B0E /* Pods-InvystaTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -731,6 +640,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		012774CD255FDAF7009C1B8D /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		012774D2255FDB05009C1B8D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		012774CE255FDAF7009C1B8D /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 012774CD255FDAF7009C1B8D /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		012774D3255FDB05009C1B8D /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 012774D2255FDB05009C1B8D /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 017549C22534D99900487C74 /* Project object */;
 }
