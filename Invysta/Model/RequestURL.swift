@@ -53,11 +53,11 @@ struct RequestURL {
             urlstr = "https://invystasafe.com/index.html"
         }
         
-        if FeatureFlagBrowserData().trigger {
-            urlstr = "https://hookb.in/7ZzyreDe0Vfa99D3Rg23"
+        if let url = FeatureFlagBrowserData().hookbin() {
+            urlstr = url
         }
         
-        print("here",urlstr)
+        print("URL: ",urlstr, requestType.rawValue)
         
         var request = URLRequest(url: URL(string: urlstr)!)
         request.httpMethod = requestType.rawValue

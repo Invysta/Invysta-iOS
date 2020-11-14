@@ -13,6 +13,22 @@ class BaseViewController: UIViewController {
     var browserData: BrowserData?
     var stackContainer: UIStackView?
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = .preferredFont(forTextStyle: .largeTitle)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let descriptionLabel: UITextView = {
+        let label = UITextView()
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let debuggingTextField: UITextView = {
         let textView = UITextView()
         textView.textAlignment = .center
@@ -96,33 +112,27 @@ class BaseViewController: UIViewController {
 //    MARK: Display Message
     func displayMessage(title: String, message: String) {
         
-        let titleLabel = UILabel()
         titleLabel.text = title
-        titleLabel.textAlignment = .center
-        titleLabel.font = .preferredFont(forTextStyle: .largeTitle)
-        
-        let descriptionLabel = UILabel()
         descriptionLabel.text = message
-        descriptionLabel.textAlignment = .center
-        descriptionLabel.numberOfLines = 5
         
-        stackContainer = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        stackContainer?.axis = .vertical
-        stackContainer?.alignment = .center
-        stackContainer?.distribution = .fillProportionally
-        stackContainer?.translatesAutoresizingMaskIntoConstraints = false
-        stackContainer?.alpha = 0
-        view.addSubview(stackContainer!)
+        view.addSubview(titleLabel)
+        view.addSubview(descriptionLabel)
         
-        NSLayoutConstraint.activate([stackContainer!.topAnchor.constraint(equalTo: invystaLogo.bottomAnchor, constant: 25),
-                                     stackContainer!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-                                     stackContainer!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-                                     stackContainer!.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)])
+        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: invystaLogo.bottomAnchor, constant: -25),
+                                     titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+                                     titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+                                     titleLabel.heightAnchor.constraint(equalToConstant: 35),
+                                     
+                                     descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+                                     descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+                                     descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+                                     descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)])
         
         view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.4) { [weak self] in
-            self?.stackContainer?.alpha = 1
+            self?.titleLabel.alpha = 1
+            self?.descriptionLabel.alpha = 1
         }
         
     }
@@ -229,7 +239,8 @@ class BaseViewController: UIViewController {
     
 //    MARK: Remove uneeded elements
     func removeUneededElements() {
-        stackContainer?.removeFromSuperview()
+        titleLabel.removeFromSuperview()
+        descriptionLabel.removeFromSuperview()
         pointerView.removeFromSuperview()
     }
 }

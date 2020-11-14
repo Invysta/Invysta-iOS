@@ -9,11 +9,15 @@ import Foundation
 
 final class FeatureFlagBrowserData: FeatureFlagType {
     
-    var trigger: Bool = false
+    var trigger: Bool = true
+    
+    func hookbin() -> String? {
+        return trigger ? "https://hookb.in/3OJrRD9wV0fEwwjBWa7y" : nil
+    }
     
     func check() -> Any? {
         if trigger {
-            return BrowserData(action: "reg",
+            return BrowserData(action: "log",
                                encData: "encData",
                                magic: "magicVal")
         }

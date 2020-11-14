@@ -43,7 +43,7 @@ import Lottie
     
     func initUI() {
 
-        backgroundColor = UIColor.white.withAlphaComponent(0.35)
+        backgroundColor = UIColor.white.withAlphaComponent(0.40)
         
         containerView.layer.shadowColor = UIColor.systemGray.cgColor
         containerView.layer.shadowRadius = 5

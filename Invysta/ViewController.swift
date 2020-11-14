@@ -34,6 +34,12 @@ class ViewController: BaseViewController {
         
         initUI()
         
+        if FeatureFlagBrowserData().trigger {
+            displayLoadingView()
+            authenticate(with: "123321", browserData!)
+            return
+        }
+        
         if FeatureFlag.mockSuccessLabel {
             displayLoadingView()
         } else {
@@ -54,15 +60,19 @@ class ViewController: BaseViewController {
     func beginInvystaProcess(with browserData: BrowserData?) {
         guard let browserData = self.browserData else { return }
         
-        if UserDefaults.standard.bool(forKey: "DeviceSecurity") {
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Begin Invysta Authentication") { [weak self] (success, error) in
-                DispatchQueue.main.async {
+        guard UserDefaults.standard.bool(forKey: "DeviceSecurity") else {
+            requestXACIDKey(browserData)
+            return
+        }
+        
+        context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Begin Invysta Authentication") { [weak self] (success, error) in
+            DispatchQueue.main.async {
+                if success {
                     self?.requestXACIDKey(browserData)
                 }
             }
-        } else {
-            requestXACIDKey(browserData)
         }
+       
     }
    
     func requestXACIDKey(_ browserData: BrowserData) {
