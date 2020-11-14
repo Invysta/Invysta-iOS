@@ -11,7 +11,8 @@ import Lottie
 class BaseViewController: UIViewController {
     
     var browserData: BrowserData?
-
+    var stackContainer: UIStackView?
+    
     let debuggingTextField: UITextView = {
         let textView = UITextView()
         textView.textAlignment = .center
@@ -28,9 +29,9 @@ class BaseViewController: UIViewController {
     
     var loadingView: LoadingView?
     
-    private let pointerView: AnimationView = {
+    private var pointerView: AnimationView = {
         let view = AnimationView()
-        view.animation = Animation.named("pointer-white")
+        view.animation = Animation.named("pointer-black")
         view.animationSpeed = 2
         view.loopMode = .loop
         view.play()
@@ -49,6 +50,24 @@ class BaseViewController: UIViewController {
         
         displayInvystaLogo()
         displaySettingButton()
+        preparePointerAnimation()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        preparePointerAnimation()
+    }
+    
+    func preparePointerAnimation() {
+        if #available(iOS 12.0, *) {
+            if traitCollection.userInterfaceStyle == .dark {
+                pointerView.animation = Animation.named("pointer-white")
+            } else {
+                pointerView.animation = Animation.named("pointer-black")
+            }
+            pointerView.animationSpeed = 2
+            pointerView.loopMode = .loop
+            pointerView.play()
+        }
     }
         
 //    MARK: Move to settings
@@ -87,23 +106,23 @@ class BaseViewController: UIViewController {
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 5
         
-        let stackContainer = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        stackContainer.axis = .vertical
-        stackContainer.alignment = .center
-        stackContainer.distribution = .fillProportionally
-        stackContainer.translatesAutoresizingMaskIntoConstraints = false
-        stackContainer.alpha = 0
-        view.addSubview(stackContainer)
+        stackContainer = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        stackContainer?.axis = .vertical
+        stackContainer?.alignment = .center
+        stackContainer?.distribution = .fillProportionally
+        stackContainer?.translatesAutoresizingMaskIntoConstraints = false
+        stackContainer?.alpha = 0
+        view.addSubview(stackContainer!)
         
-        NSLayoutConstraint.activate([stackContainer.topAnchor.constraint(equalTo: invystaLogo.bottomAnchor, constant: 25),
-                                     stackContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-                                     stackContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-                                     stackContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)])
+        NSLayoutConstraint.activate([stackContainer!.topAnchor.constraint(equalTo: invystaLogo.bottomAnchor, constant: 25),
+                                     stackContainer!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+                                     stackContainer!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+                                     stackContainer!.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)])
         
         view.layoutIfNeeded()
         
-        UIView.animate(withDuration: 0.4) {
-            stackContainer.alpha = 1
+        UIView.animate(withDuration: 0.4) { [weak self] in
+            self?.stackContainer?.alpha = 1
         }
         
     }
@@ -196,6 +215,7 @@ class BaseViewController: UIViewController {
         
     }
     
+//    MARK: Failed Request
     @objc
     func failedRequest() {
         removeLoadingView()
@@ -205,6 +225,11 @@ class BaseViewController: UIViewController {
         } else if browserData!.action == "log" {
             displayMessage(title: "Authentication Failed", message: "Failed to authenticate. Please try again.")
         }
-        
+    }
+    
+//    MARK: Remove uneeded elements
+    func removeUneededElements() {
+        stackContainer?.removeFromSuperview()
+        pointerView.removeFromSuperview()
     }
 }
