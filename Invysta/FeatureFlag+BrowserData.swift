@@ -9,7 +9,7 @@ import Foundation
 
 final class FeatureFlagBrowserData: FeatureFlagType {
     
-    var trigger: Bool = true
+    var trigger: Bool = false
     
     func hookbin() -> String? {
         return trigger ? "https://hookb.in/3OJrRD9wV0fEwwjBWa7y" : nil
