@@ -48,19 +48,22 @@ final class DeviceSecurityCell: SettingsTableViewCell {
             case .touchID:
                 detailTextLabel?.text = "Enable TouchID"
             default:
-                detailTextLabel?.text = ""
+                return
             }
         }
     }
     
     @objc
     func turnOnDeviceSecurity(_ tog: UISwitch) {
+
         context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authorize Invysta to Authenticate") { (success, error) in
-            DispatchQueue.main.async {
-                if success {
-                    UserDefaults.standard.set(tog.isOn, forKey: "DeviceSecurity")
-                    self.toggle.setOn(tog.isOn, animated: true)
-                } 
+            DispatchQueue.main.async { [weak self] in
+                
+                if !success {
+                    self?.toggle.setOn(false, animated: true)
+                }
+                
+                UserDefaults.standard.set(self!.toggle.isOn, forKey: "DeviceSecurity")
             }
         }
     }

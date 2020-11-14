@@ -34,7 +34,11 @@ class ViewController: BaseViewController {
         
         initUI()
         
-        beginInvystaProcess(with: browserData)
+        if FeatureFlag.mockSuccessLabel {
+            displayLoadingView()
+        } else {
+            beginInvystaProcess(with: browserData)
+        }
         
         if FeatureFlag.showDebuggingTextField {
             let text = """
@@ -49,7 +53,7 @@ class ViewController: BaseViewController {
     
     func beginInvystaProcess(with browserData: BrowserData?) {
         guard let browserData = self.browserData else { return }
-        
+            
         if FeatureFlagBrowserData().trigger {
             authenticate(with: "123321")
             return
@@ -58,17 +62,17 @@ class ViewController: BaseViewController {
         if UserDefaults.standard.bool(forKey: "DeviceSecurity") {
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Begin Invysta Authentication") { [weak self] (success, error) in
                 DispatchQueue.main.async {
-                    self?.displayLoadingView()
                     self?.requestXACIDKey(browserData)
                 }
             }
         } else {
-            displayLoadingView()
             requestXACIDKey(browserData)
         }
     }
    
     func requestXACIDKey(_ browserData: BrowserData) {
+        displayLoadingView()
+        
         let requestURL = RequestURL(requestType: .get, action: browserData.action)
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
@@ -76,6 +80,7 @@ class ViewController: BaseViewController {
             guard let res = response as? HTTPURLResponse else { return }
             
             if let xacid = res.allHeaderFields["X-ACID"] as? String {
+               
                 if browserData.action! == "reg" {
                     self?.registerDevice(with: xacid)
                 } else if browserData.action! == "log" {
@@ -84,6 +89,7 @@ class ViewController: BaseViewController {
             } else {
                 DispatchQueue.main.async {
                     self?.debuggingTextField.text = "Could not get xacid"
+                    self?.removeLoadingView()
                 }
             }
             
@@ -95,18 +101,10 @@ class ViewController: BaseViewController {
         var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: browserData!.action)
         requestURL.userIDAndPassword = browserData?.encData ?? "encData nil"
         
-        networkManager?.call(requestURL, completion: { (data, response, error) in
+        networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             guard let res = response as? HTTPURLResponse else { return }
             
-            if (200...299) ~= res.statusCode {
-                DispatchQueue.main.async {
-                    self.perform(#selector(self.displayPointerView), with: nil, afterDelay: 1.5)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.debuggingTextField.text = "Registration Error"
-                }
-            }
+            self?.networkManagerResponse(with: res, and: "Failed to register device. Please try again.")
         })
     }
     
@@ -115,20 +113,22 @@ class ViewController: BaseViewController {
         var requestURL = RequestURL(requestType: .post, body: body, xacid: xacid, action: browserData!.action)
         requestURL.userIDAndPassword = browserData?.encData ?? "encData nil"
         
-        networkManager?.call(requestURL, completion: { (data, response, error) in
+        networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             
             guard let res = response as? HTTPURLResponse else { return }
-     
-            if (200...299) ~= res.statusCode {
-                DispatchQueue.main.async {
-                    self.perform(#selector(self.displayPointerView), with: nil, afterDelay: 0.75)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.debuggingTextField.text = "Auth Error"
-                }
-            }
+            self?.networkManagerResponse(with: res, and: "Failed to authenticate. Please try again.")
         })
+    }
+    
+    private func networkManagerResponse(with response: HTTPURLResponse, and error: String) {
+        DispatchQueue.main.async { [weak self] in
+            if (200...299) ~= response.statusCode {
+                self?.perform(#selector(self!.successfulRequest), with: self, afterDelay: 1.5)
+            } else {
+                self?.perform(#selector(self!.failedRequest), with: self, afterDelay: 1.5)
+            }
+        }
+        
     }
     
     init() {
