@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "down-11.png",
+      "filename" : "down-18.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "down-10.png",
+      "filename" : "down-16.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -28,7 +28,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "down-12.png",
+      "filename" : "down-17.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -39,7 +39,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "down-9.png",
+      "filename" : "down-15.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

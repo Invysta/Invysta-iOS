@@ -16,19 +16,15 @@ class ViewController: BaseViewController {
     private var error: NSError?
     private let context = LAContext()
 
+//    MARK: Entry Point from Browser
     init(_ browserData: BrowserData) {
         super.init(nibName: nil, bundle: nil)
         networkManager = NetworkManager()
-        identifierManager = IdentifierManager(browserData, [
-                                                VendorIdentifier(),
-                                                AdvertiserIdentifier(),
-                                                CustomIdentifier(),
-                                                DeviceModelIdentifier(),
-                                                DeviceCheckIdentifier(),
-                                                AccessibilityIdentifier()])
+        identifierManager = IdentifierManager(browserData)
         self.browserData = browserData
     }
    
+//    MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,6 +53,7 @@ class ViewController: BaseViewController {
         }
     }
     
+//    MARK: Begin Invysta Process
     func beginInvystaProcess(with browserData: BrowserData?) {
         guard let browserData = self.browserData else { return }
         
@@ -75,6 +72,7 @@ class ViewController: BaseViewController {
        
     }
    
+//    MARK: Request XACID
     func requestXACIDKey(_ browserData: BrowserData) {
         displayLoadingView()
         
@@ -86,11 +84,15 @@ class ViewController: BaseViewController {
             
             if let xacid = res.allHeaderFields["X-ACID"] as? String {
                
-                if browserData.action == "reg" {
-                    self?.registerDevice(with: xacid, browserData)
-                } else if browserData.action == "log" {
+                switch browserData.callType {
+                case .login:
                     self?.authenticate(with: xacid, browserData)
+                case .register:
+                    self?.registerDevice(with: xacid, browserData)
+                default:
+                    return
                 }
+                
             } else {
                 DispatchQueue.main.async {
                     self?.debuggingTextField.text = "Could not get xacid"
@@ -101,6 +103,7 @@ class ViewController: BaseViewController {
         })
     }
     
+//    MARK: Register Device with XACID
     func registerDevice(with xacid: String,_ browserData: BrowserData) {
         let body = identifierManager?.compileSources()
         let requestURL = RequestURL(requestType: .post,
@@ -114,6 +117,7 @@ class ViewController: BaseViewController {
         })
     }
     
+//    MARK: Authenticate with XACID
     func authenticate(with xacid: String,_ browserData: BrowserData) {
         let body = identifierManager?.compileSources()
         let requestURL = RequestURL(requestType: .post,
@@ -127,6 +131,7 @@ class ViewController: BaseViewController {
         })
     }
     
+//    MARK: Network Response
     private func networkManagerResponse(with response: HTTPURLResponse) {
         DispatchQueue.main.async { [weak self] in
             if (200...299) ~= response.statusCode {

@@ -13,6 +13,17 @@ struct BrowserData {
     var encData: String
     var magic: String
     
+    var callType: CallType {
+        switch action {
+        case "log":
+            return .login
+        case "reg":
+            return .register
+        default:
+            return .none
+        }
+    }
+    
     var see: String {
         return """
             action: \(action)

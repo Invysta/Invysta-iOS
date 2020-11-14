@@ -26,6 +26,7 @@ class BaseViewController: UIViewController {
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
         return label
     }()
     
@@ -216,13 +217,15 @@ class BaseViewController: UIViewController {
         
         removeLoadingView()
         
-        if browserData!.action == "reg" {
-            displayMessage(title: "Success", message: "Successfuly registered device!")
-        } else if browserData!.action == "log" {
+        switch browserData?.callType {
+        case .login:
             displayPointerView()
             displayMessage(title: "Success", message: "Safely return to your app by clicking on the return button at the top left corner of your screen!")
+        case .register:
+            displayMessage(title: "Success", message: "Successfuly registered device!")
+        default:
+            return
         }
-        
     }
     
 //    MARK: Failed Request
@@ -230,11 +233,15 @@ class BaseViewController: UIViewController {
     func failedRequest() {
         removeLoadingView()
         
-        if browserData!.action == "reg" {
-            displayMessage(title: "Registration Failed", message: "Failed to register device. Please try again.")
-        } else if browserData!.action == "log" {
+        switch browserData?.callType {
+        case .login:
             displayMessage(title: "Authentication Failed", message: "Failed to authenticate. Please try again.")
+        case .register:
+            displayMessage(title: "Registration Failed", message: "Failed to register device. Please try again.")
+        default:
+            return
         }
+        
     }
     
 //    MARK: Remove uneeded elements

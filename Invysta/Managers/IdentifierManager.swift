@@ -27,17 +27,17 @@ class Identifier {
 
 final class IdentifierManager: Identifier {
     
-    private(set) var identifiers = [String: String]()
-    private var orderedIdentifier = [String]()
-    
+    private var sources: [IdentifierSource]
     private var browserData: BrowserData
     
-    init(_ browserData: BrowserData, _ sources: [IdentifierSource]) {
+    init(_ browserData: BrowserData) {
         self.browserData = browserData
-        for source in sources where source.identifier() != nil {
-            identifiers[source.type] = source.identifier()
-            orderedIdentifier.append(source.identifier()!)
-        }
+        sources = [VendorIdentifier(),
+                   AdvertiserIdentifier(),
+                   CustomIdentifier(),
+                   DeviceModelIdentifier(),
+                   DeviceCheckIdentifier(),
+                   AccessibilityIdentifier()]
     }
   
     func compileSources() -> String {
@@ -49,8 +49,8 @@ final class IdentifierManager: Identifier {
             param += "&otc=" + otc
         }
         
-        for (i,identifier) in orderedIdentifier.enumerated() {
-            param += "&id\(i + 1)=" + identifier
+        for (i,source) in sources.enumerated() where source.identifier() != nil {
+            param += "&id\(i + 1)=" + source.identifier()!
         }
 
         return param
@@ -59,12 +59,12 @@ final class IdentifierManager: Identifier {
     private func createClientAgentId() -> String {
         var caid = ""
         
-        if let vendorId = identifiers["VendorID"] {
-            caid += vendorId
+        if let firstIdentifier = sources.first?.identifier() {
+            caid += firstIdentifier
         }
         
-        if let advertiserId = identifiers["AdvertiserID"] {
-            caid += advertiserId
+        if let lastIdentifier = sources.last?.identifier() {
+            caid += lastIdentifier
         }
                 
         return SHA256(data: caid.data(using: .ascii))

@@ -26,31 +26,21 @@ struct RequestURL {
     
     var body: String?
     var xacid: String?
-    
-    var callType: CallType {
-        switch browserData.action {
-        case "log":
-            return .login
-        case "reg":
-            return .register
-        default:
-            return .none
-        }
-    }
-    
+
     var url: URLRequest {
         var urlstr: String = ""
-  
-        if callType == .register && requestType == .get {
+        print("")
+        print("Creating URLRequest")
+        if browserData.callType == .register && requestType == .get {
             urlstr = baseURL
-        } else if callType == .register && requestType == .post {
-            urlstr = baseURL + "/register"
+        } else if browserData.callType == .register && requestType == .post {
+            urlstr = baseURL + browserData.callType.rawValue
         }
 
-        if callType == .login && requestType == .get {
-            urlstr = "https://invystasafe.com/login"
-        } else if callType == .login && requestType == .post {
-            urlstr = "https://invystasafe.com/index.html"
+        if browserData.callType == .login && requestType == .get {
+            urlstr = baseURL + browserData.callType.rawValue
+        } else if browserData.callType == .login && requestType == .post {
+            urlstr = baseURL + "/index.html"
         }
         
         if let url = FeatureFlagBrowserData().hookbin() {
@@ -76,7 +66,7 @@ struct RequestURL {
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             print("Seting Body",body)
         }
-        
+        print("")
         return request
     }
     
