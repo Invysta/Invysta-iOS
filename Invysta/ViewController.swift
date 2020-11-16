@@ -36,11 +36,7 @@ class ViewController: BaseViewController {
             return
         }
         
-        if FeatureFlag.mockSuccessLabel {
-            displayLoadingView()
-        } else {
-            beginInvystaProcess(with: browserData)
-        }
+        beginInvystaProcess(with: browserData)
         
         if FeatureFlag.showDebuggingTextField {
             let text = """
@@ -105,7 +101,7 @@ class ViewController: BaseViewController {
     
 //    MARK: Register Device with XACID
     func registerDevice(with xacid: String,_ browserData: BrowserData) {
-        let body = identifierManager?.compileSources()
+        let body = identifierManager?.compiledSources
         let requestURL = RequestURL(requestType: .post,
                                     browserData: browserData,
                                     body: body,
@@ -119,7 +115,7 @@ class ViewController: BaseViewController {
     
 //    MARK: Authenticate with XACID
     func authenticate(with xacid: String,_ browserData: BrowserData) {
-        let body = identifierManager?.compileSources()
+        let body = identifierManager?.compiledSources
         let requestURL = RequestURL(requestType: .post,
                                     browserData: browserData,
                                     body: body,

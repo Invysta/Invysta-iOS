@@ -30,17 +30,23 @@ final class IdentifierManager: Identifier {
     private var sources: [IdentifierSource]
     private var browserData: BrowserData
     
+    private(set) var compiledSources: String?
+    
     init(_ browserData: BrowserData) {
+        
         self.browserData = browserData
+        
         sources = [VendorIdentifier(),
                    AdvertiserIdentifier(),
                    CustomIdentifier(),
                    DeviceModelIdentifier(),
                    DeviceCheckIdentifier(),
                    AccessibilityIdentifier()]
+        super.init()
+        compiledSources = compileSources()
     }
   
-    func compileSources() -> String {
+    private func compileSources() -> String {
         var param: String
         param = "caid=" + createClientAgentId()
         param += "&magic=" + browserData.magic

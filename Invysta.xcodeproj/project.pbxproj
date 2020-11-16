@@ -183,8 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				01A4745A25369FCD00D19006 /* Invysta.entitlements */,
-				017549CD2534D99900487C74 /* AppDelegate.swift */,
 				01076DEF2560956D009847D6 /* LottieFiles */,
+				017549CD2534D99900487C74 /* AppDelegate.swift */,
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
 				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,

@@ -107,4 +107,7 @@ class InvystaNetworkTests: XCTestCase {
 //        XCTAssertTrue(mockSession.lastRequestURL == requestURL)
     }
 
+    func networkResponse() {
+        
+    }
 }
