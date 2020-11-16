@@ -74,6 +74,7 @@ class InvystaNetworkTests: XCTestCase {
     let postMockDelegate = MockPOSTNetworkResponseDelegate()
     let getMockDelegate = MockGETNetworkResponseDelegate()
     let browserData = BrowserData(action: "", oneTimeCode: "", encData: "", magic: "")
+    
     func testGETNetworkCall() {
         
         let requestURL = RequestURL(requestType: .get, browserData: browserData)
@@ -81,6 +82,7 @@ class InvystaNetworkTests: XCTestCase {
         
         let networkManager = NetworkManager(mockSession)
         networkManager.delegate = getMockDelegate
+        
         networkManager.call(requestURL) { (data, response, error) in
             
         }

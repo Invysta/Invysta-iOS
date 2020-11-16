@@ -33,6 +33,7 @@
 		01243038254270AD00722112 /* FeatureFlag+BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */; };
 		012774CF255FDAF7009C1B8D /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 012774CE255FDAF7009C1B8D /* SwiftKeychainWrapper */; };
 		012774D4255FDB05009C1B8D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 012774D3255FDB05009C1B8D /* Lottie */; };
+		014A6E3A2563378000264CE3 /* InvystaViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */; };
 		017549CE2534D99900487C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CD2534D99900487C74 /* AppDelegate.swift */; };
 		017549D02534D99900487C74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CF2534D99900487C74 /* SceneDelegate.swift */; };
 		017549D22534D99900487C74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549D12534D99900487C74 /* ViewController.swift */; };
@@ -82,6 +83,7 @@
 		011AC4452557D30F0044980C /* AppVersionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionItem.swift; sourceTree = "<group>"; };
 		012430322542704E00722112 /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
 		01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeatureFlag+BrowserData.swift"; sourceTree = "<group>"; };
+		014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaViewControllerTests.swift; sourceTree = "<group>"; };
 		017549CA2534D99900487C74 /* Invysta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invysta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		017549CD2534D99900487C74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		017549CF2534D99900487C74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		01754A012534F34A00487C74 /* InvystaTests */ = {
 			isa = PBXGroup;
 			children = (
+				014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */,
 				01754A022534F34A00487C74 /* InvystaNetworkTests.swift */,
 				01754A192535174F00487C74 /* InvystaIdentifierTests.swift */,
 				01754A042534F34A00487C74 /* Info.plist */,
@@ -413,6 +416,7 @@
 				01076E032560986B009847D6 /* PrivacyPolicyItem.swift in Sources */,
 				01076E042560986B009847D6 /* AppVersionItem.swift in Sources */,
 				01754A0C2534F35800487C74 /* NetworkManager.swift in Sources */,
+				014A6E3A2563378000264CE3 /* InvystaViewControllerTests.swift in Sources */,
 				01754A1A2535174F00487C74 /* InvystaIdentifierTests.swift in Sources */,
 				01076DF52560985E009847D6 /* BaseViewController.swift in Sources */,
 				01B4339D253A8C99001BD585 /* BrowserData.swift in Sources */,

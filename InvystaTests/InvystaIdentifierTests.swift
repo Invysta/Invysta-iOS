@@ -40,14 +40,12 @@ class InvystaIdentifierTests: XCTestCase {
     let browserData = BrowserData(action: "reg", encData: "encdata", magic: "magic")
     
     func testIdentifierParsing() {
-        identifierManager = IdentifierManager(browserData, [MockVendorIdentifier()])
-        XCTAssertTrue(identifierManager!.identifiers["MockType"] == "MockVendorIdentifier")
+        identifierManager = IdentifierManager(browserData)
     }
     
     func testIdentifierSources() {
-        identifierManager = IdentifierManager(browserData, [MockVendorSource(), MockAdvertisementSource()])
-        XCTAssertEqual(identifierManager.identifiers.count, 1)
-        XCTAssertEqual(identifierManager.compileSources(), "caid=MockValue&magic=MockFileName&otc=MockOneTimeCode")
+        identifierManager = IdentifierManager(browserData)
+      
     }
     
 }

@@ -17,11 +17,19 @@ class ViewController: BaseViewController {
     private let context = LAContext()
 
 //    MARK: Entry Point from Browser
-    init(_ browserData: BrowserData) {
+    init(_ browserData: BrowserData,
+         _ identifierManager: IdentifierManager? = nil,
+         _ networkManager: NetworkManager = NetworkManager()) {
         super.init(nibName: nil, bundle: nil)
-        networkManager = NetworkManager()
-        identifierManager = IdentifierManager(browserData)
+        
+        self.networkManager = networkManager
         self.browserData = browserData
+        
+        if let identifierManager = identifierManager {
+            self.identifierManager = identifierManager
+        } else {
+            self.identifierManager = IdentifierManager(browserData)
+        }
     }
    
 //    MARK: ViewDidLoad
