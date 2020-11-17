@@ -100,6 +100,7 @@ class ViewController: BaseViewController {
             } else {
                 DispatchQueue.main.async {
                     self?.debuggingTextField.text = "Could not get xacid"
+                    self?.displayMessage(title: "Error", message: "Something went wrong and unable to retrieve X-ACID key. Please try again.")
                     self?.removeLoadingView()
                 }
             }
