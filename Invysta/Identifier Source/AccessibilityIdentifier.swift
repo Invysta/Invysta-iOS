@@ -38,5 +38,4 @@ struct AccessibilityIdentifier: IdentifierSource {
         return isBoldTextEnabled + isShakeToUndoEnabled + isReduceMotionEnabled + isDarkerSystemColorsEnabled + isReduceTransparencyEnabled + isAssistiveTouchRunning
     }
     
-    
 }
