@@ -35,7 +35,13 @@ struct AccessibilityIdentifier: IdentifierSource {
     }()
     
     func identifier() -> String? {
-        return isBoldTextEnabled + isShakeToUndoEnabled + isReduceMotionEnabled + isDarkerSystemColorsEnabled + isReduceTransparencyEnabled + isAssistiveTouchRunning
+        if let val = UserDefaults.standard.string(forKey: type) {
+            return val
+        } else {
+            let val = isBoldTextEnabled + isShakeToUndoEnabled + isReduceMotionEnabled + isDarkerSystemColorsEnabled + isReduceTransparencyEnabled + isAssistiveTouchRunning
+            UserDefaults.standard.setValue(val, forKey: type)
+            return val
+        }
     }
     
 }

@@ -22,6 +22,7 @@
 		01076E0A25609872009847D6 /* DeviceModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC40C255659C40044980C /* DeviceModelIdentifier.swift */; };
 		01076E0E25609879009847D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CF2534D99900487C74 /* SceneDelegate.swift */; };
 		01076E112560987D009847D6 /* pointer-white.json in Resources */ = {isa = PBXBuildFile; fileRef = 01EFEDA5255F52FF00B50D05 /* pointer-white.json */; };
+		010AD0A92567455200B53B2A /* AdvertiserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0A82567455200B53B2A /* AdvertiserIdentifier.swift */; };
 		0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
 		011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC40C255659C40044980C /* DeviceModelIdentifier.swift */; };
 		011AC42E2557373D0044980C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC42B2557373D0044980C /* SettingsController.swift */; };
@@ -29,10 +30,8 @@
 		011AC4462557D30F0044980C /* AppVersionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC4452557D30F0044980C /* AppVersionItem.swift */; };
 		012430332542704E00722112 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012430322542704E00722112 /* FeatureFlag.swift */; };
 		01243038254270AD00722112 /* FeatureFlag+BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */; };
-		012774CF255FDAF7009C1B8D /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 012774CE255FDAF7009C1B8D /* SwiftKeychainWrapper */; };
 		012774D4255FDB05009C1B8D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 012774D3255FDB05009C1B8D /* Lottie */; };
 		014A6E3A2563378000264CE3 /* InvystaViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */; };
-		016BC1422565A913007F6054 /* AdvertiserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC1412565A913007F6054 /* AdvertiserIdentifier.swift */; };
 		016BC1462565A93B007F6054 /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */; };
 		017549CE2534D99900487C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CD2534D99900487C74 /* AppDelegate.swift */; };
 		017549D02534D99900487C74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CF2534D99900487C74 /* SceneDelegate.swift */; };
@@ -74,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010AD0A82567455200B53B2A /* AdvertiserIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertiserIdentifier.swift; sourceTree = "<group>"; };
 		0114C797253A768100DD4DF2 /* BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserData.swift; sourceTree = "<group>"; };
 		011AC40C255659C40044980C /* DeviceModelIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelIdentifier.swift; sourceTree = "<group>"; };
 		011AC42B2557373D0044980C /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -82,7 +82,6 @@
 		012430322542704E00722112 /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
 		01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeatureFlag+BrowserData.swift"; sourceTree = "<group>"; };
 		014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaViewControllerTests.swift; sourceTree = "<group>"; };
-		016BC1412565A913007F6054 /* AdvertiserIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiserIdentifier.swift; sourceTree = "<group>"; };
 		016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCheckIdentifier.swift; sourceTree = "<group>"; };
 		017549CA2534D99900487C74 /* Invysta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invysta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		017549CD2534D99900487C74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +116,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				012774CF255FDAF7009C1B8D /* SwiftKeychainWrapper in Frameworks */,
 				012774D4255FDB05009C1B8D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				017549F22534EF7600487C74 /* AccessibilityIdentifier.swift */,
-				016BC1412565A913007F6054 /* AdvertiserIdentifier.swift */,
+				010AD0A82567455200B53B2A /* AdvertiserIdentifier.swift */,
 				01754A2125351B8600487C74 /* CustomIdentifier.swift */,
 				016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */,
 				011AC40C255659C40044980C /* DeviceModelIdentifier.swift */,
@@ -287,7 +285,6 @@
 			);
 			name = Invysta;
 			packageProductDependencies = (
-				012774CE255FDAF7009C1B8D /* SwiftKeychainWrapper */,
 				012774D3255FDB05009C1B8D /* Lottie */,
 			);
 			productName = Invysta;
@@ -340,7 +337,6 @@
 			);
 			mainGroup = 017549C12534D99900487C74;
 			packageReferences = (
-				012774CD255FDAF7009C1B8D /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				012774D2255FDB05009C1B8D /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 017549CB2534D99900487C74 /* Products */;
@@ -398,8 +394,8 @@
 				01243038254270AD00722112 /* FeatureFlag+BrowserData.swift in Sources */,
 				017549CE2534D99900487C74 /* AppDelegate.swift in Sources */,
 				0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */,
+				010AD0A92567455200B53B2A /* AdvertiserIdentifier.swift in Sources */,
 				017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */,
-				016BC1422565A913007F6054 /* AdvertiserIdentifier.swift in Sources */,
 				01EFED84255F199200B50D05 /* DeviceSecurityItem.swift in Sources */,
 				017549D02534D99900487C74 /* SceneDelegate.swift in Sources */,
 				016BC1462565A93B007F6054 /* DeviceCheckIdentifier.swift in Sources */,
@@ -692,14 +688,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		012774CD255FDAF7009C1B8D /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.1;
-			};
-		};
 		012774D2255FDB05009C1B8D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -711,11 +699,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		012774CE255FDAF7009C1B8D /* SwiftKeychainWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 012774CD255FDAF7009C1B8D /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
-			productName = SwiftKeychainWrapper;
-		};
 		012774D3255FDB05009C1B8D /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 012774D2255FDB05009C1B8D /* XCRemoteSwiftPackageReference "lottie-ios" */;

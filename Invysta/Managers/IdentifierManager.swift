@@ -37,8 +37,8 @@ final class IdentifierManager: Identifier {
         self.browserData = browserData
         
         sources = [VendorIdentifier(),
-                   AdvertiserIdentifier(),
                    CustomIdentifier(),
+                   AdvertiserIdentifier(),
                    DeviceModelIdentifier(),
                    DeviceCheckIdentifier(),
                    AccessibilityIdentifier()]

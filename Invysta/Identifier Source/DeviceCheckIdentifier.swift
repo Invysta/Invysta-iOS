@@ -33,8 +33,15 @@ class DeviceCheckIdentifier: Identifier, IdentifierSource {
     }()
     
     func identifier() -> String? {
-        let val = deviceName + languageCode + regionCode + calendarIdentifier + timeZone
-        return SHA256(data: val.data(using: .utf8))
+        if let encData = UserDefaults.standard.string(forKey: type) {
+            return encData
+        } else {
+            let val = deviceName + languageCode + regionCode + calendarIdentifier + timeZone
+            let encData = SHA256(data: val.data(using: .utf8))
+            UserDefaults.standard.setValue(encData, forKey: type)
+            return encData
+        }
+        
     }
     
 }
