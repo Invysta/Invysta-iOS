@@ -36,12 +36,14 @@ final class IdentifierManager: Identifier {
         
         self.browserData = browserData
         
-        sources = [VendorIdentifier(),
+        sources = [AccessibilityIdentifier(),
+                   CellularIdentifier(),
                    CustomIdentifier(),
-                   AdvertiserIdentifier(),
-                   DeviceModelIdentifier(),
                    DeviceCheckIdentifier(),
-                   AccessibilityIdentifier()]
+                   DeviceModelIdentifier(),
+                   FirstTimeInstallationIdentifier(),
+                   VendorIdentifier()]
+        
         super.init()
         compiledSources = compileSources()
     }

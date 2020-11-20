@@ -79,6 +79,7 @@ struct DeviceSecurityItem: SettingItem {
     
     func createCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceSecurityCell", for: indexPath) as? DeviceSecurityCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         return cell
     }
     

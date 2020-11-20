@@ -22,7 +22,8 @@
 		01076E0A25609872009847D6 /* DeviceModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC40C255659C40044980C /* DeviceModelIdentifier.swift */; };
 		01076E0E25609879009847D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CF2534D99900487C74 /* SceneDelegate.swift */; };
 		01076E112560987D009847D6 /* pointer-white.json in Resources */ = {isa = PBXBuildFile; fileRef = 01EFEDA5255F52FF00B50D05 /* pointer-white.json */; };
-		010AD0A92567455200B53B2A /* AdvertiserIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0A82567455200B53B2A /* AdvertiserIdentifier.swift */; };
+		010AD0AF256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */; };
+		010AD0B325678CD700B53B2A /* CellularIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0B225678CD700B53B2A /* CellularIdentifier.swift */; };
 		0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
 		011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC40C255659C40044980C /* DeviceModelIdentifier.swift */; };
 		011AC42E2557373D0044980C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC42B2557373D0044980C /* SettingsController.swift */; };
@@ -73,7 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		010AD0A82567455200B53B2A /* AdvertiserIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvertiserIdentifier.swift; sourceTree = "<group>"; };
+		010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeInstallationIdentifier.swift; sourceTree = "<group>"; };
+		010AD0B225678CD700B53B2A /* CellularIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularIdentifier.swift; sourceTree = "<group>"; };
 		0114C797253A768100DD4DF2 /* BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserData.swift; sourceTree = "<group>"; };
 		011AC40C255659C40044980C /* DeviceModelIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelIdentifier.swift; sourceTree = "<group>"; };
 		011AC42B2557373D0044980C /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -203,10 +205,11 @@
 			isa = PBXGroup;
 			children = (
 				017549F22534EF7600487C74 /* AccessibilityIdentifier.swift */,
-				010AD0A82567455200B53B2A /* AdvertiserIdentifier.swift */,
+				010AD0B225678CD700B53B2A /* CellularIdentifier.swift */,
 				01754A2125351B8600487C74 /* CustomIdentifier.swift */,
 				016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */,
 				011AC40C255659C40044980C /* DeviceModelIdentifier.swift */,
+				010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */,
 				017549EC2534EF1900487C74 /* VendorIdentifier.swift */,
 			);
 			path = "Identifier Source";
@@ -381,6 +384,7 @@
 				017549D22534D99900487C74 /* ViewController.swift in Sources */,
 				012430332542704E00722112 /* FeatureFlag.swift in Sources */,
 				017549F32534EF7600487C74 /* AccessibilityIdentifier.swift in Sources */,
+				010AD0AF256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift in Sources */,
 				01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */,
 				01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */,
 				011AC4462557D30F0044980C /* AppVersionItem.swift in Sources */,
@@ -391,10 +395,10 @@
 				011AC42E2557373D0044980C /* SettingsController.swift in Sources */,
 				017549F62534F01200487C74 /* NetworkManager.swift in Sources */,
 				011AC4402557D2540044980C /* PrivacyPolicyItem.swift in Sources */,
+				010AD0B325678CD700B53B2A /* CellularIdentifier.swift in Sources */,
 				01243038254270AD00722112 /* FeatureFlag+BrowserData.swift in Sources */,
 				017549CE2534D99900487C74 /* AppDelegate.swift in Sources */,
 				0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */,
-				010AD0A92567455200B53B2A /* AdvertiserIdentifier.swift in Sources */,
 				017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */,
 				01EFED84255F199200B50D05 /* DeviceSecurityItem.swift in Sources */,
 				017549D02534D99900487C74 /* SceneDelegate.swift in Sources */,
