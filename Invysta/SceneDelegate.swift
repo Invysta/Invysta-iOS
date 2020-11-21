@@ -50,6 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func process(_ url: URL) -> BrowserData? {
+        print("PassedURL",url.absoluteString)
         guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
         var data = [String: String]()
         

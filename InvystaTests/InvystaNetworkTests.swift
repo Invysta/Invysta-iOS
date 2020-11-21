@@ -7,51 +7,38 @@
 
 import XCTest
 
-final class MockURLSession: URLSessionProtocol {
-   
-    var nextDataTask: URLSessionDataTaskProtocol
-    private(set) var lastRequestURL: RequestURL?
-    
-    weak var delegate: NetworkManagerDelegate?
+class InvystaNetworkTests: XCTestCase {
 
-    init(_ task: URLSessionDataTaskProtocol) {
-        nextDataTask = task
+    func testPOSTNetworkCall() {
+        
+        let mockPost = MockPOSTSessionDataTask()
+        let mockGet = MockGETSessionDataTask()
+        
+        let mockSession = MockURLSession(mockGet,mockPost)
+        let networkManager = NetworkManager(mockSession)
+        
+        let browserData = BrowserData(action: "log", encData: "some-encrypted-data", magic: "some-magic-number")
+        let req = RequestURL(requestType: .post, browserData: browserData)
+                
+        networkManager.call(req) { (data, response, error) in
+            XCTAssertEqual(String(data: data!, encoding: .utf8), "SomeData")
+            XCTAssertEqual(response!.url!, URL(string: "https://someurl.com")!)
+            XCTAssertNil(error)
+        }
     }
-    
-    func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        lastRequestURL = url
-        nextDataTask.data(completion)
-        return nextDataTask
-    }
- 
 }
 
-final class MockPOSTURLSessionDataTask: URLSessionDataTaskProtocol {
+struct MockIdentifier: IdentifierSource {
+    var type: String
     
+    func identifier() -> String? {
+        return type
+    }
+}
+
+final class MockPOSTSessionDataTask: URLSessionDataTaskProtocol {
     var didResume: Bool = false
-    var params = [String: String]()
-    
-    func resume() {
-        didResume = true
-    }
-    
-    func data(_ completion: (Data?, URLResponse?, Error?) -> Void) {
-        completion(Data(base64Encoded: "MockData"), URLResponse(), nil)
-    }
-}
-
-final class MockPOSTNetworkResponseDelegate: XCTestCase, NetworkManagerDelegate {
-    func networkResponse(_ data: Data?, _ response: URLResponse?, _ error: Error?) {
-        XCTAssertNotNil(data)
-        XCTAssertNotNil(response)
-        XCTAssertNil(error)
-    }
-}
-
-final class MockGETURLSessionDataTask: URLSessionDataTaskProtocol {
-    
-    var didResume: Bool = false
-    
+    var url: RequestURL!
     func resume() {
         didResume = true
     }
@@ -61,55 +48,51 @@ final class MockGETURLSessionDataTask: URLSessionDataTaskProtocol {
     }
 }
 
-final class MockGETNetworkResponseDelegate: XCTestCase, NetworkManagerDelegate {
-    func networkResponse(_ data: Data?, _ response: URLResponse?, _ error: Error?) {
-        XCTAssertNil(data)
-        XCTAssertNil(response)
-        XCTAssertNil(error)
+final class MockGETSessionDataTask: URLSessionDataTaskProtocol {
+    var didResume: Bool = false
+    var url: RequestURL!
+    
+    func resume() {
+        didResume = true
+    }
+    
+    func data(_ completion: (Data?, URLResponse?, Error?) -> Void) {
+        let data = "SomeData".data(using: .utf8)
+        let response = HTTPURLResponse(url: url.url.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: ["X-ACID":"X-ACID-MOCK"])
+        completion(data,response,nil)
     }
 }
 
-class InvystaNetworkTests: XCTestCase {
-
-    let postMockDelegate = MockPOSTNetworkResponseDelegate()
-    let getMockDelegate = MockGETNetworkResponseDelegate()
-    let browserData = BrowserData(action: "", oneTimeCode: "", encData: "", magic: "")
+final class MockURLSession: URLSessionProtocol {
     
-    func testGETNetworkCall() {
-        
-        let requestURL = RequestURL(requestType: .get, browserData: browserData)
-        let mockSession = MockURLSession(MockGETURLSessionDataTask())
-        
-        let networkManager = NetworkManager(mockSession)
-        networkManager.delegate = getMockDelegate
-        
-        networkManager.call(requestURL) { (data, response, error) in
-            
-        }
-        
-        XCTAssertNil(mockSession.lastRequestURL?.body)
-        XCTAssertTrue(mockSession.nextDataTask.didResume)
-//        XCTAssertTrue(mockSession.lastRequestURL?.browserData == requestURL.browserData)
+    private(set) var lastRequestURL: RequestURL?
+    
+    var mockGet: MockGETSessionDataTask
+    var mockPost: MockPOSTSessionDataTask
+    
+    init(_ mockGet: MockGETSessionDataTask,_ mockPost: MockPOSTSessionDataTask) {
+        self.mockGet = mockGet
+        self.mockPost = mockPost
     }
     
-    func testPOSTNetworkCall() {
-        let requestURL = RequestURL(requestType: .post, browserData: browserData)
-        
-        let mockSession = MockURLSession(MockPOSTURLSessionDataTask())
-        
-        let networkManager = NetworkManager(mockSession)
-        networkManager.delegate = postMockDelegate
-        networkManager.call(requestURL) { (data, res, error) in
+    func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+
+        if url.requestType == .get {
             
+            lastRequestURL = url
+            mockGet.url = url
+            mockGet.data(completion)
+            return mockGet
+        } else {
+            var reqUrl = url
+            reqUrl.body = url.body! + "🙏🏻"
+            lastRequestURL = reqUrl
+            mockPost.url = reqUrl
+            mockPost.data(completion)
+            return mockPost
         }
         
-        XCTAssertNotNil(mockSession.lastRequestURL?.body)
-        XCTAssertTrue(mockSession.lastRequestURL!.body == "mock-data")
-        XCTAssertTrue(mockSession.nextDataTask.didResume)
-//        XCTAssertTrue(mockSession.lastRequestURL == requestURL)
     }
-
-    func networkResponse() {
-        
-    }
+    
+    
 }

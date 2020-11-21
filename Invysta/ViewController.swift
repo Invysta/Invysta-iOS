@@ -10,8 +10,8 @@ import LocalAuthentication
 
 class ViewController: BaseViewController {
 
-    private var identifierManager: IdentifierManager?
-    private var networkManager: NetworkManager?
+    private(set)  var identifierManager: IdentifierManager?
+    private(set) var networkManager: NetworkManager?
     
     private var error: NSError?
     private let context = LAContext()
@@ -124,6 +124,7 @@ class ViewController: BaseViewController {
     
 //    MARK: Authenticate with XACID
     func authenticate(with xacid: String,_ browserData: BrowserData) {
+
         let body = identifierManager?.compiledSources
         let requestURL = RequestURL(requestType: .post,
                                     browserData: browserData,

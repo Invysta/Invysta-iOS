@@ -53,6 +53,9 @@
 		01754A1A2535174F00487C74 /* InvystaIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A192535174F00487C74 /* InvystaIdentifierTests.swift */; };
 		01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A2125351B8600487C74 /* CustomIdentifier.swift */; };
 		01817368254372E80065DB52 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 01817367254372E80065DB52 /* loading.json */; };
+		018355452568870D00F1D868 /* FirstTimeInstallationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */; };
+		018355462568870D00F1D868 /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */; };
+		018355472568870D00F1D868 /* CellularIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0B225678CD700B53B2A /* CellularIdentifier.swift */; };
 		01B4339D253A8C99001BD585 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
 		01ED2927255D04440033CAE2 /* pointer-black.json in Resources */ = {isa = PBXBuildFile; fileRef = 01ED2925255D04440033CAE2 /* pointer-black.json */; };
 		01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED7F255F170B00B50D05 /* BaseViewController.swift */; };
@@ -415,6 +418,7 @@
 				01076E042560986B009847D6 /* AppVersionItem.swift in Sources */,
 				01754A0C2534F35800487C74 /* NetworkManager.swift in Sources */,
 				014A6E3A2563378000264CE3 /* InvystaViewControllerTests.swift in Sources */,
+				018355452568870D00F1D868 /* FirstTimeInstallationIdentifier.swift in Sources */,
 				01754A1A2535174F00487C74 /* InvystaIdentifierTests.swift in Sources */,
 				01076DF52560985E009847D6 /* BaseViewController.swift in Sources */,
 				01B4339D253A8C99001BD585 /* BrowserData.swift in Sources */,
@@ -422,6 +426,7 @@
 				01076DF32560985E009847D6 /* ViewController.swift in Sources */,
 				01076DFD25609866009847D6 /* SettingsController.swift in Sources */,
 				01754A032534F34A00487C74 /* InvystaNetworkTests.swift in Sources */,
+				018355472568870D00F1D868 /* CellularIdentifier.swift in Sources */,
 				01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */,
 				01076DFC25609866009847D6 /* SettingManager.swift in Sources */,
 				01076E052560986B009847D6 /* SettingTableViewCell.swift in Sources */,
@@ -432,6 +437,7 @@
 				01076DF825609861009847D6 /* FeatureFlag.swift in Sources */,
 				01076DF925609861009847D6 /* FeatureFlag+BrowserData.swift in Sources */,
 				01754A142534F35D00487C74 /* AccessibilityIdentifier.swift in Sources */,
+				018355462568870D00F1D868 /* DeviceCheckIdentifier.swift in Sources */,
 				01076E0925609872009847D6 /* CustomIdentifier.swift in Sources */,
 				01076E0E25609879009847D6 /* SceneDelegate.swift in Sources */,
 			);

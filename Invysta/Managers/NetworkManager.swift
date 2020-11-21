@@ -38,14 +38,9 @@ extension URLSession: URLSessionProtocol {
 
 }
 
-protocol NetworkManagerDelegate: AnyObject {
-    func networkResponse(_ data: Data?,_ response: URLResponse?,_ error: Error?)
-}
-
 final class NetworkManager {
     
     private var session: URLSessionProtocol?
-    weak var delegate: NetworkManagerDelegate?
     
     init(_ session: URLSessionProtocol?) {
         self.session = session

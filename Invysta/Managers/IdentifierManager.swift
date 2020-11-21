@@ -32,17 +32,17 @@ final class IdentifierManager: Identifier {
     
     private(set) var compiledSources: String?
     
-    init(_ browserData: BrowserData) {
+    init(_ browserData: BrowserData,_ sources: [IdentifierSource] = [IdentifierSource]()) {
         
         self.browserData = browserData
         
-        sources = [AccessibilityIdentifier(),
-                   CellularIdentifier(),
-                   CustomIdentifier(),
-                   DeviceCheckIdentifier(),
-                   DeviceModelIdentifier(),
-                   FirstTimeInstallationIdentifier(),
-                   VendorIdentifier()]
+        self.sources = [AccessibilityIdentifier(),
+                        CellularIdentifier(),
+                        CustomIdentifier(),
+                        DeviceCheckIdentifier(),
+                        DeviceModelIdentifier(),
+                        FirstTimeInstallationIdentifier(),
+                        VendorIdentifier()]
         
         super.init()
         compiledSources = compileSources()

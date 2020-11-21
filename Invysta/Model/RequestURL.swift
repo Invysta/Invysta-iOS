@@ -35,12 +35,12 @@ struct RequestURL {
             urlstr = baseURL
         } else if browserData.callType == .register && requestType == .post {
             urlstr = baseURL + browserData.callType.rawValue
-        }
-
-        if browserData.callType == .login && requestType == .get {
+        } else if browserData.callType == .login && requestType == .get {
             urlstr = baseURL + browserData.callType.rawValue
         } else if browserData.callType == .login && requestType == .post {
             urlstr = baseURL + "/index.html"
+        } else {
+            urlstr = baseURL
         }
         
         if let url = FeatureFlagBrowserData().hookbin() {
@@ -54,17 +54,17 @@ struct RequestURL {
         print("---")
         
         request.setValue("Basic " + browserData.encData, forHTTPHeaderField: "Authorization")
-        print("Seting Authorization",browserData.encData)
+        print("Setting Authorization",browserData.encData)
         
         if let xacid = self.xacid {
             request.setValue(xacid, forHTTPHeaderField: "X-ACID")
-            print("Seting X_ACID",xacid)
+            print("Setting X_ACID",xacid)
         }
         
         if let body = self.body {
             request.httpBody = body.data(using: .utf8)
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            print("Seting Body",body)
+            print("Setting Body",body)
         }
         print("")
         return request
