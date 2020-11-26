@@ -20,7 +20,7 @@ struct PrivacyPolicyItem: SettingItem {
     }
     
     func performSelector(_ vc: UIViewController) {
-        let url = URL(string: "https://invysta.com/privacy.html")!
+        let url = URL(string: "https://invysta.com/privacy-policy")!
         let sf = SFSafariViewController(url: url)
         vc.present(sf, animated: true, completion: nil)
     }

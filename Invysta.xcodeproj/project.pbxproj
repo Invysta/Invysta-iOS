@@ -588,14 +588,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R986STKYJ7;
+				DEVELOPMENT_TEAM = WC54Z94VC6;
 				INFOPLIST_FILE = Invysta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaTechnologyGroup.Invysta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaSafe.InvystaSafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -610,14 +610,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R986STKYJ7;
+				DEVELOPMENT_TEAM = WC54Z94VC6;
 				INFOPLIST_FILE = Invysta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaTechnologyGroup.Invysta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaSafe.InvystaSafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;

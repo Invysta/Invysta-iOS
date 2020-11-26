@@ -131,11 +131,13 @@ class BaseViewController: UIViewController {
         
         view.layoutIfNeeded()
         
-        UIView.animate(withDuration: 0.4) { [weak self] in
-            self?.titleLabel.alpha = 1
-            self?.descriptionLabel.alpha = 1
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            UIView.animate(withDuration: 0.4) { [weak self] in
+                self?.titleLabel.alpha = 1
+                self?.descriptionLabel.alpha = 1
+                self?.removeLoadingView()
+            }
         }
-        
     }
     
 //   MARK:  Display PointerView
@@ -211,39 +213,16 @@ class BaseViewController: UIViewController {
                                      debuggingTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
     }
     
-//    MARK: Successful Request
-    @objc
-    func successfulRequest() {
-        
-        removeLoadingView()
-        
-        switch browserData?.callType {
-        case .login:
-            displayPointerView()
-            displayMessage(title: "Success", message: "Safely return to your app by clicking on the return button at the top left corner of your screen!")
-        case .register:
-            displayMessage(title: "Success", message: "Successfuly registered device!")
-        default:
-            return
+    func response(with title: String, and message: String,_ showPointer: Bool = true) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            if showPointer {
+                self?.displayPointerView()
+            }
+            self?.displayMessage(title: title, message: message)
+            self?.removeLoadingView()
         }
     }
-    
-//    MARK: Failed Request
-    @objc
-    func failedRequest() {
-        removeLoadingView()
-        
-        switch browserData?.callType {
-        case .login:
-            displayMessage(title: "Authentication Failed", message: "Failed to authenticate. Please try again.")
-        case .register:
-            displayMessage(title: "Registration Failed", message: "Failed to register device. Please try again.")
-        default:
-            return
-        }
-        
-    }
-    
+
 //    MARK: Remove uneeded elements
     func removeUneededElements() {
         titleLabel.removeFromSuperview()

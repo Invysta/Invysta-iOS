@@ -84,27 +84,23 @@ class ViewController: BaseViewController {
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             
-            guard let res = response as? HTTPURLResponse else { return }
-            
-            if let xacid = res.allHeaderFields["X-ACID"] as? String {
-               
-                switch browserData.callType {
-                case .login:
-                    self?.authenticate(with: xacid, browserData)
-                case .register:
-                    self?.registerDevice(with: xacid, browserData)
-                default:
-                    return
-                }
-                
-            } else {
-                DispatchQueue.main.async {
-                    self?.debuggingTextField.text = "Could not get xacid"
-                    self?.displayMessage(title: "Error", message: "Something went wrong and unable to retrieve X-ACID key. Please try again.")
-                    self?.removeLoadingView()
-                }
+            guard let res = response as? HTTPURLResponse,
+                  let xacid = res.allHeaderFields["X-ACID"] as? String else {
+                self?.response(with: "Error",
+                               and: "Something went wrong and unable to retrieve X-ACID key. Please try again.",
+                               false)
+                return
             }
             
+            switch browserData.callType {
+            case .login:
+                self?.authenticate(with: xacid, browserData)
+            case .register:
+                self?.registerDevice(with: xacid, browserData)
+            default:
+                return
+            }
+
         })
     }
     
@@ -117,8 +113,17 @@ class ViewController: BaseViewController {
                                     xacid: xacid)
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
-            guard let res = response as? HTTPURLResponse else { return }
-            self?.networkManagerResponse(with: res)
+            guard let res = response as? HTTPURLResponse else {
+                self?.response(with: "Error", and: "Something went wrong. Please try again later.", false)
+                return
+            }
+            
+            if (200...299) ~= res.statusCode {
+                self?.response(with: "Registration Complete!", and: "", false)
+            } else {
+                self?.response(with: "Registration Failed", and: "", false)
+            }
+            
         })
     }
     
@@ -132,24 +137,20 @@ class ViewController: BaseViewController {
                                     xacid: xacid)
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
-            guard let res = response as? HTTPURLResponse else { return }
-            self?.networkManagerResponse(with: res)
+            guard let res = response as? HTTPURLResponse else {
+                self?.response(with: "Error", and: "Something went wrong. Please try again later.", false)
+                return
+            }
+            
+            if (200...299) ~= res.statusCode {
+                self?.response(with: "Successfully Logged In!", and: "You can now safely return to your app.")
+            } else if res.statusCode == 401 {
+                self?.response(with: "Login Failed.", and: "Username or password me be incorrect, or your device is not registered.")
+            }
+            
         })
     }
-    
-//    MARK: Network Response
-    private func networkManagerResponse(with response: HTTPURLResponse) {
-        DispatchQueue.main.async { [weak self] in
-            if (200...299) ~= response.statusCode {
-                self?.perform(#selector(self!.successfulRequest), with: self, afterDelay: 1.5)
-            } else {
-                self?.debuggingTextField.text = "Status Code: \(response.statusCode)"
-                self?.perform(#selector(self!.failedRequest), with: self, afterDelay: 1.5)
-            }
-        }
-        
-    }
- 
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
