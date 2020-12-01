@@ -16,15 +16,14 @@ class InvystaViewControllerTests: XCTestCase {
     var identifierManager: IdentifierManager!
     var mockSession: MockURLSession!
     
-    var mockPost = MockPOSTSessionDataTask()
-    var mockGet = MockGETSessionDataTask()
+    var mock = MockSessionDataTask()
     
     var sources = ""
     
     override func setUp() {
         super.setUp()
         
-        mockSession = MockURLSession(mockGet, mockPost)
+        mockSession = MockURLSession(mock)
         
         browserData = BrowserData(action: "log", encData: "some-enc-data", magic: "some-magic-number")
         networkManager = NetworkManager(mockSession)
@@ -55,6 +54,6 @@ class InvystaViewControllerTests: XCTestCase {
         
         vc.authenticate(with: "X-ACID-MOCK", browserData)
         
-        XCTAssertEqual(mockSession.lastRequestURL!.body!, identifierManager.compiledSources! + "🙏🏻")
+        XCTAssertEqual(mockSession.lastRequestURL!.body!, identifierManager.compiledSources!)
     }
 }

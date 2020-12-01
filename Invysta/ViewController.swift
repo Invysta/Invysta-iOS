@@ -119,7 +119,7 @@ class ViewController: BaseViewController {
             }
             
             if (200...299) ~= res.statusCode {
-                self?.response(with: "Registration Complete!", and: "", false)
+                self?.response(with: "Registration Complete!", and: "You can now safely return to your app.", false)
             } else {
                 self?.response(with: "Registration Failed", and: "", false)
             }

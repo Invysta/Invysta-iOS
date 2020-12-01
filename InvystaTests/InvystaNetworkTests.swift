@@ -9,20 +9,35 @@ import XCTest
 
 class InvystaNetworkTests: XCTestCase {
 
-    func testPOSTNetworkCall() {
+    func testGETNetworkCall() {
         
-        let mockPost = MockPOSTSessionDataTask()
-        let mockGet = MockGETSessionDataTask()
+        let mock = MockSessionDataTask()
         
-        let mockSession = MockURLSession(mockGet,mockPost)
+        let mockSession = MockURLSession(mock)
         let networkManager = NetworkManager(mockSession)
         
         let browserData = BrowserData(action: "log", encData: "some-encrypted-data", magic: "some-magic-number")
+        let req = RequestURL(requestType: .get, browserData: browserData)
+                
+        networkManager.call(req) { (data, response, error) in
+            XCTAssertEqual(String(data: data!, encoding: .utf8), "SomeData")
+            XCTAssertEqual(response!.url!, URL(string: "https://invystasafe.com/login")!)
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testPOSTNetworkCall() {
+        let mock = MockSessionDataTask()
+        
+        let mockSession = MockURLSession(mock)
+        let networkManager = NetworkManager(mockSession)
+        
+        let browserData = BrowserData(action: "reg", encData: "some-encrypted-data", magic: "some-magic-number")
         let req = RequestURL(requestType: .post, browserData: browserData)
                 
         networkManager.call(req) { (data, response, error) in
             XCTAssertEqual(String(data: data!, encoding: .utf8), "SomeData")
-            XCTAssertEqual(response!.url!, URL(string: "https://someurl.com")!)
+            XCTAssertEqual(response!.url!, URL(string: "https://invystasafe.com/register")!)
             XCTAssertNil(error)
         }
     }
@@ -36,21 +51,9 @@ struct MockIdentifier: IdentifierSource {
     }
 }
 
-final class MockPOSTSessionDataTask: URLSessionDataTaskProtocol {
+final class MockSessionDataTask: URLSessionDataTaskProtocol {
+    var url: RequestURL?
     var didResume: Bool = false
-    var url: RequestURL!
-    func resume() {
-        didResume = true
-    }
-    
-    func data(_ completion: (Data?, URLResponse?, Error?) -> Void) {
-        completion(nil,nil,nil)
-    }
-}
-
-final class MockGETSessionDataTask: URLSessionDataTaskProtocol {
-    var didResume: Bool = false
-    var url: RequestURL!
     
     func resume() {
         didResume = true
@@ -58,7 +61,7 @@ final class MockGETSessionDataTask: URLSessionDataTaskProtocol {
     
     func data(_ completion: (Data?, URLResponse?, Error?) -> Void) {
         let data = "SomeData".data(using: .utf8)
-        let response = HTTPURLResponse(url: url.url.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: ["X-ACID":"X-ACID-MOCK"])
+        let response = HTTPURLResponse(url: url!.url.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: ["X-ACID":"X-ACID-MOCK"])
         completion(data,response,nil)
     }
 }
@@ -67,32 +70,17 @@ final class MockURLSession: URLSessionProtocol {
     
     private(set) var lastRequestURL: RequestURL?
     
-    var mockGet: MockGETSessionDataTask
-    var mockPost: MockPOSTSessionDataTask
+    var mock: URLSessionDataTaskProtocol
     
-    init(_ mockGet: MockGETSessionDataTask,_ mockPost: MockPOSTSessionDataTask) {
-        self.mockGet = mockGet
-        self.mockPost = mockPost
+    init(_ mock: URLSessionDataTaskProtocol) {
+        self.mock = mock
     }
     
-    func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-
-        if url.requestType == .get {
-            
-            lastRequestURL = url
-            mockGet.url = url
-            mockGet.data(completion)
-            return mockGet
-        } else {
-            var reqUrl = url
-            reqUrl.body = url.body! + "🙏🏻"
-            lastRequestURL = reqUrl
-            mockPost.url = reqUrl
-            mockPost.data(completion)
-            return mockPost
-        }
+    func dataTask(with url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+        lastRequestURL = url
+        mock.url = url
+        mock.data(completion)
+        return mock
+    }
         
-    }
-    
-    
 }

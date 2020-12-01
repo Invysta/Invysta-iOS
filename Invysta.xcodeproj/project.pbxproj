@@ -50,7 +50,6 @@
 		01754A102534F35A00487C74 /* RequestURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E62534DBF400487C74 /* RequestURL.swift */; };
 		01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549EC2534EF1900487C74 /* VendorIdentifier.swift */; };
 		01754A142534F35D00487C74 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AccessibilityIdentifier.swift */; };
-		01754A1A2535174F00487C74 /* InvystaIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A192535174F00487C74 /* InvystaIdentifierTests.swift */; };
 		01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A2125351B8600487C74 /* CustomIdentifier.swift */; };
 		01817368254372E80065DB52 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 01817367254372E80065DB52 /* loading.json */; };
 		018355452568870D00F1D868 /* FirstTimeInstallationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */; };
@@ -103,7 +102,6 @@
 		01754A002534F34A00487C74 /* InvystaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvystaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01754A022534F34A00487C74 /* InvystaNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaNetworkTests.swift; sourceTree = "<group>"; };
 		01754A042534F34A00487C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01754A192535174F00487C74 /* InvystaIdentifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaIdentifierTests.swift; sourceTree = "<group>"; };
 		01754A2125351B8600487C74 /* CustomIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIdentifier.swift; sourceTree = "<group>"; };
 		01817367254372E80065DB52 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		01A4745A25369FCD00D19006 /* Invysta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invysta.entitlements; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 			children = (
 				014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */,
 				01754A022534F34A00487C74 /* InvystaNetworkTests.swift */,
-				01754A192535174F00487C74 /* InvystaIdentifierTests.swift */,
 				01754A042534F34A00487C74 /* Info.plist */,
 			);
 			path = InvystaTests;
@@ -419,7 +416,6 @@
 				01754A0C2534F35800487C74 /* NetworkManager.swift in Sources */,
 				014A6E3A2563378000264CE3 /* InvystaViewControllerTests.swift in Sources */,
 				018355452568870D00F1D868 /* FirstTimeInstallationIdentifier.swift in Sources */,
-				01754A1A2535174F00487C74 /* InvystaIdentifierTests.swift in Sources */,
 				01076DF52560985E009847D6 /* BaseViewController.swift in Sources */,
 				01B4339D253A8C99001BD585 /* BrowserData.swift in Sources */,
 				01076DF42560985E009847D6 /* LoadingView.swift in Sources */,

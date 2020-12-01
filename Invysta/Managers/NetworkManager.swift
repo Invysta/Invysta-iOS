@@ -8,34 +8,32 @@
 import UIKit
 
 protocol URLSessionProtocol {
-    func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+    func dataTask(with url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
       -> URLSessionDataTaskProtocol
 }
 
 protocol URLSessionDataTaskProtocol {
-    var didResume: Bool { get set }
+    var url: RequestURL? { get set }
     func resume()
     func data(_ completion: (Data?, URLResponse?, Error?) -> Void)
 }
 
 extension URLSessionDataTask: URLSessionDataTaskProtocol {
-    var didResume: Bool {
+    var url: RequestURL? {
         get {
-            return false
+            return nil
         }
-        set {
-            
-        }
+        set {}
     }
     
     func data(_ completion: (Data?, URLResponse?, Error?) -> Void) {}
 }
 
 extension URLSession: URLSessionProtocol {
-    func dataTaskWithUrl(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+    func dataTask(with url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+      -> URLSessionDataTaskProtocol {
         return dataTask(with: url.url, completionHandler: completion)
     }
-
 }
 
 final class NetworkManager {
@@ -56,7 +54,7 @@ final class NetworkManager {
     }
     
     public func call(_ url: RequestURL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        session?.dataTaskWithUrl(url, completion: completion).resume()
+        session?.dataTask(with: url, completion: completion).resume()
     }
  
 }
