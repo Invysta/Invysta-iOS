@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>InvystaSafe</string>
+	<string>Invysta Aware</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -25,7 +25,7 @@
 			<string>com.invysta.ios</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>InvystaSafeiOS</string>
+				<string>invystasafeios</string>
 			</array>
 		</dict>
 	</array>

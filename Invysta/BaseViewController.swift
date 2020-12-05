@@ -18,6 +18,9 @@ class BaseViewController: UIViewController {
         label.textAlignment = .center
         label.font = .preferredFont(forTextStyle: .largeTitle)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.25
+        label.numberOfLines = 2
         return label
     }()
     
@@ -99,12 +102,12 @@ class BaseViewController: UIViewController {
 //    MARK: Display Message
     func displayInvystaLogo() {
         view.addSubview(invystaLogo)
-        
+//        print(view.frame.width, 250.0, 250.0 / view.frame.width)
         NSLayoutConstraint.activate([
             invystaLogo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             invystaLogo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            invystaLogo.widthAnchor.constraint(equalToConstant: 250),
-            invystaLogo.heightAnchor.constraint(equalToConstant: 250)
+            invystaLogo.widthAnchor.constraint(equalToConstant: view.frame.width * 0.70),
+            invystaLogo.heightAnchor.constraint(equalToConstant: view.frame.width * 0.39)
         ])
         
         view.layoutIfNeeded()
@@ -119,10 +122,10 @@ class BaseViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         
-        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: invystaLogo.bottomAnchor, constant: -25),
+        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: invystaLogo.bottomAnchor, constant: 25),
                                      titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
                                      titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-                                     titleLabel.heightAnchor.constraint(equalToConstant: 35),
+                                     titleLabel.heightAnchor.constraint(equalToConstant: 40),
                                      
                                      descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
                                      descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),

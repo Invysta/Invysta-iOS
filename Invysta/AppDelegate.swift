@@ -39,13 +39,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func process(_ url: URL) -> BrowserData? {
         guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
+        
         var data = [String: String]()
         
         for component in components {
             data[component.name] = component.value
         }
         
-        return BrowserData(action: data["action"]!, oneTimeCode: data["otc"], encData: data["encData"]!, magic: data["magic"]!)
+        return BrowserData(action: data["action"]!,
+                           oneTimeCode: data["otc"],
+                           encData: data["encData"]!,
+                           magic: data["magic"]!)
     }
     
     func launchViewController(_ browserData: BrowserData? = nil) {

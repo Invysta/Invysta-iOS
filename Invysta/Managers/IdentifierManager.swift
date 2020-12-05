@@ -32,7 +32,8 @@ final class IdentifierManager: Identifier {
     
     private(set) var compiledSources: String?
     
-    init(_ browserData: BrowserData,_ sources: [IdentifierSource] = [IdentifierSource]()) {
+    init(_ browserData: BrowserData,
+         _ sources: [IdentifierSource] = [IdentifierSource]()) {
         
         self.browserData = browserData
         

@@ -44,8 +44,6 @@ class ViewController: BaseViewController {
             return
         }
         
-        beginInvystaProcess(with: browserData)
-        
         if FeatureFlag.showDebuggingTextField {
             let text = """
                             action: \(browserData?.action  ?? "na")\n
@@ -55,11 +53,15 @@ class ViewController: BaseViewController {
                     """
             createDebuggingField(text)
         }
+        
+        
+        if let browserData = browserData {
+            beginInvystaProcess(with: browserData)
+        }
     }
     
 //    MARK: Begin Invysta Process
-    func beginInvystaProcess(with browserData: BrowserData?) {
-        guard let browserData = self.browserData else { return }
+    func beginInvystaProcess(with browserData: BrowserData) {
         
         guard UserDefaults.standard.bool(forKey: "DeviceSecurity") else {
             requestXACIDKey(browserData)

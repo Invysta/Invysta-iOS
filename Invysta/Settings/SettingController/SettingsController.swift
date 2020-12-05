@@ -43,7 +43,7 @@ final class SettingsController: UIViewController, UITableViewDataSource, UITable
         settingTableView.dataSource = self
         
         settingManager.cellRegistration(to: settingTableView)
-        title = "Invysta Safe"
+        title = "Settings"
     }
     
     func initUI() {
