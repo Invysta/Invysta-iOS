@@ -65,8 +65,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
         
+        let activityController = ActivityViewController()
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [activityController]
+        
+        let tabBarcontroller = UITabBarController()
+        
+        vc?.title = "Home"
+        navigationController.title = "Activity"
+        
+        tabBarcontroller.viewControllers = [vc!, navigationController]
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.rootViewController = vc
+        window?.rootViewController = tabBarcontroller
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
     }

@@ -55,7 +55,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func launchViewController(_ browserData: BrowserData? = nil) {
         vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
         
-        window?.rootViewController = vc
+        let activityController = ActivityViewController()
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [activityController]
+        
+        let tabViewController = UITabBarController()
+        
+        navigationController.title = "Activity"
+        vc?.title = "Home"
+        tabViewController.viewControllers = [vc!, navigationController]
+        
+        window?.rootViewController = tabViewController
         window?.makeKeyAndVisible()
     }
     
