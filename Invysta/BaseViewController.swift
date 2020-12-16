@@ -13,6 +13,8 @@ class BaseViewController: UIViewController {
     var browserData: BrowserData?
     var stackContainer: UIStackView?
     
+    let coreDataManager: PersistenceManager = PersistenceManager.shared
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -49,7 +51,7 @@ class BaseViewController: UIViewController {
     
     var loadingView: LoadingView?
     
-    private var pointerView: AnimationView = {
+    var pointerView: AnimationView = {
         let view = AnimationView()
         view.animation = Animation.named("pointer-black")
         view.animationSpeed = 2
@@ -69,7 +71,6 @@ class BaseViewController: UIViewController {
         }
         
         displayInvystaLogo()
-        displaySettingButton()
         preparePointerAnimation()
     }
     
@@ -164,26 +165,6 @@ class BaseViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
-//    MARK: Display Setting Button
-    func displaySettingButton() {
-        let settingButton = UIButton()
-        settingButton.setImage(UIImage(named: "settings"), for: .normal)
-        settingButton.translatesAutoresizingMaskIntoConstraints = false
-        settingButton.addTarget(self, action: #selector(moveToSettings), for: .touchUpInside)
-        view.addSubview(settingButton)
-        
-        let padding: CGFloat = 20
-        let size: CGFloat = 30
-        
-        NSLayoutConstraint.activate([
-            settingButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            settingButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            settingButton.heightAnchor.constraint(equalToConstant: size),
-            settingButton.widthAnchor.constraint(equalToConstant: size)
-        ])
-        view.layoutIfNeeded()
-    }
-    
 //    MARK: Display LoadingView
     func displayLoadingView() {
         loadingView = LoadingView(frame: view.frame)
@@ -216,7 +197,18 @@ class BaseViewController: UIViewController {
                                      debuggingTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
     }
     
-    func response(with title: String, and message: String,_ showPointer: Bool = true) {
+    func response(with title: String, and message: String, statusCode: Int,_ showPointer: Bool = true) {
+        let activityManager = ActivityManager(coreDataManager)
+        
+        let activity = Activity(context: coreDataManager.context)
+        activity.date = Date()
+        activity.website = browserData?.url
+        activity.title = title
+        activity.message = message
+        activity.type = browserData?.action
+        activity.statusCode = Int16(statusCode)
+        activityManager.saveResults(activity: activity)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             if showPointer {
                 self?.displayPointerView()

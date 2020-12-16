@@ -49,21 +49,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return BrowserData(action: data["action"]!,
                            oneTimeCode: data["otc"],
                            encData: data["encData"]!,
-                           magic: data["magic"]!)
+                           magic: data["magic"]!,
+                           url: url)
     }
     
     func launchViewController(_ browserData: BrowserData? = nil) {
-        vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
-        
-        let activityController = ActivityViewController()
-        let navigationController = UINavigationController()
-        navigationController.viewControllers = [activityController]
-        
         let tabViewController = UITabBarController()
         
-        navigationController.title = "Activity"
+        vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
         vc?.title = "Home"
-        tabViewController.viewControllers = [vc!, navigationController]
+        
+        let activityController = GlobalPreferences.makeNavigationController(ActivityViewController())
+        activityController.title = "Activity"
+        
+        let settingsController = GlobalPreferences.makeNavigationController(SettingsController())
+        settingsController.title = "Settings"
+        
+        tabViewController.viewControllers = [vc!, activityController, settingsController]
+        tabViewController.tabBar.items?[0].image = UIImage(named: "home")
+        tabViewController.tabBar.items?[1].image = UIImage(named: "activity")
+        tabViewController.tabBar.items?[2].image = UIImage(named: "settings")
         
         window?.rootViewController = tabViewController
         window?.makeKeyAndVisible()

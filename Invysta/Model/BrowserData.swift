@@ -12,6 +12,7 @@ struct BrowserData {
     var oneTimeCode: String?
     var encData: String
     var magic: String
+    var url: URL
     
     var callType: CallType {
         switch action {

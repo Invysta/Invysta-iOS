@@ -24,15 +24,18 @@
 		01076E112560987D009847D6 /* pointer-white.json in Resources */ = {isa = PBXBuildFile; fileRef = 01EFEDA5255F52FF00B50D05 /* pointer-white.json */; };
 		010AD0AF256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */; };
 		010AD0B325678CD700B53B2A /* CellularIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0B225678CD700B53B2A /* CellularIdentifier.swift */; };
+		010D73EF2589A221002090A5 /* GlobalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D73EE2589A221002090A5 /* GlobalPreferences.swift */; };
 		0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
 		011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC40C255659C40044980C /* DeviceModelIdentifier.swift */; };
 		011AC42E2557373D0044980C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC42B2557373D0044980C /* SettingsController.swift */; };
 		011AC4402557D2540044980C /* PrivacyPolicyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */; };
 		011AC4462557D30F0044980C /* AppVersionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC4452557D30F0044980C /* AppVersionItem.swift */; };
+		0123704625898093005C49A2 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0123704525898093005C49A2 /* ActivityDetailViewController.swift */; };
 		012430332542704E00722112 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012430322542704E00722112 /* FeatureFlag.swift */; };
 		01243038254270AD00722112 /* FeatureFlag+BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */; };
 		012774D4255FDB05009C1B8D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 012774D3255FDB05009C1B8D /* Lottie */; };
 		014A6E3A2563378000264CE3 /* InvystaViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */; };
+		014AB32C2589972400645998 /* ActivitySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014AB32B2589972400645998 /* ActivitySettingsViewController.swift */; };
 		016BC1462565A93B007F6054 /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */; };
 		0175301F2582F9B100822C03 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175301E2582F9B100822C03 /* ActivityViewController.swift */; };
 		017549CE2534D99900487C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CD2534D99900487C74 /* AppDelegate.swift */; };
@@ -52,6 +55,8 @@
 		01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549EC2534EF1900487C74 /* VendorIdentifier.swift */; };
 		01754A142534F35D00487C74 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AccessibilityIdentifier.swift */; };
 		01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A2125351B8600487C74 /* CustomIdentifier.swift */; };
+		0179666B2589762E00BF6932 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179666A2589762E00BF6932 /* ActivityManager.swift */; };
+		0179666F2589764F00BF6932 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179666E2589764F00BF6932 /* PersistenceManager.swift */; };
 		01817368254372E80065DB52 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 01817367254372E80065DB52 /* loading.json */; };
 		018355452568870D00F1D868 /* FirstTimeInstallationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */; };
 		018355462568870D00F1D868 /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */; };
@@ -81,14 +86,17 @@
 /* Begin PBXFileReference section */
 		010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeInstallationIdentifier.swift; sourceTree = "<group>"; };
 		010AD0B225678CD700B53B2A /* CellularIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularIdentifier.swift; sourceTree = "<group>"; };
+		010D73EE2589A221002090A5 /* GlobalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPreferences.swift; sourceTree = "<group>"; };
 		0114C797253A768100DD4DF2 /* BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserData.swift; sourceTree = "<group>"; };
 		011AC40C255659C40044980C /* DeviceModelIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelIdentifier.swift; sourceTree = "<group>"; };
 		011AC42B2557373D0044980C /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyItem.swift; sourceTree = "<group>"; };
 		011AC4452557D30F0044980C /* AppVersionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionItem.swift; sourceTree = "<group>"; };
+		0123704525898093005C49A2 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		012430322542704E00722112 /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
 		01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeatureFlag+BrowserData.swift"; sourceTree = "<group>"; };
 		014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaViewControllerTests.swift; sourceTree = "<group>"; };
+		014AB32B2589972400645998 /* ActivitySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySettingsViewController.swift; sourceTree = "<group>"; };
 		016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCheckIdentifier.swift; sourceTree = "<group>"; };
 		0175301E2582F9B100822C03 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		017549CA2534D99900487C74 /* Invysta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invysta.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +115,8 @@
 		01754A022534F34A00487C74 /* InvystaNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaNetworkTests.swift; sourceTree = "<group>"; };
 		01754A042534F34A00487C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01754A2125351B8600487C74 /* CustomIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIdentifier.swift; sourceTree = "<group>"; };
+		0179666A2589762E00BF6932 /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		0179666E2589764F00BF6932 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		01817367254372E80065DB52 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		01A4745A25369FCD00D19006 /* Invysta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invysta.entitlements; sourceTree = "<group>"; };
 		01AE631A257EB718005DECC6 /* History.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = History.xcdatamodel; sourceTree = "<group>"; };
@@ -158,6 +168,18 @@
 			path = InfoSection;
 			sourceTree = "<group>";
 		};
+		01237049258992AB005C49A2 /* ActivityController */ = {
+			isa = PBXGroup;
+			children = (
+				0175301E2582F9B100822C03 /* ActivityViewController.swift */,
+				014AB32B2589972400645998 /* ActivitySettingsViewController.swift */,
+				0123704525898093005C49A2 /* ActivityDetailViewController.swift */,
+				0179666A2589762E00BF6932 /* ActivityManager.swift */,
+				0179666E2589764F00BF6932 /* PersistenceManager.swift */,
+			);
+			path = ActivityController;
+			sourceTree = "<group>";
+		};
 		012430362542706200722112 /* FeatureFlag */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,9 +215,9 @@
 				017549CD2534D99900487C74 /* AppDelegate.swift */,
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
-				0175301E2582F9B100822C03 /* ActivityViewController.swift */,
 				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				01EFEDA9255F600200B50D05 /* LoadingView.swift */,
+				01237049258992AB005C49A2 /* ActivityController */,
 				012430362542706200722112 /* FeatureFlag */,
 				01D671A425591943002FB92B /* Settings */,
 				01D671A925591955002FB92B /* Model */,
@@ -227,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				017549F52534F01200487C74 /* NetworkManager.swift */,
+				010D73EE2589A221002090A5 /* GlobalPreferences.swift */,
 				017549E92534EC9D00487C74 /* IdentifierManager.swift */,
 			);
 			path = Managers;
@@ -396,12 +419,17 @@
 				01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */,
 				01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */,
 				011AC4462557D30F0044980C /* AppVersionItem.swift in Sources */,
+				010D73EF2589A221002090A5 /* GlobalPreferences.swift in Sources */,
 				017549E72534DBF400487C74 /* RequestURL.swift in Sources */,
 				01EFED92255F273100B50D05 /* SettingManager.swift in Sources */,
+				0179666B2589762E00BF6932 /* ActivityManager.swift in Sources */,
 				017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */,
 				011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */,
 				011AC42E2557373D0044980C /* SettingsController.swift in Sources */,
+				0179666F2589764F00BF6932 /* PersistenceManager.swift in Sources */,
 				017549F62534F01200487C74 /* NetworkManager.swift in Sources */,
+				0123704625898093005C49A2 /* ActivityDetailViewController.swift in Sources */,
+				014AB32C2589972400645998 /* ActivitySettingsViewController.swift in Sources */,
 				011AC4402557D2540044980C /* PrivacyPolicyItem.swift in Sources */,
 				010AD0B325678CD700B53B2A /* CellularIdentifier.swift in Sources */,
 				0175301F2582F9B100822C03 /* ActivityViewController.swift in Sources */,

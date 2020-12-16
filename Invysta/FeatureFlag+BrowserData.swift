@@ -19,7 +19,7 @@ final class FeatureFlagBrowserData: FeatureFlagType {
         if trigger {
             return BrowserData(action: "log",
                                encData: "encData",
-                               magic: "magicVal")
+                               magic: "magicVal", url: URL(string: "https://someurl.com")!)
         }
         return nil
     }

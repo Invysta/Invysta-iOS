@@ -58,23 +58,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             data[component.name] = component.value
         }
         
-        return BrowserData(action: data["action"]!, oneTimeCode: data["otc"], encData: data["encData"]!, magic: data["magic"]!)
+        return BrowserData(action: data["action"]!,
+                           oneTimeCode: data["otc"],
+                           encData: data["encData"]!,
+                           magic: data["magic"]!,
+                           url: url)
     }
     
     func launchViewController(_ windowScene: UIWindowScene, _ browserData: BrowserData? = nil) {
-        
-        vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
-        
-        let activityController = ActivityViewController()
-        let navigationController = UINavigationController()
-        navigationController.viewControllers = [activityController]
-        
         let tabBarcontroller = UITabBarController()
         
+        vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
         vc?.title = "Home"
-        navigationController.title = "Activity"
         
-        tabBarcontroller.viewControllers = [vc!, navigationController]
+        let activityController = GlobalPreferences.makeNavigationController(ActivityViewController())
+        activityController.title = "Activity"
+        
+        let settingsController = GlobalPreferences.makeNavigationController(SettingsController())
+        settingsController.title = "Settings"
+        
+        tabBarcontroller.viewControllers = [vc!, activityController, settingsController]
+        tabBarcontroller.tabBar.items?[0].image = UIImage(named: "home")
+        tabBarcontroller.tabBar.items?[1].image = UIImage(named: "activity")
+        tabBarcontroller.tabBar.items?[2].image = UIImage(named: "settings")
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.rootViewController = tabBarcontroller
