@@ -40,23 +40,6 @@ class ViewController: BaseViewController {
         
         initUI()
         
-        if FeatureFlagBrowserData().trigger {
-            displayLoadingView()
-            authenticate(with: "123321", browserData!)
-            return
-        }
-        
-        if FeatureFlag.showDebuggingTextField {
-            let text = """
-                            action: \(browserData?.action  ?? "na")\n
-                            encData: \(browserData?.encData ?? "na")\n
-                            magic: \(browserData?.magic ?? "na")\n
-                            oneTimeCode: \(browserData?.oneTimeCode ?? "na")
-                    """
-            createDebuggingField(text)
-        }
-        
-        
         if let browserData = browserData {
             beginInvystaProcess(with: browserData)
         }
@@ -96,7 +79,7 @@ class ViewController: BaseViewController {
             
             guard let res = response as? HTTPURLResponse,
                   let xacid = res.allHeaderFields["X-ACID"] as? String else {
-                self?.response(with: "Error", and: "Something went wrong and unable to retrieve X-ACID key.", statusCode: 0)
+                self?.response(with: "Error", and: "Something went wrong and unable to retrieve X-ACID key.", statusCode: 0, false)
                 return
             }
             
@@ -129,7 +112,7 @@ class ViewController: BaseViewController {
             if (200...299) ~= res.statusCode {
                 self?.response(with: "Registration Complete!", and: "You can now safely return to your app.", statusCode: res.statusCode, false)
             } else {
-                self?.response(with: "Registration Failed", and: "You can now safely return to your app.", statusCode: res.statusCode, false)
+                self?.response(with: "Registration Failed", and: "Either the email or pass", statusCode: res.statusCode, false)
             }
             
         })
@@ -146,7 +129,6 @@ class ViewController: BaseViewController {
         
         networkManager?.call(requestURL, completion: { [weak self] (data, response, error) in
             guard let res = response as? HTTPURLResponse else {
-//                self?.response(with: "Error", and: "Something went wrong. Please try again later.", false)
                 self?.response(with: "Error", and: "Something went wrong. Please try again later.", statusCode: 0, false)
                 return
             }
@@ -154,7 +136,7 @@ class ViewController: BaseViewController {
             if (200...299) ~= res.statusCode {
                 self?.response(with: "Successfully Logged In!", and: "You can now safely return to your app.", statusCode: res.statusCode)
             } else if res.statusCode == 401 {
-                self?.response(with: "Login Failed", and: "Username or password me be incorrect, or your device is not registered.", statusCode: res.statusCode)
+                self?.response(with: "Login Failed", and: "Username or password me be incorrect, or your device is not registered.", statusCode: res.statusCode, false)
             }
             
         })

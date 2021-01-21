@@ -103,7 +103,6 @@ class BaseViewController: UIViewController {
 //    MARK: Display Message
     func displayInvystaLogo() {
         view.addSubview(invystaLogo)
-//        print(view.frame.width, 250.0, 250.0 / view.frame.width)
         NSLayoutConstraint.activate([
             invystaLogo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             invystaLogo.centerYAnchor.constraint(equalTo: view.centerYAnchor),

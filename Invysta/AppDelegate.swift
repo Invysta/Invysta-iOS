@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        
         launchViewController(process(url))
         
         return true
@@ -30,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         if #available(iOS 13, *) { return true }
-
-        window = UIWindow(frame: UIScreen.main.bounds)
         launchViewController()
         
         return true
@@ -54,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func launchViewController(_ browserData: BrowserData? = nil) {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
         let tabViewController = UITabBarController()
         
         vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
@@ -71,6 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabViewController.tabBar.items?[2].image = UIImage(named: "settings")
         
         window?.rootViewController = tabViewController
+        window?.makeKeyAndVisible()
+    }
+    
+    func firstTimeUser() {
+        let registerController = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController")
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = registerController
         window?.makeKeyAndVisible()
     }
     

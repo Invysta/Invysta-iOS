@@ -34,6 +34,8 @@
 		012430332542704E00722112 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012430322542704E00722112 /* FeatureFlag.swift */; };
 		01243038254270AD00722112 /* FeatureFlag+BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */; };
 		012774D4255FDB05009C1B8D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 012774D3255FDB05009C1B8D /* Lottie */; };
+		012C3AB625BA3C8D003B2F5D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */; };
+		012C3ABA25BA3CBF003B2F5D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012C3AB925BA3CBF003B2F5D /* Register.storyboard */; };
 		014A6E3A2563378000264CE3 /* InvystaViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */; };
 		014AB32C2589972400645998 /* ActivitySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014AB32B2589972400645998 /* ActivitySettingsViewController.swift */; };
 		016BC1462565A93B007F6054 /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */; };
@@ -95,6 +97,8 @@
 		0123704525898093005C49A2 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		012430322542704E00722112 /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
 		01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeatureFlag+BrowserData.swift"; sourceTree = "<group>"; };
+		012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		012C3AB925BA3CBF003B2F5D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		014A6E392563378000264CE3 /* InvystaViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaViewControllerTests.swift; sourceTree = "<group>"; };
 		014AB32B2589972400645998 /* ActivitySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySettingsViewController.swift; sourceTree = "<group>"; };
 		016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceCheckIdentifier.swift; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 				017549CD2534D99900487C74 /* AppDelegate.swift */,
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
+				012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */,
+				012C3AB925BA3CBF003B2F5D /* Register.storyboard */,
 				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				01EFEDA9255F600200B50D05 /* LoadingView.swift */,
 				01237049258992AB005C49A2 /* ActivityController */,
@@ -392,6 +398,7 @@
 				01ED2927255D04440033CAE2 /* pointer-black.json in Resources */,
 				01817368254372E80065DB52 /* loading.json in Resources */,
 				01EFEDA6255F52FF00B50D05 /* pointer-white.json in Resources */,
+				012C3ABA25BA3CBF003B2F5D /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +444,7 @@
 				017549CE2534D99900487C74 /* AppDelegate.swift in Sources */,
 				0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */,
 				017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */,
+				012C3AB625BA3C8D003B2F5D /* RegisterViewController.swift in Sources */,
 				01EFED84255F199200B50D05 /* DeviceSecurityItem.swift in Sources */,
 				017549D02534D99900487C74 /* SceneDelegate.swift in Sources */,
 				016BC1462565A93B007F6054 /* DeviceCheckIdentifier.swift in Sources */,
@@ -622,6 +630,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = WC54Z94VC6;
 				INFOPLIST_FILE = Invysta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -644,6 +653,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = WC54Z94VC6;
 				INFOPLIST_FILE = Invysta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

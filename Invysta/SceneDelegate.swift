@@ -44,13 +44,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let browserData = process(url)
             launchViewController(windowScene,browserData)
         } else {
-            launchViewController(windowScene)
+//            launchViewController(windowScene)
+            firstTimeUser(windowScene)
         }
      
     }
     
+    func firstTimeUser(_ windowScene: UIWindowScene) {
+        let registerController = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController")
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.rootViewController = registerController
+        window?.windowScene = windowScene
+        window?.makeKeyAndVisible()
+    }
+    
     func process(_ url: URL) -> BrowserData? {
         print("PassedURL",url.absoluteString)
+        
         guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
         var data = [String: String]()
         
