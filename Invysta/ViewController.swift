@@ -9,14 +9,14 @@ import UIKit
 import LocalAuthentication
 
 class ViewController: BaseViewController {
-
+    
     private(set)  var identifierManager: IdentifierManager?
     private(set) var networkManager: NetworkManager?
     
     private var error: NSError?
     private let context = LAContext()
-
-//    MARK: Entry Point from Browser
+    
+    //    MARK: Entry Point from Browser
     init(_ browserData: BrowserData,
          _ identifierManager: IdentifierManager? = nil,
          _ networkManager: NetworkManager = NetworkManager()) {
@@ -33,8 +33,8 @@ class ViewController: BaseViewController {
             self.identifierManager = IdentifierManager(browserData)
         }
     }
-   
-//    MARK: ViewDidLoad
+    
+    //    MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,7 +51,7 @@ class ViewController: BaseViewController {
         pointerView.play()
     }
     
-//    MARK: Begin Invysta Process
+    //    MARK: Begin Invysta Process
     func beginInvystaProcess(with browserData: BrowserData) {
         
         guard UserDefaults.standard.bool(forKey: "DeviceSecurity") else {
@@ -66,10 +66,10 @@ class ViewController: BaseViewController {
                 }
             }
         }
-       
+        
     }
-   
-//    MARK: Request XACID
+    
+    //    MARK: Request XACID
     func requestXACIDKey(_ browserData: BrowserData) {
         displayLoadingView()
         
@@ -91,11 +91,11 @@ class ViewController: BaseViewController {
             default:
                 return
             }
-
+            
         })
     }
     
-//    MARK: Register Device with XACID
+    //    MARK: Register Device with XACID
     func registerDevice(with xacid: String,_ browserData: BrowserData) {
         let body = identifierManager?.compiledSources
         let requestURL = RequestURL(requestType: .post,
@@ -118,9 +118,9 @@ class ViewController: BaseViewController {
         })
     }
     
-//    MARK: Authenticate with XACID
+    //    MARK: Authenticate with XACID
     func authenticate(with xacid: String,_ browserData: BrowserData) {
-
+        
         let body = identifierManager?.compiledSources
         let requestURL = RequestURL(requestType: .post,
                                     browserData: browserData,
@@ -149,5 +149,5 @@ class ViewController: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
