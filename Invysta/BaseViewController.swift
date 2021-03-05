@@ -201,7 +201,7 @@ class BaseViewController: UIViewController {
         
         let activity = Activity(context: coreDataManager.context)
         activity.date = Date()
-        activity.website = browserData?.url
+        
         activity.title = title
         activity.message = message
         activity.type = browserData?.action

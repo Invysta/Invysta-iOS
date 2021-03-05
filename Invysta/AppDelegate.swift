@@ -42,11 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             data[component.name] = component.value
         }
         
-        return BrowserData(action: data["action"]!,
-                           oneTimeCode: data["otc"],
-                           encData: data["encData"]!,
-                           magic: data["magic"]!,
-                           url: url)
+        return BrowserData(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
     }
     
     func launchViewController(_ browserData: BrowserData? = nil) {

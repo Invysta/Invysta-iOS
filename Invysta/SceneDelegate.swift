@@ -68,11 +68,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             data[component.name] = component.value
         }
         
-        return BrowserData(action: data["action"]!,
-                           oneTimeCode: data["otc"],
-                           encData: data["encData"]!,
-                           magic: data["magic"]!,
-                           url: url)
+        return BrowserData(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
+
     }
     
     func launchViewController(_ windowScene: UIWindowScene, _ browserData: BrowserData? = nil) {

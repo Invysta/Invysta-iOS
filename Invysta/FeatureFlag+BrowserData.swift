@@ -18,8 +18,8 @@ final class FeatureFlagBrowserData: FeatureFlagType {
     func check() -> Any? {
         if trigger {
             return BrowserData(action: "log",
-                               encData: "encData",
-                               magic: "magicVal", url: URL(string: "https://someurl.com")!)
+                               uid: "encData",
+                               nonce: "magicVal")
         }
         return nil
     }

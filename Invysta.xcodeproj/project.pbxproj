@@ -26,6 +26,7 @@
 		010AD0B325678CD700B53B2A /* CellularIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0B225678CD700B53B2A /* CellularIdentifier.swift */; };
 		010D73EF2589A221002090A5 /* GlobalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D73EE2589A221002090A5 /* GlobalPreferences.swift */; };
 		0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
+		0116500025E9A6890002A5F7 /* RegisterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01164FFF25E9A6890002A5F7 /* RegisterLayer.swift */; };
 		011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC40C255659C40044980C /* DeviceModelIdentifier.swift */; };
 		011AC42E2557373D0044980C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC42B2557373D0044980C /* SettingsController.swift */; };
 		011AC4402557D2540044980C /* PrivacyPolicyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */; };
@@ -45,7 +46,7 @@
 		017549D22534D99900487C74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549D12534D99900487C74 /* ViewController.swift */; };
 		017549D72534D99B00487C74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 017549D62534D99B00487C74 /* Assets.xcassets */; };
 		017549DA2534D99B00487C74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 017549D82534D99B00487C74 /* LaunchScreen.storyboard */; };
-		017549E72534DBF400487C74 /* RequestURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E62534DBF400487C74 /* RequestURL.swift */; };
+		017549E72534DBF400487C74 /* RegistrationURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E62534DBF400487C74 /* RegistrationURL.swift */; };
 		017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E92534EC9D00487C74 /* IdentifierManager.swift */; };
 		017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549EC2534EF1900487C74 /* VendorIdentifier.swift */; };
 		017549F32534EF7600487C74 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AccessibilityIdentifier.swift */; };
@@ -53,7 +54,7 @@
 		01754A032534F34A00487C74 /* InvystaNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A022534F34A00487C74 /* InvystaNetworkTests.swift */; };
 		01754A0C2534F35800487C74 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F52534F01200487C74 /* NetworkManager.swift */; };
 		01754A0D2534F35800487C74 /* IdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E92534EC9D00487C74 /* IdentifierManager.swift */; };
-		01754A102534F35A00487C74 /* RequestURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E62534DBF400487C74 /* RequestURL.swift */; };
+		01754A102534F35A00487C74 /* RegistrationURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549E62534DBF400487C74 /* RegistrationURL.swift */; };
 		01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549EC2534EF1900487C74 /* VendorIdentifier.swift */; };
 		01754A142534F35D00487C74 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549F22534EF7600487C74 /* AccessibilityIdentifier.swift */; };
 		01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01754A2125351B8600487C74 /* CustomIdentifier.swift */; };
@@ -90,6 +91,7 @@
 		010AD0B225678CD700B53B2A /* CellularIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularIdentifier.swift; sourceTree = "<group>"; };
 		010D73EE2589A221002090A5 /* GlobalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPreferences.swift; sourceTree = "<group>"; };
 		0114C797253A768100DD4DF2 /* BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserData.swift; sourceTree = "<group>"; };
+		01164FFF25E9A6890002A5F7 /* RegisterLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLayer.swift; sourceTree = "<group>"; };
 		011AC40C255659C40044980C /* DeviceModelIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelIdentifier.swift; sourceTree = "<group>"; };
 		011AC42B2557373D0044980C /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyItem.swift; sourceTree = "<group>"; };
@@ -110,7 +112,7 @@
 		017549D62534D99B00487C74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		017549D92534D99B00487C74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		017549DB2534D99B00487C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		017549E62534DBF400487C74 /* RequestURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestURL.swift; sourceTree = "<group>"; };
+		017549E62534DBF400487C74 /* RegistrationURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationURL.swift; sourceTree = "<group>"; };
 		017549E92534EC9D00487C74 /* IdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierManager.swift; sourceTree = "<group>"; };
 		017549EC2534EF1900487C74 /* VendorIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorIdentifier.swift; sourceTree = "<group>"; };
 		017549F22534EF7600487C74 /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
 				012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */,
+				01164FFF25E9A6890002A5F7 /* RegisterLayer.swift */,
 				012C3AB925BA3CBF003B2F5D /* Register.storyboard */,
 				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				01EFEDA9255F600200B50D05 /* LoadingView.swift */,
@@ -284,7 +287,7 @@
 		01D671A925591955002FB92B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				017549E62534DBF400487C74 /* RequestURL.swift */,
+				017549E62534DBF400487C74 /* RegistrationURL.swift */,
 				0114C797253A768100DD4DF2 /* BrowserData.swift */,
 			);
 			path = Model;
@@ -427,10 +430,11 @@
 				01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */,
 				011AC4462557D30F0044980C /* AppVersionItem.swift in Sources */,
 				010D73EF2589A221002090A5 /* GlobalPreferences.swift in Sources */,
-				017549E72534DBF400487C74 /* RequestURL.swift in Sources */,
+				017549E72534DBF400487C74 /* RegistrationURL.swift in Sources */,
 				01EFED92255F273100B50D05 /* SettingManager.swift in Sources */,
 				0179666B2589762E00BF6932 /* ActivityManager.swift in Sources */,
 				017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */,
+				0116500025E9A6890002A5F7 /* RegisterLayer.swift in Sources */,
 				011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */,
 				011AC42E2557373D0044980C /* SettingsController.swift in Sources */,
 				0179666F2589764F00BF6932 /* PersistenceManager.swift in Sources */,
@@ -474,7 +478,7 @@
 				01076E0025609869009847D6 /* DeviceSecurityItem.swift in Sources */,
 				01754A0D2534F35800487C74 /* IdentifierManager.swift in Sources */,
 				01076E0A25609872009847D6 /* DeviceModelIdentifier.swift in Sources */,
-				01754A102534F35A00487C74 /* RequestURL.swift in Sources */,
+				01754A102534F35A00487C74 /* RegistrationURL.swift in Sources */,
 				01076DF825609861009847D6 /* FeatureFlag.swift in Sources */,
 				01AE631C257EB718005DECC6 /* Model.xcdatamodeld in Sources */,
 				01076DF925609861009847D6 /* FeatureFlag+BrowserData.swift in Sources */,

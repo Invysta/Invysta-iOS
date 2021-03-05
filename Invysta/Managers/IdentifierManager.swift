@@ -27,45 +27,29 @@ class Identifier {
 
 final class IdentifierManager: Identifier {
     
-    private var sources: [IdentifierSource]
-    private var browserData: BrowserData
+    private var sources = [IdentifierSource]()
     
-    private(set) var compiledSources: String?
+    private let browserData: BrowserData
+    
+    private(set) var compiledSources = [String]()
     
     init(_ browserData: BrowserData,
-         _ sources: [IdentifierSource] = [IdentifierSource]()) {
+         _ sources: [IdentifierSource]? = nil) {
+        
+        self.sources = sources ?? [AccessibilityIdentifier(),
+                                   CellularIdentifier(),
+                                   CustomIdentifier(),
+                                   DeviceCheckIdentifier(),
+                                   DeviceModelIdentifier(),
+                                   FirstTimeInstallationIdentifier(),
+                                   VendorIdentifier()]
         
         self.browserData = browserData
-        
-        self.sources = [AccessibilityIdentifier(),
-                        CellularIdentifier(),
-                        CustomIdentifier(),
-                        DeviceCheckIdentifier(),
-                        DeviceModelIdentifier(),
-                        FirstTimeInstallationIdentifier(),
-                        VendorIdentifier()]
-        
         super.init()
-        compiledSources = compileSources()
-    }
-  
-    private func compileSources() -> String {
-        var param: String
-        param = "caid=" + createClientAgentId()
-        param += "&magic=" + browserData.magic
-        
-        if let otc = browserData.oneTimeCode {
-            param += "&otc=" + otc
-        }
-        
-        for (i,source) in sources.enumerated() where source.identifier() != nil {
-            param += "&id\(i + 1)=" + source.identifier()!
-        }
-
-        return param
+        compiledSources = self.sources.compactMap({ $0.identifier() })
     }
     
-    private func createClientAgentId() -> String {
+    func createClientAgentId() -> String {
         var caid = ""
         
         if let firstIdentifier = sources.first?.identifier() {
@@ -75,8 +59,8 @@ final class IdentifierManager: Identifier {
         if let lastIdentifier = sources.last?.identifier() {
             caid += lastIdentifier
         }
-                
+        
         return SHA256(data: caid.data(using: .ascii))
     }
- 
+    
 }
