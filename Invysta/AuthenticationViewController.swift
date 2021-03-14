@@ -25,23 +25,17 @@ final class AuthenticationViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Authenticating"
-        label.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: .systemFont(ofSize: 25))
+        label.font = .systemFont(ofSize: 35)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let activityIndicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.startAnimating()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
-    }()
-    
-    private let containerStack: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.alignment = .center
-        stack.axis = .vertical
-        stack.spacing = 10
-        return stack
     }()
     
     override func viewDidLoad() {
@@ -61,12 +55,29 @@ final class AuthenticationViewController: UIViewController {
                 print("status code",response.statusCode)
                 
                 if response.statusCode == 400 {
-                    
+                    self.showResults("Login Failed")
                 } else if response.statusCode == 201 {
-                    self.dismiss(animated: true)
+                    self.showResults("Login Successful!")
                 }
             }
         })
+    }
+    
+    func showResults(_ text: String) {
+        let titleLabel = self.titleLabel
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.activityIndicatorView.stopAnimating()
+            
+            UIView.transition(with: titleLabel, duration: 1.0, options: [.curveEaseInOut,.transitionFlipFromTop]) {
+                titleLabel.text = text
+            } completion: { [weak self] (_) in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self?.dismiss(animated: true)
+                }
+            }
+        }
     }
     
     func initUI() {
@@ -77,16 +88,16 @@ final class AuthenticationViewController: UIViewController {
             view.backgroundColor = .white
         }
         
-        containerStack.addArrangedSubview(titleLabel)
-        containerStack.addArrangedSubview(activityIndicatorView)
-        
-        view.addSubview(containerStack)
-        
+        view.addSubview(titleLabel)
+        view.addSubview(activityIndicatorView)
+      
         NSLayoutConstraint.activate([
-            containerStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            containerStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25)
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            activityIndicatorView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
+            activityIndicatorView.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor)
         ])
         
         view.layoutIfNeeded()

@@ -48,7 +48,7 @@ class ViewController: BaseViewController {
                                        nonce: browserData.nonce,
                                        caid: identifierManager.createClientAgentId(),
                                        identifiers: identifierManager.compiledSources)
-        print("auth",browserData.see)
+        
         present(AuthenticationViewController(obj), animated: true)
         
     }

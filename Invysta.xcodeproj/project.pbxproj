@@ -25,7 +25,6 @@
 		010AD0B325678CD700B53B2A /* CellularIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0B225678CD700B53B2A /* CellularIdentifier.swift */; };
 		010D73EF2589A221002090A5 /* GlobalPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D73EE2589A221002090A5 /* GlobalPreferences.swift */; };
 		0114C798253A768100DD4DF2 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
-		0116500025E9A6890002A5F7 /* RegisterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01164FFF25E9A6890002A5F7 /* RegisterLayer.swift */; };
 		011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC40C255659C40044980C /* DeviceModelIdentifier.swift */; };
 		011AC42E2557373D0044980C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC42B2557373D0044980C /* SettingsController.swift */; };
 		011AC4402557D2540044980C /* PrivacyPolicyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */; };
@@ -73,7 +72,6 @@
 		01AE631B257EB718005DECC6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01AE6319257EB718005DECC6 /* Model.xcdatamodeld */; };
 		01AE631C257EB718005DECC6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01AE6319257EB718005DECC6 /* Model.xcdatamodeld */; };
 		01B4339D253A8C99001BD585 /* BrowserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114C797253A768100DD4DF2 /* BrowserData.swift */; };
-		01E6016C25F2DA2F008D49F0 /* AuthLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6016B25F2DA2F008D49F0 /* AuthLayer.swift */; };
 		01E6017025F2EE71008D49F0 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */; };
 		01ED2927255D04440033CAE2 /* pointer-black.json in Resources */ = {isa = PBXBuildFile; fileRef = 01ED2925255D04440033CAE2 /* pointer-black.json */; };
 		01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED7F255F170B00B50D05 /* BaseViewController.swift */; };
@@ -99,7 +97,6 @@
 		010AD0B225678CD700B53B2A /* CellularIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularIdentifier.swift; sourceTree = "<group>"; };
 		010D73EE2589A221002090A5 /* GlobalPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPreferences.swift; sourceTree = "<group>"; };
 		0114C797253A768100DD4DF2 /* BrowserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserData.swift; sourceTree = "<group>"; };
-		01164FFF25E9A6890002A5F7 /* RegisterLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLayer.swift; sourceTree = "<group>"; };
 		011AC40C255659C40044980C /* DeviceModelIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelIdentifier.swift; sourceTree = "<group>"; };
 		011AC42B2557373D0044980C /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyItem.swift; sourceTree = "<group>"; };
@@ -134,7 +131,6 @@
 		01817367254372E80065DB52 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		01A4745A25369FCD00D19006 /* Invysta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invysta.entitlements; sourceTree = "<group>"; };
 		01AE631A257EB718005DECC6 /* History.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = History.xcdatamodel; sourceTree = "<group>"; };
-		01E6016B25F2DA2F008D49F0 /* AuthLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLayer.swift; sourceTree = "<group>"; };
 		01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		01ED2925255D04440033CAE2 /* pointer-black.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pointer-black.json"; sourceTree = "<group>"; };
 		01EFED7F255F170B00B50D05 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -230,13 +226,11 @@
 				01076DEF2560956D009847D6 /* LottieFiles */,
 				017549CD2534D99900487C74 /* AppDelegate.swift */,
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
+				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
 				01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */,
 				012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */,
-				01164FFF25E9A6890002A5F7 /* RegisterLayer.swift */,
-				01E6016B25F2DA2F008D49F0 /* AuthLayer.swift */,
 				012C3AB925BA3CBF003B2F5D /* Register.storyboard */,
-				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				01EFEDA9255F600200B50D05 /* LoadingView.swift */,
 				01237049258992AB005C49A2 /* ActivityController */,
 				012430362542706200722112 /* FeatureFlag */,
@@ -437,7 +431,6 @@
 				012430332542704E00722112 /* FeatureFlag.swift in Sources */,
 				017549F32534EF7600487C74 /* AccessibilityIdentifier.swift in Sources */,
 				010AD0AF256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift in Sources */,
-				01E6016C25F2DA2F008D49F0 /* AuthLayer.swift in Sources */,
 				01AE631B257EB718005DECC6 /* Model.xcdatamodeld in Sources */,
 				01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */,
 				01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */,
@@ -447,7 +440,6 @@
 				01EFED92255F273100B50D05 /* SettingManager.swift in Sources */,
 				0179666B2589762E00BF6932 /* ActivityManager.swift in Sources */,
 				017549EA2534EC9D00487C74 /* IdentifierManager.swift in Sources */,
-				0116500025E9A6890002A5F7 /* RegisterLayer.swift in Sources */,
 				011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */,
 				01E6017025F2EE71008D49F0 /* AuthenticationViewController.swift in Sources */,
 				011AC42E2557373D0044980C /* SettingsController.swift in Sources */,

@@ -14,6 +14,7 @@ final class RegisterViewController: UITableViewController {
     @IBOutlet var otcField: UITextField!
     
     private let identifierManagers = IdentifierManager()
+    private let networkManager = NetworkManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,19 @@ final class RegisterViewController: UITableViewController {
                                      caid: identifierManagers.createClientAgentId(),
                                      otc: "1234",
                                      identifiers: identifierManagers.compiledSources)
-        print(obj.caid)
         
-        RegisterLayer(obj).register()
+        let urlObj = InvystaURL(object: obj)
+        
+        networkManager.call(urlObj) { (data, res, error) in
+            
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: AnyObject] {
+                print(jsonObj)
+            }
+            
+            if let res = res as? HTTPURLResponse {
+                print("status code",res.statusCode)
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
