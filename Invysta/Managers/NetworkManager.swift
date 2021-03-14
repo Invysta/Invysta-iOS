@@ -45,7 +45,7 @@ final class NetworkManager {
         }
     }
     
-    public func call(_ url: InvystaURL<RegistrationObject>, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    public func call<T: InvystaObject>(_ url: InvystaURL<T>, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         session?.dataTask(with: url, completion: completion).resume()
     }
     

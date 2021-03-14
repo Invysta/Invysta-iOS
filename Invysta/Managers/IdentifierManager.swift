@@ -28,13 +28,10 @@ class Identifier {
 final class IdentifierManager: Identifier {
     
     private var sources = [IdentifierSource]()
-    
-    private let browserData: BrowserData
-    
+        
     private(set) var compiledSources = [String]()
     
-    init(_ browserData: BrowserData,
-         _ sources: [IdentifierSource]? = nil) {
+    init(_ sources: [IdentifierSource]? = nil) {
         
         self.sources = sources ?? [AccessibilityIdentifier(),
                                    CellularIdentifier(),
@@ -44,7 +41,6 @@ final class IdentifierManager: Identifier {
                                    FirstTimeInstallationIdentifier(),
                                    VendorIdentifier()]
         
-        self.browserData = browserData
         super.init()
         compiledSources = self.sources.compactMap({ $0.identifier() })
     }

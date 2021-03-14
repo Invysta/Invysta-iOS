@@ -30,14 +30,12 @@ struct AuthenticationObject: InvystaObject {
 
 enum URLType: String {
     case register = "http://192.168.1.207:3003/reg-device"
-    
     case login = "http://192.168.1.207:3003/reg-login"
 }
 
-struct InvystaURL<T> where T: InvystaObject {
+struct InvystaURL<T: InvystaObject> {
     
     var object: T
-    var baseURL: URLType
     
     var url: URLRequest {
         var urlstr: String
@@ -45,9 +43,17 @@ struct InvystaURL<T> where T: InvystaObject {
         if let url = FeatureFlagBrowserData().hookbin() {
             urlstr = url
         } else {
-            urlstr = baseURL.rawValue
+            if object is AuthenticationObject {
+                urlstr = URLType.login.rawValue
+            } else if object is RegistrationObject {
+                urlstr = URLType.register.rawValue
+            } else {
+                urlstr = ""
+            }
         }
         
+        print("URL",urlstr)
+        print("OBJ",object.caid)
         var request = URLRequest(url: URL(string: urlstr)!)
         
         do {

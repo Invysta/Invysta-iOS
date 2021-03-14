@@ -128,6 +128,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailField" destination="t2w-Da-C2Q" id="4s2-D7-W9P"/>
+                        <outlet property="otcField" destination="utp-d2-e9w" id="pqj-YX-DMg"/>
+                        <outlet property="passwordField" destination="dHE-Gz-tb0" id="uT4-WE-azT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4B-ax-HiO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

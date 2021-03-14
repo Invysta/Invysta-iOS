@@ -9,6 +9,12 @@ import UIKit
 
 final class RegisterViewController: UITableViewController {
     
+    @IBOutlet var emailField: UITextField!
+    @IBOutlet var passwordField: UITextField!
+    @IBOutlet var otcField: UITextField!
+    
+    private let identifierManagers = IdentifierManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,16 +23,15 @@ final class RegisterViewController: UITableViewController {
     }
     
     @IBAction func register() {
-        let browserData = BrowserData(action: "log", uid: "uuid", nonce: "ryay5sflif")
-        let id = IdentifierManager(browserData)
         
-        let obj = RegistrationObject(email: "garciacy@invysta.com",
-                                     password: "123321",
-                                     caid: id.createClientAgentId(),
+        let obj = RegistrationObject(email: emailField.text ?? "",
+                                     password: passwordField.text ?? "",
+                                     caid: identifierManagers.createClientAgentId(),
                                      otc: "1234",
-                                     identifiers: id.compiledSources)
-        let reg = RegisterLayer(obj)
-        reg.register()
+                                     identifiers: identifierManagers.compiledSources)
+        print(obj.caid)
+        
+        RegisterLayer(obj).register()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

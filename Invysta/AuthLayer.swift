@@ -1,25 +1,24 @@
 //
-//  RegisterLayer.swift
+//  AuthLayer.swift
 //  Invysta
 //
-//  Created by Cyril Garcia on 2/26/21.
+//  Created by Cyril Garcia on 3/5/21.
 //
 
 import Foundation
 
-final class RegisterLayer {
-    
+final class AuthLayer {
     let networkManager: NetworkManager
-    let regObject: RegistrationObject
+    let authObject: AuthenticationObject
     
-    init(_ regObject: RegistrationObject,
+    init(_ authObject: AuthenticationObject,
          _ networkManager: NetworkManager = NetworkManager()) {
-        self.regObject = regObject
+        self.authObject = authObject
         self.networkManager = networkManager
     }
     
-    func register() {
-        let urlObj = InvystaURL(object: regObject)
+    func auth() {
+        let urlObj = InvystaURL(object: authObject)
         
         networkManager.call(urlObj) { (data, res, error) in
             
