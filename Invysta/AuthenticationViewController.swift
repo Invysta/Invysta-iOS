@@ -46,7 +46,7 @@ final class AuthenticationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        networkManager?.call(InvystaURL(object: authObject), completion: { (data, response, error) in
+        networkManager?.call(InvystaURL(object: authObject), completion: { [weak self] (data, response, error) in
             if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: AnyObject] {
                 print(jsonObj)
             }
@@ -55,25 +55,27 @@ final class AuthenticationViewController: UIViewController {
                 print("status code",response.statusCode)
                 
                 if response.statusCode == 400 {
-                    self.showResults("Login Failed")
+                    self?.showResults("Login Failed")
                 } else if response.statusCode == 201 {
-                    self.showResults("Login Successful!")
+                    self?.showResults("Login Successful!")
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: Notification.displayPointer(), object: nil)
+                    }
                 }
             }
         })
     }
     
     func showResults(_ text: String) {
-        let titleLabel = self.titleLabel
         
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async { [weak activityIndicatorView, unowned titleLabel] in
             
-            self?.activityIndicatorView.stopAnimating()
+            activityIndicatorView?.stopAnimating()
             
             UIView.transition(with: titleLabel, duration: 1.0, options: [.curveEaseInOut,.transitionFlipFromTop]) {
                 titleLabel.text = text
             } completion: { [weak self] (_) in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self?.dismiss(animated: true)
                 }
             }
@@ -90,7 +92,7 @@ final class AuthenticationViewController: UIViewController {
         
         view.addSubview(titleLabel)
         view.addSubview(activityIndicatorView)
-      
+        
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
@@ -102,4 +104,5 @@ final class AuthenticationViewController: UIViewController {
         
         view.layoutIfNeeded()
     }
+    
 }

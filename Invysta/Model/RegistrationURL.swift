@@ -7,27 +7,6 @@
 
 import Foundation
 
-protocol InvystaObject: Codable {
-    associatedtype String
-    var caid: String { get set }
-    var identifiers: [String] { get set }
-}
-
-struct RegistrationObject: InvystaObject {
-    var email: String
-    var password: String
-    var caid: String
-    var otc: String
-    var identifiers: [String]
-}
-
-struct AuthenticationObject: InvystaObject {
-    var uid: String
-    var nonce: String
-    var caid: String
-    var identifiers: [String]
-}
-
 enum URLType: String {
     case register = "http://192.168.1.207:3003/reg-device"
     case login = "http://192.168.1.207:3003/reg-login"

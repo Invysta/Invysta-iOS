@@ -68,14 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
     }
     
-    func firstTimeUser() {
-        let registerController = UIStoryboard(name: "Register", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController")
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = registerController
-        window?.makeKeyAndVisible()
-    }
-    
     func applicationDidEnterBackground(_ application: UIApplication) {
         vc?.removeUneededElements()
     }

@@ -36,21 +36,51 @@ class ViewController: BaseViewController {
     //    MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(displayPointerView),
+                                               name: Notification.displayPointer(),
+                                               object: nil)
         initUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+     
+        if let browserData = browserData {
+            beginAuthProcess(browserData)
+        } else {
+            beginRegistration()
+        }
+    }
+    
+    func beginRegistration() {
         
-        guard let browserData = browserData else { return }
+        if UserDefaults.standard.bool(forKey: UserdefaultKey.isExistingUser.rawValue) == true { return }
+        
+        let registerViewController = UIStoryboard(name: "RegisterViewStoryboard", bundle: .main).instantiateViewController(withIdentifier: "RegisterViewController")
+        if #available(iOS 13.0, *) {
+            registerViewController.isModalInPresentation = true
+        }
+        present(registerViewController, animated: true)
+        
+    }
+    
+    func beginAuthProcess(_ browserData: BrowserData) {
         
         let obj = AuthenticationObject(uid: browserData.uid,
                                        nonce: browserData.nonce,
                                        caid: identifierManager.createClientAgentId(),
                                        identifiers: identifierManager.compiledSources)
         
-        present(AuthenticationViewController(obj), animated: true)
+        let authViewController = AuthenticationViewController(obj)
         
+        if #available(iOS 13.0, *) {
+            authViewController.isModalInPresentation = true
+        }
+        
+        present(authViewController, animated: true) { [weak self] in
+            self?.browserData = nil
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
