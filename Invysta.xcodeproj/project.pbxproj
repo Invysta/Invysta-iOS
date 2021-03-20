@@ -188,7 +188,7 @@
 			path = InfoSection;
 			sourceTree = "<group>";
 		};
-		01237049258992AB005C49A2 /* ActivityController */ = {
+		01237049258992AB005C49A2 /* Activity Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0175301E2582F9B100822C03 /* ActivityViewController.swift */,
@@ -197,7 +197,7 @@
 				0179666A2589762E00BF6932 /* ActivityManager.swift */,
 				0179666E2589764F00BF6932 /* PersistenceManager.swift */,
 			);
-			path = ActivityController;
+			path = "Activity Controller";
 			sourceTree = "<group>";
 		};
 		012430362542706200722112 /* FeatureFlag */ = {
@@ -207,6 +207,23 @@
 				01243037254270AD00722112 /* FeatureFlag+BrowserData.swift */,
 			);
 			name = FeatureFlag;
+			sourceTree = "<group>";
+		};
+		01443A69260592AA004770D0 /* Authentication Controller */ = {
+			isa = PBXGroup;
+			children = (
+				01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */,
+			);
+			path = "Authentication Controller";
+			sourceTree = "<group>";
+		};
+		01443A6A260592B6004770D0 /* Registration Controller */ = {
+			isa = PBXGroup;
+			children = (
+				012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */,
+				01443A442604564D004770D0 /* RegisterViewStoryboard.storyboard */,
+			);
+			path = "Registration Controller";
 			sourceTree = "<group>";
 		};
 		017549C12534D99900487C74 = {
@@ -236,11 +253,10 @@
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
-				01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */,
-				012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */,
-				01443A442604564D004770D0 /* RegisterViewStoryboard.storyboard */,
 				01EFEDA9255F600200B50D05 /* LoadingView.swift */,
-				01237049258992AB005C49A2 /* ActivityController */,
+				01443A69260592AA004770D0 /* Authentication Controller */,
+				01443A6A260592B6004770D0 /* Registration Controller */,
+				01237049258992AB005C49A2 /* Activity Controller */,
 				012430362542706200722112 /* FeatureFlag */,
 				01D671A425591943002FB92B /* Settings */,
 				01D671A925591955002FB92B /* Model */,

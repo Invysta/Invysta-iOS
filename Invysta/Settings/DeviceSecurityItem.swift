@@ -66,7 +66,7 @@ final class DeviceSecurityCell: UITableViewCell {
                 } else {
                     self?.deviceAuthenticationIsOn = success
                     self?.toggle.setOn(tog.isOn, animated: true)
-                    UserDefaults.standard.setValue(tog.isOn, forKey: "DeviceSecurity")
+                    UserDefaults.standard.setValue(tog.isOn, forKey: UserDefaultKey.DeviceSecurity.rawValue)
                 }
                 
             }

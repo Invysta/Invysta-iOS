@@ -45,7 +45,9 @@ final class AuthenticationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    }
+    
+    func beginAuthenticationProcess() {
         networkManager?.call(InvystaURL(object: authObject), completion: { [weak self] (data, response, error) in
             if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: AnyObject] {
                 print(jsonObj)

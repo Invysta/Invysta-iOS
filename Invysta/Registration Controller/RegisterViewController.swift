@@ -58,7 +58,7 @@ final class RegisterViewController: UITableViewController {
             
             if res.statusCode == 201 {
                 let cancel = UIAlertAction(title: "Okay", style: .default) { [weak self] (_) in
-                    UserDefaults.standard.setValue(true, forKey: UserdefaultKey.isExistingUser.rawValue)
+                    UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isExistingUser.rawValue)
                     self?.dismiss(animated: true)
                 }
                 self?.alert("Success!", "Device successfully registered", cancel)

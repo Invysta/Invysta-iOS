@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum UserdefaultKey: String {
+enum UserDefaultKey: String {
     case isExistingUser = "existingUser"
+    case DeviceSecurity = "DeviceSecurity"
 }
