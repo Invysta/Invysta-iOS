@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 final class AuthenticationViewController: UIViewController {
     
     private let authObject: AuthenticationObject
     private var networkManager: NetworkManager?
     
+    private let laContext = LAContext()
+    private var error: NSError?
+    
+    private let coreDataManager: PersistenceManager = PersistenceManager.shared
+
     init(_ authObject: AuthenticationObject,_ networkManager: NetworkManager = NetworkManager()) {
         self.authObject = authObject
         self.networkManager = networkManager
@@ -24,8 +30,9 @@ final class AuthenticationViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Authenticating"
+        label.text = "Authentication"
         label.font = .systemFont(ofSize: 35)
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -45,22 +52,50 @@ final class AuthenticationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        guard IVUserDefaults.getBool(.DeviceSecurity) else {
+            beginAuthenticationProcess()
+            return
+        }
+        
+        if laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            deviceAuthentication(with: .deviceOwnerAuthenticationWithBiometrics)
+        } else {
+            deviceAuthentication(with: .deviceOwnerAuthentication)
+        }
+    }
+    
+    func deviceAuthentication(with policy: LAPolicy) {
+        laContext.evaluatePolicy(policy, localizedReason: "Authenticate to begin the Invysta Authentication Process") { [weak self] (success, error) in
+            DispatchQueue.main.async {
+                if success {
+                    self?.beginAuthenticationProcess()
+                } else {
+                    self?.showResults(error?.localizedDescription ?? "Login Failed")
+                }
+            }
+        }
     }
     
     func beginAuthenticationProcess() {
         networkManager?.call(InvystaURL(object: authObject), completion: { [weak self] (data, response, error) in
-            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: AnyObject] {
-                print(jsonObj)
+            if let data = data, let jsonObj = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] {
+                InvystaService.log(.warning, jsonObj)
             }
             
             if let response = response as? HTTPURLResponse {
-                print("status code",response.statusCode)
+                InvystaService.log(.warning, "Status Code \(response.statusCode)")
                 
                 if response.statusCode == 400 {
                     self?.showResults("Login Failed")
+                    InvystaService.log(.error, "Login Failed")
+                    self?.saveActivity(title: "Login Failed", message: "", statusCode: response.statusCode)
                 } else if response.statusCode == 201 {
                     self?.showResults("Login Successful!")
+                    self?.saveActivity(title: "Login Successful", message: "", statusCode: response.statusCode)
                     DispatchQueue.main.async {
+                        InvystaService.log(.check, "Login Successful")
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
                         NotificationCenter.default.post(name: Notification.displayPointer(), object: nil)
                     }
                 }
@@ -74,7 +109,7 @@ final class AuthenticationViewController: UIViewController {
             
             activityIndicatorView?.stopAnimating()
             
-            UIView.transition(with: titleLabel, duration: 1.0, options: [.curveEaseInOut,.transitionFlipFromTop]) {
+            UIView.transition(with: titleLabel, duration: 1.0, options: [.curveEaseInOut,.transitionFlipFromBottom]) {
                 titleLabel.text = text
             } completion: { [weak self] (_) in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -82,6 +117,18 @@ final class AuthenticationViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func saveActivity(title: String, message: String, statusCode: Int) {
+        let activityManager = ActivityManager(coreDataManager)
+        let activity = Activity(context: coreDataManager.context)
+        activity.date = Date()
+        activity.title = title
+        activity.message = message
+        activity.type = "Login"
+        activity.statusCode = Int16(statusCode)
+        
+        activityManager.saveResults(activity: activity)
     }
     
     func initUI() {
@@ -107,4 +154,7 @@ final class AuthenticationViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
+    deinit {
+        InvystaService.reclaimedMemory(self)
+    }
 }

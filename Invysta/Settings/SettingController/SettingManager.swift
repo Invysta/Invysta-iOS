@@ -37,25 +37,14 @@ final class SettingManager {
     }
 }
 
-final class AppSecuritySection: SectionItem {
-    var title: String = "Security"
-    
-    var cells: [SettingItem]
-    
-    init() {
-        cells = [DeviceSecurityItem()]
-    }
+struct AppSecuritySection: SectionItem {
+    var title: String = "Device Security"
+    var cells: [SettingItem] = [DeviceSecurityItem(), ReregisterDeviceItem()]
 }
 
-final class AppInfoSection: SectionItem {
+struct AppInfoSection: SectionItem {
     var title: String = "Info"
-    
-    var cells: [SettingItem]
-    
-    init() {
-        cells = [AppVersionItem(),
-                 PrivacyPolicyItem()]
-    }
+    var cells: [SettingItem] = [AppVersionItem(), PrivacyPolicyItem()]
 }
 
 struct CellType {

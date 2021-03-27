@@ -14,7 +14,7 @@ final class DeviceSecurityCell: UITableViewCell {
     let context = LAContext()
     var error: NSError?
 
-    var deviceAuthenticationIsOn = UserDefaults.standard.bool(forKey: "DeviceSecurity")
+    var deviceAuthenticationIsOn = IVUserDefaults.getBool(.DeviceSecurity)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: "DeviceSecurityCell")
@@ -27,17 +27,15 @@ final class DeviceSecurityCell: UITableViewCell {
     }
     
     func customUI() {
-
-        textLabel?.text = "Device Security"
         
         let padding: CGFloat = 10
         toggle.translatesAutoresizingMaskIntoConstraints = false
-        toggle.setOn(UserDefaults.standard.bool(forKey: "DeviceSecurity"), animated: false)
+        toggle.setOn(IVUserDefaults.getBool(.DeviceSecurity), animated: false)
         toggle.addTarget(self, action: #selector(turnOnDeviceSecurity(_:)), for: .valueChanged)
-        addSubview(toggle)
+        contentView.addSubview(toggle)
         
-        NSLayoutConstraint.activate([toggle.centerYAnchor.constraint(equalTo: centerYAnchor),
-                                     toggle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding)])
+        NSLayoutConstraint.activate([toggle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                                     toggle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)])
         
         layoutIfNeeded()
     }
@@ -46,9 +44,9 @@ final class DeviceSecurityCell: UITableViewCell {
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
             switch context.biometryType {
             case .faceID:
-                detailTextLabel?.text = "Enable FaceID"
+                textLabel?.text = "Enable FaceID"
             case .touchID:
-                detailTextLabel?.text = "Enable TouchID"
+                textLabel?.text = "Enable TouchID"
             default:
                 return
             }
@@ -66,7 +64,7 @@ final class DeviceSecurityCell: UITableViewCell {
                 } else {
                     self?.deviceAuthenticationIsOn = success
                     self?.toggle.setOn(tog.isOn, animated: true)
-                    UserDefaults.standard.setValue(tog.isOn, forKey: UserDefaultKey.DeviceSecurity.rawValue)
+                    IVUserDefaults.set(tog.isOn, .DeviceSecurity)
                 }
                 
             }
@@ -75,7 +73,7 @@ final class DeviceSecurityCell: UITableViewCell {
 }
 
 struct DeviceSecurityItem: SettingItem {
-    var cellHeight: CGFloat = 50
+    var cellHeight: CGFloat = UITableView.automaticDimension
     
     func createCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceSecurityCell", for: indexPath) as? DeviceSecurityCell else { return UITableViewCell() }

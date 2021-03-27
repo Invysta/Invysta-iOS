@@ -7,32 +7,27 @@
 
 import Foundation
 
-enum URLType: String {
-    case register = "http://192.168.1.207:3003/reg-device"
-    case login = "http://192.168.1.207:3003/reg-login"
-}
-
 struct InvystaURL<T: InvystaObject> {
     
     var object: T
     
     var url: URLRequest {
-        var urlstr: String
+        var urlstr: String = ""
         
         if let url = FeatureFlagBrowserData().hookbin() {
             urlstr = url
         } else {
             if object is AuthenticationObject {
-                urlstr = URLType.login.rawValue
+                urlstr = IVUserDefaults.getString(.providerKey)! + "/reg-login"
             } else if object is RegistrationObject {
-                urlstr = URLType.register.rawValue
-            } else {
-                urlstr = ""
+                let obj = object as! RegistrationObject
+                urlstr = obj.provider + "/reg-device"
             }
         }
         
-        print("URL",urlstr)
-        print("OBJ",object.caid)
+        InvystaService.log(.warning, urlstr)
+        InvystaService.log(.warning, object.caid)
+        
         var request = URLRequest(url: URL(string: urlstr)!)
         
         do {
@@ -42,7 +37,7 @@ struct InvystaURL<T: InvystaObject> {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         } catch {
-            print(error.localizedDescription)
+            InvystaService.log(.error, error.localizedDescription)
         }
         
         return request   

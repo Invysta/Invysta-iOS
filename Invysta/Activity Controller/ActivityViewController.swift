@@ -46,9 +46,9 @@ final class ActivityViewController: UITableViewController, ActivitySettingsViewC
         let vc = ActivitySettingsViewController()
         vc.delegate = self
         
-        let nav = UINavigationController()
-        nav.viewControllers = [vc]
-        
+        let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.prefersLargeTitles = true
+        nav.navigationItem.largeTitleDisplayMode = .always
         present(nav, animated: true, completion: nil)
     }
     
@@ -70,7 +70,7 @@ final class ActivityViewController: UITableViewController, ActivitySettingsViewC
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let obj = activity[indexPath.row]
         
-        cell.textLabel?.text = "\(obj.website!.host!)"
+        cell.textLabel?.text = obj.title
         cell.detailTextLabel?.text = obj.date?.timeIntervalSince1970.date(.fullDate) ?? ""
         return cell
     }

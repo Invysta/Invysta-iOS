@@ -1,28 +1,26 @@
 //
-//  PrivacyPolicyItem.swift
+//  ReregisterDeviceItem.swift
 //  Invysta
 //
-//  Created by Cyril Garcia on 11/7/20.
+//  Created by Cyril Garcia on 3/25/21.
 //
 
 import UIKit
-import SafariServices
 
-struct PrivacyPolicyItem: SettingItem {
+struct ReregisterDeviceItem: SettingItem {
+    
     var cellHeight: CGFloat = UITableView.automaticDimension
-
+    
     func createCell(in tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath) as? SettingsTableViewCell else { return UITableViewCell() }
-        
-        cell.textLabel?.text = "Privacy Policy"
+        cell.textLabel?.text = "Reregister Device"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func performSelector(_ vc: UIViewController) {
-        let url = URL(string: "https://invysta.com/privacy-policy")!
-        let sf = SFSafariViewController(url: url)
-        vc.present(sf, animated: true, completion: nil)
+        let registerViewController = UIStoryboard(name: "RegisterViewStoryboard", bundle: .main).instantiateViewController(withIdentifier: "RegisterViewController")
+        vc.present(registerViewController, animated: true)
     }
     
 }

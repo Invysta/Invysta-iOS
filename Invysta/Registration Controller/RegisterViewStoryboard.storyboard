@@ -29,10 +29,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNk-ns-3xd">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdH-6L-AHC">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="john.smith@invysta.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdH-6L-AHC">
                                                             <rect key="frame" x="8" y="0.0" width="358" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -68,10 +68,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3l-CH-PiQ">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qVk-xT-jCd">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qVk-xT-jCd">
                                                             <rect key="frame" x="8" y="0.0" width="358" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -95,49 +95,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="One Time Code" id="n9t-7f-JVa">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Hbm-Vt-wri">
-                                        <rect key="frame" x="0.0" y="233.5" width="414" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hbm-Vt-wri" id="s59-bv-Kh1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I33-fM-p7Q">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4C-dG-aNr">
-                                                            <rect key="frame" x="8" y="0.0" width="358" height="44"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
-                                                        </textField>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <constraints>
-                                                        <constraint firstItem="e4C-dG-aNr" firstAttribute="leading" secondItem="I33-fM-p7Q" secondAttribute="leading" constant="8" id="VD4-rO-FU4"/>
-                                                        <constraint firstItem="e4C-dG-aNr" firstAttribute="top" secondItem="I33-fM-p7Q" secondAttribute="top" id="ajS-8b-lPm"/>
-                                                        <constraint firstAttribute="trailing" secondItem="e4C-dG-aNr" secondAttribute="trailing" constant="8" id="gKB-rp-wWT"/>
-                                                        <constraint firstAttribute="bottom" secondItem="e4C-dG-aNr" secondAttribute="bottom" id="ro6-HQ-pme"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstItem="I33-fM-p7Q" firstAttribute="leading" secondItem="s59-bv-Kh1" secondAttribute="leading" constant="20" symbolic="YES" id="9zA-29-f0J"/>
-                                                <constraint firstAttribute="trailing" secondItem="I33-fM-p7Q" secondAttribute="trailing" constant="20" symbolic="YES" id="ThM-R8-dVQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="I33-fM-p7Q" secondAttribute="bottom" id="Z8U-DL-xXf"/>
-                                                <constraint firstItem="I33-fM-p7Q" firstAttribute="top" secondItem="s59-bv-Kh1" secondAttribute="top" id="hP5-fW-4hT"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="Provider" id="pHn-e3-pmH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="EdE-yW-C6g">
-                                        <rect key="frame" x="0.0" y="322.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="233.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EdE-yW-C6g" id="RGJ-Tu-ZqU">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -146,10 +107,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIC-PA-cDj">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAe-ck-jDJ">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://" placeholder="https://domain.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAe-ck-jDJ">
                                                             <rect key="frame" x="8" y="0.0" width="358" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <textInputTraits key="textInputTraits" textContentType="url"/>
+                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -167,6 +128,45 @@
                                                 <constraint firstItem="mIC-PA-cDj" firstAttribute="top" secondItem="RGJ-Tu-ZqU" secondAttribute="top" id="eVw-HY-eQE"/>
                                                 <constraint firstAttribute="bottom" secondItem="mIC-PA-cDj" secondAttribute="bottom" id="gsW-Oy-abR"/>
                                                 <constraint firstItem="mIC-PA-cDj" firstAttribute="leading" secondItem="RGJ-Tu-ZqU" secondAttribute="leading" constant="20" symbolic="YES" id="n88-in-Uvo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="One Time Code" id="n9t-7f-JVa">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Hbm-Vt-wri">
+                                        <rect key="frame" x="0.0" y="322.5" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hbm-Vt-wri" id="s59-bv-Kh1">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I33-fM-p7Q">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1234" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4C-dG-aNr">
+                                                            <rect key="frame" x="8" y="0.0" width="358" height="44"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="e4C-dG-aNr" firstAttribute="leading" secondItem="I33-fM-p7Q" secondAttribute="leading" constant="8" id="VD4-rO-FU4"/>
+                                                        <constraint firstItem="e4C-dG-aNr" firstAttribute="top" secondItem="I33-fM-p7Q" secondAttribute="top" id="ajS-8b-lPm"/>
+                                                        <constraint firstAttribute="trailing" secondItem="e4C-dG-aNr" secondAttribute="trailing" constant="8" id="gKB-rp-wWT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="e4C-dG-aNr" secondAttribute="bottom" id="ro6-HQ-pme"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="I33-fM-p7Q" firstAttribute="leading" secondItem="s59-bv-Kh1" secondAttribute="leading" constant="20" symbolic="YES" id="9zA-29-f0J"/>
+                                                <constraint firstAttribute="trailing" secondItem="I33-fM-p7Q" secondAttribute="trailing" constant="20" symbolic="YES" id="ThM-R8-dVQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="I33-fM-p7Q" secondAttribute="bottom" id="Z8U-DL-xXf"/>
+                                                <constraint firstItem="I33-fM-p7Q" firstAttribute="top" secondItem="s59-bv-Kh1" secondAttribute="top" id="hP5-fW-4hT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

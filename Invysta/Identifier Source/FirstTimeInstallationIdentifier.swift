@@ -8,10 +8,11 @@
 import UIKit
 
 final class FirstTimeInstallationIdentifier: Identifier, IdentifierSource {
-    var type: String = "FirstTimeInstallation"
+    
+    var type: IdentifierType = .FirstTimeInstallation
     
     func identifier() -> String? {
-        if let encData = UserDefaults.standard.string(forKey: type) {
+        if let encData = UserDefaults.standard.string(forKey: type.rawValue) {
             return encData
         } else {
             let currentTimestamp = String(Date().timeIntervalSinceNow)

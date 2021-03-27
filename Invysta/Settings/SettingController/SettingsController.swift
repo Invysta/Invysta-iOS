@@ -59,6 +59,10 @@ final class SettingsController: UITableViewController {
         return settingManager.sections[indexPath.section].cells[indexPath.row].createCell(in: tableView, for: indexPath)
     }
     
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     deinit {
         reclaimedMemory()
     }

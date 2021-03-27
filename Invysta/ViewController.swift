@@ -54,7 +54,7 @@ class ViewController: BaseViewController {
     }
     
     func beginRegistration() {
-        if UserDefaults.standard.bool(forKey: UserDefaultKey.isExistingUser.rawValue) == true { return }
+        if IVUserDefaults.getBool(.isExistingUser) { return }
         
         let registerViewController = UIStoryboard(name: "RegisterViewStoryboard", bundle: .main).instantiateViewController(withIdentifier: "RegisterViewController")
         if #available(iOS 13.0, *) {
@@ -65,7 +65,7 @@ class ViewController: BaseViewController {
     }
     
     func beginAuthProcess(_ browserData: BrowserData) {
-        sleep(1)
+        
         let obj = AuthenticationObject(uid: browserData.uid,
                                        nonce: browserData.nonce,
                                        caid: identifierManager.createClientAgentId(),

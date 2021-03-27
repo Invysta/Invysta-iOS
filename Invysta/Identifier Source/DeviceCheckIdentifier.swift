@@ -10,7 +10,7 @@ import DeviceCheck
 import CoreTelephony
 
 class DeviceCheckIdentifier: Identifier, IdentifierSource {
-    var type: String = "DeviceCheck"
+    var type: IdentifierType = .DeviceCheck
     
     let deviceName: String = {
         return UIDevice.current.name
@@ -33,12 +33,12 @@ class DeviceCheckIdentifier: Identifier, IdentifierSource {
     }()
     
     func identifier() -> String? {
-        if let encData = UserDefaults.standard.string(forKey: type) {
+        if let encData = UserDefaults.standard.string(forKey: type.rawValue) {
             return encData
         } else {
             let val = deviceName + languageCode + regionCode + calendarIdentifier + timeZone
             let encData = SHA256(data: val.data(using: .utf8))
-            UserDefaults.standard.setValue(encData, forKey: type)
+            UserDefaults.standard.setValue(encData, forKey: type.rawValue)
             return encData
         }
         

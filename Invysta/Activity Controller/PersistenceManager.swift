@@ -59,7 +59,7 @@ final class PersistenceManager {
             return fetchedObjects ?? [T]()
             
         } catch {
-            print(error)
+            InvystaService.log(.error, error.localizedDescription)
             return [T]()
         }
         

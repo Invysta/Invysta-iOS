@@ -9,7 +9,7 @@ import UIKit
 import CoreTelephony
 
 final class CellularIdentifier: Identifier, IdentifierSource {
-    var type: String = "Cellular"
+    var type: IdentifierType = .Cellular
     
     func captureCellularInfo() -> String? {
         var id = ""
@@ -38,11 +38,11 @@ final class CellularIdentifier: Identifier, IdentifierSource {
     }
     
     func identifier() -> String? {
-        if let id = UserDefaults.standard.string(forKey: type) {
+        if let id = UserDefaults.standard.string(forKey: type.rawValue) {
             return id
         } else {
             guard let id = captureCellularInfo() else { return nil }
-            UserDefaults.standard.setValue(id, forKey: type)
+            UserDefaults.standard.setValue(id, forKey: type.rawValue)
             return id
         }
     }

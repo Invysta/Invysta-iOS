@@ -8,7 +8,7 @@
 import UIKit
 
 class DeviceModelIdentifier: Identifier, IdentifierSource {
-    var type: String = "DeviceModel"
+    var type: IdentifierType = .DeviceModel
     
     func identifier() -> String? {
         var systemInfo = utsname()

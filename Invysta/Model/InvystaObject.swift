@@ -18,6 +18,7 @@ struct RegistrationObject: InvystaObject {
     var password: String
     var caid: String
     var otc: String
+    var provider: String
     var identifiers: [String]
 }
 

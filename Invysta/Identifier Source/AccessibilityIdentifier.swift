@@ -8,7 +8,7 @@
 import UIKit
 
 struct AccessibilityIdentifier: IdentifierSource {
-    var type: String = "AccessibilitySettings"
+    var type: IdentifierType = .AccessibilitySettings
     
     let isBoldTextEnabled: String = {
         return "\(NSNumber(value: UIAccessibility.isBoldTextEnabled))"
@@ -35,11 +35,11 @@ struct AccessibilityIdentifier: IdentifierSource {
     }()
     
     func identifier() -> String? {
-        if let val = UserDefaults.standard.string(forKey: type) {
+        if let val = UserDefaults.standard.string(forKey: type.rawValue) {
             return val
         } else {
             let val = isBoldTextEnabled + isShakeToUndoEnabled + isReduceMotionEnabled + isDarkerSystemColorsEnabled + isReduceTransparencyEnabled + isAssistiveTouchRunning
-            UserDefaults.standard.setValue(val, forKey: type)
+            UserDefaults.standard.setValue(val, forKey: type.rawValue)
             return val
         }
     }

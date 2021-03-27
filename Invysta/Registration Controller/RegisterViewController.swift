@@ -19,14 +19,21 @@ final class RegisterViewController: UITableViewController {
     @IBOutlet var thirdContentView: UIView!
     @IBOutlet var fourthContentView: UIView!
     
+    @IBOutlet var cancelButton: UIButton!
+    
     private let identifierManagers = IdentifierManager()
     private let networkManager = NetworkManager()
-    
+    private let coreDataManager: PersistenceManager = PersistenceManager.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 45
         tableView.keyboardDismissMode = .onDrag
         initUI()
+        
+        if IVUserDefaults.getBool(.isExistingUser) {
+            showCancelButton()
+        }
     }
     
     func initUI() {
@@ -43,11 +50,33 @@ final class RegisterViewController: UITableViewController {
     }
     
     @IBAction func register() {
-        guard let email = emailField.text, let password = passwordField.text, let otc = otcField.text else { return }
+        
+        guard let email = emailField.text,
+              let password = passwordField.text,
+              let otc = otcField.text,
+              let provider = providerField.text else {
+            alert("Error", "One or more fields are left blank.")
+            return
+        }
+        
+        if provider == "https://" {
+            alert("Invalid URL", "Please complete the provider URL")
+            return
+        }
+        
+        let index = provider.index(provider.startIndex, offsetBy: 8)
+        let header = provider[..<index]
+        if header != "https://" {
+            IVUserDefaults.set("https://" + provider, .providerKey)
+        } else {
+            IVUserDefaults.set(provider, .providerKey)
+        }
+        
         let obj = RegistrationObject(email: email,
                                      password: password,
                                      caid: identifierManagers.createClientAgentId(),
                                      otc: otc,
+                                     provider: provider,
                                      identifiers: identifierManagers.compiledSources)
         
         let urlObj = InvystaURL(object: obj)
@@ -57,29 +86,51 @@ final class RegisterViewController: UITableViewController {
             guard let res = res as? HTTPURLResponse else { return }
             
             if res.statusCode == 201 {
+                self?.saveActivity(title: "Device Registered", message: "", statusCode: res.statusCode)
                 let cancel = UIAlertAction(title: "Okay", style: .default) { [weak self] (_) in
-                    UserDefaults.standard.setValue(true, forKey: UserDefaultKey.isExistingUser.rawValue)
+                    IVUserDefaults.set(true, .isExistingUser)
                     self?.dismiss(animated: true)
                 }
                 self?.alert("Success!", "Device successfully registered", cancel)
             } else {
-                if let data = data, let jsonResponse = try? JSONDecoder().decode(InvystaError.self, from: data) {
-                    
-                    let errorTitle: String = jsonResponse.error
-                    var errorDetails: String?
-                    
-                    if let errors = jsonResponse.errors {
-                        errorDetails = ""
-                        for error in errors {
-                            errorDetails! += error.param + " " + error.msg
-                        }
+                guard let data = data, let jsonResponse = try? JSONDecoder().decode(InvystaError.self, from: data) else { return }
+                
+                let errorTitle: String = jsonResponse.error
+                var errorDetails: String?
+                
+                if let errors = jsonResponse.errors {
+                    errorDetails = ""
+                    for error in errors {
+                        errorDetails! += error.param + " " + error.msg
                     }
-                    
-                    self?.alert(errorTitle, errorDetails)
                 }
+                
+                self?.alert(errorTitle, errorDetails)
+                
             }
             
         }
+    }
+    
+    @objc
+    func showCancelButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissController))
+    }
+    
+    @IBAction func dismissController() {
+        dismiss(animated: true)
+    }
+    
+    func saveActivity(title: String, message: String, statusCode: Int) {
+        let activityManager = ActivityManager(coreDataManager)
+        let activity = Activity(context: coreDataManager.context)
+        activity.date = Date()
+        activity.title = title
+        activity.message = message
+        activity.type = "Login"
+        activity.statusCode = Int16(statusCode)
+        
+        activityManager.saveResults(activity: activity)
     }
     
     func alert(_ title: String,_ message: String?,_ action: UIAlertAction = UIAlertAction(title: "Cancel", style: .default)) {
@@ -96,5 +147,9 @@ final class RegisterViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
+    }
+    
+    deinit {
+        InvystaService.reclaimedMemory(self)
     }
 }

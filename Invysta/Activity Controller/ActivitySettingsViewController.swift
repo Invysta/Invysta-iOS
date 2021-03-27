@@ -18,10 +18,11 @@ final class ActivitySettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
+        
         title = "Activity"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
-    
+
     init() {
         super.init(style: .grouped)
     }
@@ -31,8 +32,7 @@ final class ActivitySettingsViewController: UITableViewController {
     }
     
     func initUI() {
-        let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(dismissController))
-        navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissController))
     }
     
     @objc
@@ -87,4 +87,7 @@ final class ActivitySettingsViewController: UITableViewController {
         return cell
     }
     
+    deinit {
+        InvystaService.reclaimedMemory(self)
+    }
 }

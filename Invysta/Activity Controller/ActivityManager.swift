@@ -20,19 +20,3 @@ final class ActivityManager {
     }
     
 }
-
-//public class Activity: NSManagedObject {
-//
-//}
-//
-//extension Activity {
-//
-//    @nonobjc public class func fetchRequest() -> NSFetchRequest<Activity> {
-//        return NSFetchRequest<Activity>(entityName: "Activity")
-//    }
-//
-//    @NSManaged public var date: Date
-//    @NSManaged public var success: Bool
-//    @NSManaged public var website: URL
-//
-//}

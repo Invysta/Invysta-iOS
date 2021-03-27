@@ -9,7 +9,7 @@ import UIKit
 import CommonCrypto
 
 protocol IdentifierSource {
-    var type: String { get set }
+    var type: IdentifierType { get set }
     func identifier() -> String?
 }
 
