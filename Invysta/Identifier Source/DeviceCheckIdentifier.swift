@@ -8,9 +8,10 @@
 import UIKit
 import DeviceCheck
 import CoreTelephony
+import Invysta_Framework
 
-class DeviceCheckIdentifier: Identifier, IdentifierSource {
-    var type: IdentifierType = .DeviceCheck
+struct DeviceCheckIdentifier: IdentifierSource {
+    var type: String = IdentifierType.DeviceCheck.rawValue
     
     let deviceName: String = {
         return UIDevice.current.name
@@ -33,12 +34,12 @@ class DeviceCheckIdentifier: Identifier, IdentifierSource {
     }()
     
     func identifier() -> String? {
-        if let encData = UserDefaults.standard.string(forKey: type.rawValue) {
+        if let encData = UserDefaults.standard.string(forKey: type) {
             return encData
         } else {
             let val = deviceName + languageCode + regionCode + calendarIdentifier + timeZone
             let encData = SHA256(data: val.data(using: .utf8))
-            UserDefaults.standard.setValue(encData, forKey: type.rawValue)
+            UserDefaults.standard.setValue(encData, forKey: type)
             return encData
         }
         

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Invysta_Framework
 
 final class RegisterViewController: UITableViewController {
     
@@ -21,12 +22,15 @@ final class RegisterViewController: UITableViewController {
     
     @IBOutlet var cancelButton: UIButton!
     
-    private let identifierManagers = IdentifierManager()
-    private let networkManager = NetworkManager()
+    private var registration: Registration?
+    
     private let coreDataManager: PersistenceManager = PersistenceManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Register Device"
+        
         tableView.estimatedRowHeight = 45
         tableView.keyboardDismissMode = .onDrag
         initUI()
@@ -54,7 +58,7 @@ final class RegisterViewController: UITableViewController {
         guard let email = emailField.text,
               let password = passwordField.text,
               let otc = otcField.text,
-              let provider = providerField.text else {
+              var provider = providerField.text else {
             alert("Error", "One or more fields are left blank.")
             return
         }
@@ -66,50 +70,45 @@ final class RegisterViewController: UITableViewController {
         
         let index = provider.index(provider.startIndex, offsetBy: 8)
         let header = provider[..<index]
+        
         if header != "https://" {
-            IVUserDefaults.set("https://" + provider, .providerKey)
-        } else {
-            IVUserDefaults.set(provider, .providerKey)
+            provider = "https://" + provider
         }
+        
+        IVUserDefaults.set(provider + "/reg-device", .registrationProvider)
+        IVUserDefaults.set(provider + "/reg-login", .authenticationProvider)
+        
+        InvystaService.log(.warning, "\(#function)" + provider)
         
         let obj = RegistrationObject(email: email,
                                      password: password,
-                                     caid: identifierManagers.createClientAgentId(),
                                      otc: otc,
-                                     provider: provider,
-                                     identifiers: identifierManagers.compiledSources)
+                                     caid: IdentifierManager.shared.clientAgentId,
+                                     provider: provider + "/reg-device",
+                                     identifier: IdentifierManager.shared.compiledSources)
         
-        let urlObj = InvystaURL(object: obj)
+        InvystaService.log(.alert, IdentifierManager.shared.compiledSources)
         
-        networkManager.call(urlObj) { [weak self] (data, res, error) in
+        registration = Registration(obj)
+        
+        registration?.start { [weak self] (results) in
+            switch results {
             
-            guard let res = res as? HTTPURLResponse else { return }
-            
-            if res.statusCode == 201 {
-                self?.saveActivity(title: "Device Registered", message: "", statusCode: res.statusCode)
+            case .success(let statusCode):
+                self?.saveActivity(title: "Device Registered", message: "", statusCode: statusCode)
                 let cancel = UIAlertAction(title: "Okay", style: .default) { [weak self] (_) in
                     IVUserDefaults.set(true, .isExistingUser)
                     self?.dismiss(animated: true)
                 }
                 self?.alert("Success!", "Device successfully registered", cancel)
-            } else {
-                guard let data = data, let jsonResponse = try? JSONDecoder().decode(InvystaError.self, from: data) else { return }
                 
-                let errorTitle: String = jsonResponse.error
-                var errorDetails: String?
-                
-                if let errors = jsonResponse.errors {
-                    errorDetails = ""
-                    for error in errors {
-                        errorDetails! += error.param + " " + error.msg
-                    }
-                }
-                
-                self?.alert(errorTitle, errorDetails)
-                
+            case .failure(let errorMessage, _):
+                self?.alert("Error", errorMessage)
+            
             }
             
         }
+        
     }
     
     @objc

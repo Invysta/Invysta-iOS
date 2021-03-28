@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Invysta_Framework
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,12 +29,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         if #available(iOS 13, *) { return true }
+        
+        IdentifierManager.configure([AccessibilityIdentifier(),
+                                     CellularIdentifier(),
+                                     CustomIdentifier(),
+                                     DeviceCheckIdentifier(),
+                                     DeviceModelIdentifier(),
+                                     FirstTimeInstallationIdentifier(),
+                                     VendorIdentifier()])
+        
         launchViewController()
         
         return true
     }
     
-    func process(_ url: URL) -> BrowserData? {
+    func process(_ url: URL) -> InvystaBrowserDataModel? {
         guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
         
         var data = [String: String]()
@@ -42,10 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             data[component.name] = component.value
         }
         
-        return BrowserData(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
+        return InvystaBrowserDataModel(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
     }
     
-    func launchViewController(_ browserData: BrowserData? = nil) {
+    func launchViewController(_ browserData: InvystaBrowserDataModel? = nil) {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let tabViewController = UITabBarController()
@@ -53,10 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
         vc?.title = "Home"
         
-        let activityController = GlobalPreferences.makeNavigationController(ActivityViewController())
+        let activityController = UINavigationController(rootViewController: ActivityViewController())
         activityController.title = "Activity"
         
-        let settingsController = GlobalPreferences.makeNavigationController(SettingsController())
+        let settingsController = UINavigationController(rootViewController: SettingsController())
         settingsController.title = "Settings"
         
         tabViewController.viewControllers = [vc!, activityController, settingsController]

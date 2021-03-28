@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Invysta_Framework
 
 final class ActivityDetailViewController: UITableViewController {
     

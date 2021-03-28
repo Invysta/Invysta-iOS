@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Invysta_Framework
 
 struct VendorIdentifier: IdentifierSource {
-    var type: IdentifierType = .VendorID
+    var type: String = IdentifierType.VendorID.rawValue
     
     func identifier() -> String? {
         return UIDevice().identifierForVendor?.uuidString

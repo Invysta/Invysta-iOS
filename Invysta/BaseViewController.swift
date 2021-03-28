@@ -7,10 +7,11 @@
 
 import UIKit
 import Lottie
+import Invysta_Framework
 
 class BaseViewController: UIViewController {
     
-    var browserData: BrowserData?
+    var browserData: InvystaBrowserDataModel?
     var stackContainer: UIStackView?
     
     let coreDataManager: PersistenceManager = PersistenceManager.shared

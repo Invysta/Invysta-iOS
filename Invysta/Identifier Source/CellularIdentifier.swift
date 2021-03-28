@@ -7,12 +7,13 @@
 
 import UIKit
 import CoreTelephony
+import Invysta_Framework
 
-final class CellularIdentifier: Identifier, IdentifierSource {
-    var type: IdentifierType = .Cellular
+final class CellularIdentifier: IdentifierSource {
+    var type: String = IdentifierType.Cellular.rawValue
     
-    func captureCellularInfo() -> String? {
-        var id = ""
+    func captureCellularInfo() -> String {
+        var id: String = ""
         
         let networkInfo = CTTelephonyNetworkInfo()
         if #available(iOS 12.0, *) {
@@ -31,18 +32,18 @@ final class CellularIdentifier: Identifier, IdentifierSource {
         }
         
         if id.isEmpty {
-            return nil
+            return UUID().uuidString
         }
         
         return SHA256(data: id.data(using: .utf8))
     }
     
     func identifier() -> String? {
-        if let id = UserDefaults.standard.string(forKey: type.rawValue) {
+        if let id = UserDefaults.standard.string(forKey: type) {
             return id
         } else {
-            guard let id = captureCellularInfo() else { return nil }
-            UserDefaults.standard.setValue(id, forKey: type.rawValue)
+            let id = captureCellularInfo()
+            UserDefaults.standard.setValue(id, forKey: type)
             return id
         }
     }

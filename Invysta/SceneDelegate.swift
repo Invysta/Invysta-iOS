@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Invysta_Framework
 
 extension URL {
     func valueOf(_ queryParamaterName: String) -> String? {
@@ -23,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+    
         if let url = URLContexts.first?.url {
             let browserData = process(url)
             launchViewController(windowScene, browserData)
@@ -33,12 +34,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        if let mockBrowserData = FeatureFlagBrowserData().check() as? BrowserData {
-            launchViewController(windowScene, mockBrowserData)
-            return
-        }
+        IdentifierManager.configure([AccessibilityIdentifier(),
+                                     CellularIdentifier(),
+                                     CustomIdentifier(),
+                                     DeviceCheckIdentifier(),
+                                     DeviceModelIdentifier(),
+                                     FirstTimeInstallationIdentifier(),
+                                     VendorIdentifier()])
         
         if let url = connectionOptions.urlContexts.first?.url.absoluteURL {
             let browserData = process(url)
@@ -49,7 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      
     }
 
-    func process(_ url: URL) -> BrowserData? {
+    func process(_ url: URL) -> InvystaBrowserDataModel? {
         InvystaService.log(.warning, "Passed URL \(url.absoluteString)")
         
         guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
@@ -59,20 +64,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             data[component.name] = component.value
         }
         
-        return BrowserData(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
+        return InvystaBrowserDataModel(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
 
     }
     
-    func launchViewController(_ windowScene: UIWindowScene, _ browserData: BrowserData? = nil) {
+    func launchViewController(_ windowScene: UIWindowScene, _ browserData: InvystaBrowserDataModel? = nil) {
+        
         let tabBarcontroller = UITabBarController()
         
         vc = (browserData == nil) ? ViewController() : ViewController(browserData!)
         vc?.title = "Home"
         
-        let activityController = GlobalPreferences.makeNavigationController(ActivityViewController())
+        let activityController = UINavigationController(rootViewController: ActivityViewController())
         activityController.title = "Activity"
         
-        let settingsController = GlobalPreferences.makeNavigationController(SettingsController())
+        let settingsController = UINavigationController(rootViewController: SettingsController())
         settingsController.title = "Settings"
         
         tabBarcontroller.viewControllers = [vc!, activityController, settingsController]

@@ -6,17 +6,18 @@
 //
 
 import Foundation
+import Invysta_Framework
 
 struct CustomIdentifier: IdentifierSource {
     
-    var type: IdentifierType = .CustomID
+    var type: String = IdentifierType.CustomID.rawValue
     
     func identifier() -> String? {
-        if let uuid = UserDefaults.standard.string(forKey: type.rawValue) {
+        if let uuid = UserDefaults.standard.string(forKey: type) {
             return uuid
         } else {
             let uuid = UUID().uuidString
-            UserDefaults.standard.setValue(uuid, forKey: type.rawValue)
+            UserDefaults.standard.setValue(uuid, forKey: type)
             return uuid
         }
     }

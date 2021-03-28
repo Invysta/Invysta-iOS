@@ -7,20 +7,19 @@
 
 import UIKit
 import LocalAuthentication
+import Invysta_Framework
 
 final class AuthenticationViewController: UIViewController {
     
-    private let authObject: AuthenticationObject
-    private var networkManager: NetworkManager?
+    private let authentication: Authenticate
     
     private let laContext = LAContext()
     private var error: NSError?
     
     private let coreDataManager: PersistenceManager = PersistenceManager.shared
-
-    init(_ authObject: AuthenticationObject,_ networkManager: NetworkManager = NetworkManager()) {
-        self.authObject = authObject
-        self.networkManager = networkManager
+    
+    init(_ authObject: AuthenticationObject) {
+        authentication = Authenticate(authObject)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -78,29 +77,36 @@ final class AuthenticationViewController: UIViewController {
     }
     
     func beginAuthenticationProcess() {
-        networkManager?.call(InvystaURL(object: authObject), completion: { [weak self] (data, response, error) in
-            if let data = data, let jsonObj = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] {
-                InvystaService.log(.warning, jsonObj)
-            }
-            
-            if let response = response as? HTTPURLResponse {
-                InvystaService.log(.warning, "Status Code \(response.statusCode)")
+        
+        authentication.start { [weak self] (results) in
+             
+            switch results {
+            case .success(let statusCode):
                 
-                if response.statusCode == 400 {
-                    self?.showResults("Login Failed")
-                    InvystaService.log(.error, "Login Failed")
-                    self?.saveActivity(title: "Login Failed", message: "", statusCode: response.statusCode)
-                } else if response.statusCode == 201 {
-                    self?.showResults("Login Successful!")
-                    self?.saveActivity(title: "Login Successful", message: "", statusCode: response.statusCode)
-                    DispatchQueue.main.async {
-                        InvystaService.log(.check, "Login Successful")
-                        UINotificationFeedbackGenerator().notificationOccurred(.success)
-                        NotificationCenter.default.post(name: Notification.displayPointer(), object: nil)
-                    }
+                self?.showResults("Login Successful!")
+                self?.saveActivity(title: "Login Successful", message: "", statusCode: statusCode)
+                
+                InvystaService.log(.check, "Login Successful")
+                
+                DispatchQueue.main.async {
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    NotificationCenter.default.post(name: Notification.displayPointer(), object: nil)
                 }
+                
+            case .failure(let error, let statusCode):
+                
+                self?.showResults(error)
+                self?.saveActivity(title: error, message: "", statusCode: statusCode)
+                
+                DispatchQueue.main.async {
+                    UINotificationFeedbackGenerator().notificationOccurred(.error)
+                }
+                
+                break
+                
             }
-        })
+        }
+        
     }
     
     func showResults(_ text: String) {

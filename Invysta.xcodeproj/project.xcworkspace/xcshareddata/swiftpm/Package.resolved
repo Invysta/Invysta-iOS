@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
+        "package": "Invysta-Framework",
+        "repositoryURL": "https://github.com/cgarcia090/Invysta-Framework",
+        "state": {
+          "branch": null,
+          "revision": "08a7508b46d99b1b703ba083859421565c285a52",
+          "version": "0.2.3"
+        }
+      },
+      {
         "package": "Lottie",
         "repositoryURL": "https://github.com/airbnb/lottie-ios.git",
         "state": {
           "branch": null,
-          "revision": "e02e82c7c1b472e85e641a7624e99c855e21add1",
-          "version": "3.1.9"
+          "revision": "b3c60ba1716baab6faeeb217d8ce1da336f92718",
+          "version": "3.2.1"
         }
       }
     ]

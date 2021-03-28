@@ -19,8 +19,13 @@ struct ReregisterDeviceItem: SettingItem {
     }
     
     func performSelector(_ vc: UIViewController) {
-        let registerViewController = UIStoryboard(name: "RegisterViewStoryboard", bundle: .main).instantiateViewController(withIdentifier: "RegisterViewController")
-        vc.present(registerViewController, animated: true)
+        guard let registerViewController = UIStoryboard(name: "RegisterViewStoryboard", bundle: .main).instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else { return }
+        
+        let nav = UINavigationController(rootViewController: registerViewController)
+        nav.navigationBar.prefersLargeTitles = true
+        nav.navigationItem.largeTitleDisplayMode = .always
+        
+        vc.present(nav, animated: true)
     }
     
 }

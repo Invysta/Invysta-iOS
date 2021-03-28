@@ -11,7 +11,7 @@
         <!--Register Device-->
         <scene sceneID="SAs-BY-G4o">
             <objects>
-                <tableViewController id="UvS-U4-cIw" customClass="RegisterViewController" customModule="Invysta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RegisterViewController" id="UvS-U4-cIw" customClass="RegisterViewController" customModule="Invysta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="1" id="4uS-cR-y3n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,24 +200,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTt-Co-eCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="471.01449275362324" y="175.44642857142856"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="OgF-NB-cHr">
-            <objects>
-                <navigationController storyboardIdentifier="RegisterViewController" automaticallyAdjustsScrollViewInsets="NO" id="9uA-cO-3PE" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="zyp-R5-bf2">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UvS-U4-cIw" kind="relationship" relationship="rootViewController" id="PtD-o9-Xle"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h6b-dQ-6Eo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-439.13043478260875" y="175.44642857142856"/>
         </scene>
     </scenes>
     <resources>
