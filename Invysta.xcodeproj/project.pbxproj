@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		01076DF32560985E009847D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549D12534D99900487C74 /* ViewController.swift */; };
-		01076DF42560985E009847D6 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFEDA9255F600200B50D05 /* LoadingView.swift */; };
 		01076DF52560985E009847D6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED7F255F170B00B50D05 /* BaseViewController.swift */; };
 		01076DFC25609866009847D6 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED91255F273100B50D05 /* SettingManager.swift */; };
 		01076DFD25609866009847D6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC42B2557373D0044980C /* SettingsController.swift */; };
@@ -68,7 +67,6 @@
 		01EFED92255F273100B50D05 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED91255F273100B50D05 /* SettingManager.swift */; };
 		01EFED96255F279F00B50D05 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */; };
 		01EFEDA6255F52FF00B50D05 /* pointer-white.json in Resources */ = {isa = PBXBuildFile; fileRef = 01EFEDA5255F52FF00B50D05 /* pointer-white.json */; };
-		01EFEDAA255F600200B50D05 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFEDA9255F600200B50D05 /* LoadingView.swift */; };
 		01FF2B16260DB402006FA8A1 /* ReregisterDeviceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF2B15260DB402006FA8A1 /* ReregisterDeviceItem.swift */; };
 		01FF2B1E260DB5F4006FA8A1 /* IdentifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF2B1D260DB5F4006FA8A1 /* IdentifierType.swift */; };
 /* End PBXBuildFile section */
@@ -124,7 +122,6 @@
 		01EFED91255F273100B50D05 /* SettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
 		01EFED95255F279F00B50D05 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		01EFEDA5255F52FF00B50D05 /* pointer-white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pointer-white.json"; sourceTree = "<group>"; };
-		01EFEDA9255F600200B50D05 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		01FF2B15260DB402006FA8A1 /* ReregisterDeviceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReregisterDeviceItem.swift; sourceTree = "<group>"; };
 		01FF2B1D260DB5F4006FA8A1 /* IdentifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,7 +222,6 @@
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
-				01EFEDA9255F600200B50D05 /* LoadingView.swift */,
 				01443A69260592AA004770D0 /* Authentication Controller */,
 				01443A6A260592B6004770D0 /* Registration Controller */,
 				01237049258992AB005C49A2 /* Activity Controller */,
@@ -451,7 +447,6 @@
 				01EFED84255F199200B50D05 /* DeviceSecurityItem.swift in Sources */,
 				017549D02534D99900487C74 /* SceneDelegate.swift in Sources */,
 				016BC1462565A93B007F6054 /* DeviceCheckIdentifier.swift in Sources */,
-				01EFEDAA255F600200B50D05 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +461,6 @@
 				018355452568870D00F1D868 /* FirstTimeInstallationIdentifier.swift in Sources */,
 				0151864E25FC322C005CC78A /* PersistenceManager.swift in Sources */,
 				01076DF52560985E009847D6 /* BaseViewController.swift in Sources */,
-				01076DF42560985E009847D6 /* LoadingView.swift in Sources */,
 				01076DF32560985E009847D6 /* ViewController.swift in Sources */,
 				0151865D25FC34F9005CC78A /* ActivityManager.swift in Sources */,
 				0151866025FC34FD005CC78A /* ActivityDetailViewController.swift in Sources */,
