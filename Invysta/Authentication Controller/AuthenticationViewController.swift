@@ -5,21 +5,20 @@
 //  Created by Cyril Garcia on 3/5/21.
 //
 
-import UIKit
+import InvystaCore
 import LocalAuthentication
-import Invysta_Framework
+import UIKit
 
 final class AuthenticationViewController: UIViewController {
     
     private let authentication: Authenticate
-    
-    private let laContext = LAContext()
     private var error: NSError?
     
+    private let laContext: LAContext = LAContext()
     private let coreDataManager: PersistenceManager = PersistenceManager.shared
     
     init(_ authObject: AuthenticationObject) {
-        authentication = Authenticate(authObject)
+        authentication = Authenticate(authObject, IVUserDefaults.getString(.providerKey)!)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -86,7 +85,7 @@ final class AuthenticationViewController: UIViewController {
                 self?.showResults("Login Successful!")
                 self?.saveActivity(title: "Login Successful", message: "", statusCode: statusCode)
                 
-                InvystaService.log(.check, "Login Successful")
+                InvystaService.log(.check,"\(type(of: self))", "Login Successful")
                 
                 DispatchQueue.main.async {
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -164,3 +163,6 @@ final class AuthenticationViewController: UIViewController {
         InvystaService.reclaimedMemory(self)
     }
 }
+
+//https://provider.invysta-technical.com/interaction/fUmSR3GUsGr3Brlo0_pB0?client=true
+//https://provider.invysta-technical.com/interaction/fUmSR3GUsGr3Brlo0_pB0?client=true

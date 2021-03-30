@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Invysta_Framework
+import InvystaCore
 
 extension URL {
     func valueOf(_ queryParamaterName: String) -> String? {
@@ -55,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func process(_ url: URL) -> InvystaBrowserDataModel? {
-        InvystaService.log(.warning, "Passed URL \(url.absoluteString)")
+        InvystaService.log(.warning,"\(type(of: self))", "Passed URL \(url.absoluteString)")
         
         guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
         var data = [String: String]()

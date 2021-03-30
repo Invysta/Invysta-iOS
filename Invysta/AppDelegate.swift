@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Invysta_Framework
+import InvystaCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

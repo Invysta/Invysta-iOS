@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Invysta_Framework
+import InvystaCore
 
 protocol ActivitySettingsViewControllerDelegate: AnyObject {
     func didDeleteAllItems()

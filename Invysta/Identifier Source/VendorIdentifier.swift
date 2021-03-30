@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Invysta_Framework
+import InvystaCore
 
 struct VendorIdentifier: IdentifierSource {
     var type: String = IdentifierType.VendorID.rawValue

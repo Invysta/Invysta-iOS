@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreTelephony
-import Invysta_Framework
+import InvystaCore
 
 final class CellularIdentifier: IdentifierSource {
     var type: String = IdentifierType.Cellular.rawValue

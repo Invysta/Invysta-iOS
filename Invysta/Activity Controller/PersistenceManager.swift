@@ -8,7 +8,7 @@
 
 import CoreData
 import Foundation
-import Invysta_Framework
+import InvystaCore
 
 final class PersistenceManager {
     
@@ -60,7 +60,7 @@ final class PersistenceManager {
             return fetchedObjects ?? [T]()
             
         } catch {
-            InvystaService.log(.error, error.localizedDescription)
+            InvystaService.log(.error,"\(type(of: self))", error.localizedDescription)
             return [T]()
         }
         

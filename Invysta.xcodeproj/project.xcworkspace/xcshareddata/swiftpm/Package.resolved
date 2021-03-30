@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Invysta-Framework",
-        "repositoryURL": "https://github.com/cgarcia090/Invysta-Framework",
+        "package": "InvystaCore",
+        "repositoryURL": "https://github.com/Invysta/InvystaCore.git",
         "state": {
           "branch": null,
-          "revision": "08a7508b46d99b1b703ba083859421565c285a52",
-          "version": "0.2.3"
+          "revision": "fcd86d9fa076c64f5de3335460670738f7335b45",
+          "version": "1.0.0"
         }
       },
       {

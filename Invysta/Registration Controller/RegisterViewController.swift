@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Invysta_Framework
+import InvystaCore
 
 final class RegisterViewController: UITableViewController {
     
@@ -75,21 +75,17 @@ final class RegisterViewController: UITableViewController {
             provider = "https://" + provider
         }
         
-        IVUserDefaults.set(provider + "/reg-device", .registrationProvider)
-        IVUserDefaults.set(provider + "/reg-login", .authenticationProvider)
+        IVUserDefaults.set(provider, .providerKey)
         
-        InvystaService.log(.warning, "\(#function)" + provider)
+        InvystaService.log(.warning, "\(type(of: self))","\(#function)" + provider)
         
         let obj = RegistrationObject(email: email,
                                      password: password,
-                                     otc: otc,
-                                     caid: IdentifierManager.shared.clientAgentId,
-                                     provider: provider + "/reg-device",
-                                     identifier: IdentifierManager.shared.compiledSources)
+                                     otc: otc)
         
-        InvystaService.log(.alert, IdentifierManager.shared.compiledSources)
+        InvystaService.log(.alert,"\(type(of: self))", IdentifierManager.shared.compiledSources)
         
-        registration = Registration(obj)
+        registration = Registration(obj, provider)
         
         registration?.start { [weak self] (results) in
             switch results {

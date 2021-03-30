@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Invysta_Framework
+import InvystaCore
 
 struct DeviceModelIdentifier: IdentifierSource {
     var type: String = IdentifierType.DeviceModel.rawValue

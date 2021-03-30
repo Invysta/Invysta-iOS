@@ -7,7 +7,7 @@
 
 import UIKit
 import LocalAuthentication
-import Invysta_Framework
+import InvystaCore
 
 class ViewController: BaseViewController {
     
@@ -65,12 +65,9 @@ class ViewController: BaseViewController {
     func beginAuthProcess(_ browserData: InvystaBrowserDataModel) {
         
         let obj = AuthenticationObject(uid: browserData.uid,
-                                       nonce: browserData.nonce,
-                                       caid: IdentifierManager.shared.clientAgentId,
-                                       provider: IVUserDefaults.getString(.authenticationProvider)!,
-                                       identifier: IdentifierManager.shared.compiledSources)
+                                       nonce: browserData.nonce)
         
-        InvystaService.log(.alert, IdentifierManager.shared.compiledSources)
+        InvystaService.log(.alert, "\(type(of: self))", IdentifierManager.shared.compiledSources)
         
         let authViewController = AuthenticationViewController(obj)
         

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Invysta_Framework
+import InvystaCore
 
 final class FirstTimeInstallationIdentifier: IdentifierSource {
     var type: String = IdentifierType.FirstTimeInstallation.rawValue

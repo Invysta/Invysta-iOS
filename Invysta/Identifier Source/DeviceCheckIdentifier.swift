@@ -8,7 +8,7 @@
 import UIKit
 import DeviceCheck
 import CoreTelephony
-import Invysta_Framework
+import InvystaCore
 
 struct DeviceCheckIdentifier: IdentifierSource {
     var type: String = IdentifierType.DeviceCheck.rawValue

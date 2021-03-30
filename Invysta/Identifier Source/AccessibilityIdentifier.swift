@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Invysta_Framework
+import InvystaCore
 
 struct AccessibilityIdentifier: IdentifierSource {
     var type: String = IdentifierType.AccessibilitySettings.rawValue

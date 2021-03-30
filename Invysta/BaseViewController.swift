@@ -7,7 +7,7 @@
 
 import UIKit
 import Lottie
-import Invysta_Framework
+import InvystaCore
 
 class BaseViewController: UIViewController {
     

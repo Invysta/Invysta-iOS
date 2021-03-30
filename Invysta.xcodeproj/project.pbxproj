@@ -39,6 +39,7 @@
 		0151865A25FC34EA005CC78A /* ActivitySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014AB32B2589972400645998 /* ActivitySettingsViewController.swift */; };
 		0151865D25FC34F9005CC78A /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179666A2589762E00BF6932 /* ActivityManager.swift */; };
 		0151866025FC34FD005CC78A /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0123704525898093005C49A2 /* ActivityDetailViewController.swift */; };
+		01584C152612B9FA005E1366 /* InvystaCore in Frameworks */ = {isa = PBXBuildFile; productRef = 01584C142612B9FA005E1366 /* InvystaCore */; };
 		016BC1462565A93B007F6054 /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */; };
 		0175301F2582F9B100822C03 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175301E2582F9B100822C03 /* ActivityViewController.swift */; };
 		017549CE2534D99900487C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017549CD2534D99900487C74 /* AppDelegate.swift */; };
@@ -58,7 +59,6 @@
 		018355452568870D00F1D868 /* FirstTimeInstallationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */; };
 		018355462568870D00F1D868 /* DeviceCheckIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC1452565A93B007F6054 /* DeviceCheckIdentifier.swift */; };
 		018355472568870D00F1D868 /* CellularIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0B225678CD700B53B2A /* CellularIdentifier.swift */; };
-		0198197B260FB9F900E0249B /* Invysta-Framework in Frameworks */ = {isa = PBXBuildFile; productRef = 0198197A260FB9F900E0249B /* Invysta-Framework */; };
 		01AE631B257EB718005DECC6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01AE6319257EB718005DECC6 /* Model.xcdatamodeld */; };
 		01AE631C257EB718005DECC6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01AE6319257EB718005DECC6 /* Model.xcdatamodeld */; };
 		01E6017025F2EE71008D49F0 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */; };
@@ -134,7 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0198197B260FB9F900E0249B /* Invysta-Framework in Frameworks */,
+				01584C152612B9FA005E1366 /* InvystaCore in Frameworks */,
 				012774D4255FDB05009C1B8D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +328,7 @@
 			name = Invysta;
 			packageProductDependencies = (
 				012774D3255FDB05009C1B8D /* Lottie */,
-				0198197A260FB9F900E0249B /* Invysta-Framework */,
+				01584C142612B9FA005E1366 /* InvystaCore */,
 			);
 			productName = Invysta;
 			productReference = 017549CA2534D99900487C74 /* Invysta.app */;
@@ -381,7 +381,7 @@
 			mainGroup = 017549C12534D99900487C74;
 			packageReferences = (
 				012774D2255FDB05009C1B8D /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				01981979260FB9F900E0249B /* XCRemoteSwiftPackageReference "Invysta-Framework" */,
+				01584C132612B9FA005E1366 /* XCRemoteSwiftPackageReference "InvystaCore" */,
 			);
 			productRefGroup = 017549CB2534D99900487C74 /* Products */;
 			projectDirPath = "";
@@ -632,7 +632,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = WC54Z94VC6;
 				INFOPLIST_FILE = Invysta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -656,7 +656,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = WC54Z94VC6;
 				INFOPLIST_FILE = Invysta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -754,12 +754,12 @@
 				minimumVersion = 3.1.9;
 			};
 		};
-		01981979260FB9F900E0249B /* XCRemoteSwiftPackageReference "Invysta-Framework" */ = {
+		01584C132612B9FA005E1366 /* XCRemoteSwiftPackageReference "InvystaCore" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cgarcia090/Invysta-Framework";
+			repositoryURL = "https://github.com/Invysta/InvystaCore.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -770,10 +770,10 @@
 			package = 012774D2255FDB05009C1B8D /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		0198197A260FB9F900E0249B /* Invysta-Framework */ = {
+		01584C142612B9FA005E1366 /* InvystaCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 01981979260FB9F900E0249B /* XCRemoteSwiftPackageReference "Invysta-Framework" */;
-			productName = "Invysta-Framework";
+			package = 01584C132612B9FA005E1366 /* XCRemoteSwiftPackageReference "InvystaCore" */;
+			productName = InvystaCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 

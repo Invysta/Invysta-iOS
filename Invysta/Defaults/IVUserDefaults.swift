@@ -11,8 +11,6 @@ enum UserDefaultKey: String {
     case isExistingUser = "existingUser"
     case DeviceSecurity = "DeviceSecurity"
     case providerKey = "Provider"
-    case authenticationProvider = "AuthProvider"
-    case registrationProvider = "RegProvider"
 }
 
 final class IVUserDefaults {
