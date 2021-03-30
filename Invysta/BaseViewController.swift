@@ -12,46 +12,16 @@ import InvystaCore
 class BaseViewController: UIViewController {
     
     var browserData: InvystaBrowserDataModel?
-    var stackContainer: UIStackView?
     
     let coreDataManager: PersistenceManager = PersistenceManager.shared
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .preferredFont(forTextStyle: .largeTitle)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.25
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    let descriptionLabel: UITextView = {
-        let label = UITextView()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 17)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .clear
-        return label
-    }()
-    
-    let debuggingTextField: UITextView = {
-        let textView = UITextView()
-        textView.textAlignment = .center
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
- 
     let invystaLogo: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "logo")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    
-    var loadingView: LoadingView?
-    
+        
     var pointerView: AnimationView = {
         let view = AnimationView()
         view.animation = Animation.named("pointer-black")
@@ -91,15 +61,6 @@ class BaseViewController: UIViewController {
             pointerView.play()
         }
     }
-        
-//    MARK: Move to settings
-    @objc
-    func moveToSettings() {
-        let vc = SettingsController()
-        let nav = UINavigationController(rootViewController: vc)
-        nav.navigationBar.prefersLargeTitles = true
-        present(nav, animated: true, completion: nil)
-    }
     
 //    MARK: Display Message
     func displayInvystaLogo() {
@@ -112,36 +73,6 @@ class BaseViewController: UIViewController {
         ])
         
         view.layoutIfNeeded()
-    }
-    
-//    MARK: Display Message
-    func displayMessage(title: String, message: String) {
-        
-        titleLabel.text = title
-        descriptionLabel.text = message
-        
-        view.addSubview(titleLabel)
-        view.addSubview(descriptionLabel)
-        
-        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: invystaLogo.bottomAnchor, constant: 25),
-                                     titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-                                     titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-                                     titleLabel.heightAnchor.constraint(equalToConstant: 40),
-                                     
-                                     descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-                                     descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-                                     descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-                                     descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15)])
-        
-        view.layoutIfNeeded()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            UIView.animate(withDuration: 0.4) { [weak self] in
-                self?.titleLabel.alpha = 1
-                self?.descriptionLabel.alpha = 1
-                self?.removeLoadingView()
-            }
-        }
     }
     
 //   MARK:  Display PointerView
@@ -164,64 +95,9 @@ class BaseViewController: UIViewController {
         
         view.layoutIfNeeded()
     }
-    
-//    MARK: Display LoadingView
-    func displayLoadingView() {
-        loadingView = LoadingView(frame: view.frame)
-        loadingView?.alpha = 0
-        
-        UIView.animate(withDuration: 0.4) {
-            self.loadingView?.alpha = 1
-        }
-
-        view.addSubview(loadingView!)
-    }
-    
-//    MARK: Remove LoadingView
-    func removeLoadingView() {
-        UIView.animate(withDuration: 0.4) {
-            self.loadingView?.alpha = 0
-        } completion: { (_) in
-            self.loadingView?.removeFromSuperview()
-        }
-    }
-    
-//    MARK: Remove Create Debugging Field
-    func createDebuggingField(_ text: String) {
-        debuggingTextField.text = text
-        view.addSubview(debuggingTextField)
-        
-        NSLayoutConstraint.activate([debuggingTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     debuggingTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     debuggingTextField.heightAnchor.constraint(equalToConstant: 150),
-                                     debuggingTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
-    }
-    
-    func response(with title: String, and message: String, statusCode: Int,_ showPointer: Bool = true) {
-        let activityManager = ActivityManager(coreDataManager)
-        
-        let activity = Activity(context: coreDataManager.context)
-        activity.date = Date()
-        
-        activity.title = title
-        activity.message = message
-        activity.type = browserData?.action
-        activity.statusCode = Int16(statusCode)
-        activityManager.saveResults(activity: activity)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            if showPointer {
-                self?.displayPointerView()
-            }
-            self?.displayMessage(title: title, message: message)
-            self?.removeLoadingView()
-        }
-    }
 
 //    MARK: Remove uneeded elements
     func removeUneededElements() {
-        titleLabel.removeFromSuperview()
-        descriptionLabel.removeFromSuperview()
         pointerView.removeFromSuperview()
     }
 }
