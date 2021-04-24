@@ -41,7 +41,10 @@ final class RegisterViewController: UITableViewController {
     }
     
     func initUI() {
-        [firstContentView, secondContentView, thirdContentView, fourthContentView].forEach { (element) in
+        [firstContentView,
+         secondContentView,
+         thirdContentView,
+         fourthContentView].forEach { (element) in
             element?.layer.borderWidth = 1.5
             element?.layer.cornerRadius = 10
             

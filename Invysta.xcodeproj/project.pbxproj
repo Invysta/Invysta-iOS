@@ -20,6 +20,7 @@
 		01076E112560987D009847D6 /* pointer-white.json in Resources */ = {isa = PBXBuildFile; fileRef = 01EFEDA5255F52FF00B50D05 /* pointer-white.json */; };
 		010AD0AF256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */; };
 		010AD0B325678CD700B53B2A /* CellularIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010AD0B225678CD700B53B2A /* CellularIdentifier.swift */; };
+		010F7B322634C467000EF36E /* InvystaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010F7B312634C467000EF36E /* InvystaUITests.swift */; };
 		011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC40C255659C40044980C /* DeviceModelIdentifier.swift */; };
 		011AC42E2557373D0044980C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC42B2557373D0044980C /* SettingsController.swift */; };
 		011AC4402557D2540044980C /* PrivacyPolicyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */; };
@@ -72,6 +73,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		010F7B342634C468000EF36E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 017549C22534D99900487C74 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 017549C92534D99900487C74;
+			remoteInfo = Invysta;
+		};
 		01754A052534F34A00487C74 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 017549C22534D99900487C74 /* Project object */;
@@ -84,6 +92,9 @@
 /* Begin PBXFileReference section */
 		010AD0AE256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTimeInstallationIdentifier.swift; sourceTree = "<group>"; };
 		010AD0B225678CD700B53B2A /* CellularIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellularIdentifier.swift; sourceTree = "<group>"; };
+		010F7B2F2634C467000EF36E /* InvystaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InvystaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		010F7B312634C467000EF36E /* InvystaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvystaUITests.swift; sourceTree = "<group>"; };
+		010F7B332634C468000EF36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		011AC40C255659C40044980C /* DeviceModelIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelIdentifier.swift; sourceTree = "<group>"; };
 		011AC42B2557373D0044980C /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		011AC43F2557D2540044980C /* PrivacyPolicyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyItem.swift; sourceTree = "<group>"; };
@@ -127,6 +138,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		010F7B2C2634C467000EF36E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		017549C72534D99900487C74 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +184,15 @@
 			path = InfoSection;
 			sourceTree = "<group>";
 		};
+		010F7B302634C467000EF36E /* InvystaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				010F7B312634C467000EF36E /* InvystaUITests.swift */,
+				010F7B332634C468000EF36E /* Info.plist */,
+			);
+			path = InvystaUITests;
+			sourceTree = "<group>";
+		};
 		01237049258992AB005C49A2 /* Activity Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +227,7 @@
 			children = (
 				017549CC2534D99900487C74 /* Invysta */,
 				01754A012534F34A00487C74 /* InvystaTests */,
+				010F7B302634C467000EF36E /* InvystaUITests */,
 				017549CB2534D99900487C74 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -209,6 +237,7 @@
 			children = (
 				017549CA2534D99900487C74 /* Invysta.app */,
 				01754A002534F34A00487C74 /* InvystaTests.xctest */,
+				010F7B2F2634C467000EF36E /* InvystaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -309,6 +338,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		010F7B2E2634C467000EF36E /* InvystaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 010F7B382634C468000EF36E /* Build configuration list for PBXNativeTarget "InvystaUITests" */;
+			buildPhases = (
+				010F7B2B2634C467000EF36E /* Sources */,
+				010F7B2C2634C467000EF36E /* Frameworks */,
+				010F7B2D2634C467000EF36E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				010F7B352634C468000EF36E /* PBXTargetDependency */,
+			);
+			name = InvystaUITests;
+			productName = InvystaUITests;
+			productReference = 010F7B2F2634C467000EF36E /* InvystaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		017549C92534D99900487C74 /* Invysta */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 017549DE2534D99B00487C74 /* Build configuration list for PBXNativeTarget "Invysta" */;
@@ -354,9 +401,13 @@
 		017549C22534D99900487C74 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					010F7B2E2634C467000EF36E = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 017549C92534D99900487C74;
+					};
 					017549C92534D99900487C74 = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -385,11 +436,19 @@
 			targets = (
 				017549C92534D99900487C74 /* Invysta */,
 				017549FF2534F34A00487C74 /* InvystaTests */,
+				010F7B2E2634C467000EF36E /* InvystaUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		010F7B2D2634C467000EF36E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		017549C82534D99900487C74 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +473,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		010F7B2B2634C467000EF36E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				010F7B322634C467000EF36E /* InvystaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		017549C62534D99900487C74 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -484,6 +551,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		010F7B352634C468000EF36E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 017549C92534D99900487C74 /* Invysta */;
+			targetProxy = 010F7B342634C468000EF36E /* PBXContainerItemProxy */;
+		};
 		01754A062534F34A00487C74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 017549C92534D99900487C74 /* Invysta */;
@@ -503,6 +575,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		010F7B362634C468000EF36E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R986STKYJ7;
+				INFOPLIST_FILE = InvystaUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ByCyril.InvystaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Invysta;
+			};
+			name = Debug;
+		};
+		010F7B372634C468000EF36E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R986STKYJ7;
+				INFOPLIST_FILE = InvystaUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ByCyril.InvystaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Invysta;
+			};
+			name = Release;
+		};
 		017549DC2534D99B00487C74 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -710,6 +822,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		010F7B382634C468000EF36E /* Build configuration list for PBXNativeTarget "InvystaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				010F7B362634C468000EF36E /* Debug */,
+				010F7B372634C468000EF36E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		017549C52534D99900487C74 /* Build configuration list for PBXProject "Invysta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
