@@ -44,7 +44,7 @@ final class ActivityDetailViewController: UITableViewController {
         cell.selectionStyle = .none
         
         if indexPath.section == 0 {
-            cell.textLabel?.text = activity?.date?.timeIntervalSince1970.date(.fullDate)
+            cell.textLabel?.text = activity?.date?.timeIntervalSince1970.date(IVTimestampFormat.fullDate)
         } else if indexPath.section == 1 {
             cell.textLabel?.text = activity?.title
         } else if indexPath.section == 2 {

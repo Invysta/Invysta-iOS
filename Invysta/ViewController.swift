@@ -19,7 +19,7 @@ class ViewController: BaseViewController {
     }
     
     //    MARK: Entry Point from Browser
-    init(_ browserData: InvystaBrowserDataModel) {
+    init(_ browserData: ProviderModel) {
         super.init(nibName: nil, bundle: nil)
         self.browserData = browserData
     }
@@ -62,10 +62,10 @@ class ViewController: BaseViewController {
         
     }
     
-    func beginAuthProcess(_ browserData: InvystaBrowserDataModel) {
+    func beginAuthProcess(_ browserData: ProviderModel) {
         
-        let obj = AuthenticationObject(uid: browserData.uid,
-                                       nonce: browserData.nonce)
+        let obj = AuthenticationModel(uid: browserData.uid,
+                                      nonce: browserData.nonce)
         
         InvystaService.log(.alert, "\(type(of: self))", IdentifierManager.shared.compiledSources)
         

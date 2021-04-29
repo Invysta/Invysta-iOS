@@ -71,7 +71,7 @@ final class ActivityViewController: UITableViewController, ActivitySettingsViewC
         let obj = activity[indexPath.row]
         
         cell.textLabel?.text = obj.title
-        cell.detailTextLabel?.text = obj.date?.timeIntervalSince1970.date(.fullDate) ?? ""
+        cell.detailTextLabel?.text = obj.date?.timeIntervalSince1970.date(IVTimestampFormat.fullDate) ?? ""
         return cell
     }
     
@@ -82,16 +82,18 @@ final class ActivityViewController: UITableViewController, ActivitySettingsViewC
      
 }
 
+public enum IVTimestampFormat: String {
+    case halfDate = "E, MMM d"
+    case fullDate = "MMMM d, yyyy, h:mm a"
+    case time = "h:mm a"
+    case hour = "h a"
+    case day = "EEEE"
+}
+
+
 extension Double {
-    public enum TimestampFormat: String {
-        case halfDate = "E, MMM d"
-        case fullDate = "MMMM d, yyyy, h:mm a"
-        case time = "h:mm a"
-        case hour = "h a"
-        case day = "EEEE"
-    }
-    
-    public func date(_ format: TimestampFormat, _ timezone: TimeZone? = nil) -> String {
+ 
+    public func date(_ format: IVTimestampFormat, _ timezone: TimeZone? = nil) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format.rawValue
         dateFormatter.timeZone = timezone ?? TimeZone.current

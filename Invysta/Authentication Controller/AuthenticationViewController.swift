@@ -11,14 +11,15 @@ import UIKit
 
 final class AuthenticationViewController: UIViewController {
     
-    private let authentication: Authenticate
+    private let process: InvystaProcess<AuthenticationModel>
     private var error: NSError?
     
     private let laContext: LAContext = LAContext()
     private let coreDataManager: PersistenceManager = PersistenceManager.shared
     
-    init(_ authObject: AuthenticationObject) {
-        authentication = Authenticate(authObject, IVUserDefaults.getString(.providerKey)!)
+    init(_ model: AuthenticationModel) {
+//        authentication = Authenticate(authObject, IVUserDefaults.getString(.providerKey)!)
+        process = InvystaProcess<AuthenticationModel>(model, IVUserDefaults.getString(.providerKey)!)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,7 +29,7 @@ final class AuthenticationViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Authentication"
+        label.text = "Authenticating"
         label.font = .systemFont(ofSize: 35)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -77,7 +78,7 @@ final class AuthenticationViewController: UIViewController {
     
     func beginAuthenticationProcess() {
         
-        authentication.start { [weak self] (results) in
+        process.start { [weak self] (results) in
              
             switch results {
             case .success(let statusCode):

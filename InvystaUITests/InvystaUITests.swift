@@ -9,34 +9,47 @@ import XCTest
 
 class InvystaUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+    let app = XCUIApplication()
+    
+    override func setUp() {
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
+    
+    func testOpenURL() {
+        let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
+        // Launch safari
+        safari.launch()
+        // Ensure that safari is running in foreground before we continue
+        _ = safari.wait(for: .runningForeground, timeout: 30)
+        
+        safari.buttons["URL"].tap()
+        safari.typeText("https://invysta-technical.com")
+        safari.typeText("\n")
+ 
+        safari.buttons["Access Protected"].tap()
+        safari.buttons["open app"].tap()
+        safari.buttons["Open"].tap()
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        _ = app.wait(for: .runningBackground, timeout: 5)
+        
+        let systemApp = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        systemApp.buttons["Return to Safari"].tap()
+        
+        safari.typeText("cyril@invysta.com")
+        safari.buttons["Next"].tap()
+        safari.typeText("123321")
+        safari.typeText("\n")
+        
+        safari.buttons["Continue"].tap()
+        
+        XCTAssertTrue(safari.staticTexts["Welcome to InvystaSafe.com"].exists)
     }
+    
+//    func testExample() {
+//
+//        app.tabBars.buttons["Settings"].tap()
+//        app.tableRows.buttons["Register Device"].tap()
+//
+//    }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }

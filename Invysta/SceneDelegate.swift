@@ -54,7 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      
     }
 
-    func process(_ url: URL) -> InvystaBrowserDataModel? {
+    func process(_ url: URL) -> ProviderModel? {
         InvystaService.log(.warning,"\(type(of: self))", "Passed URL \(url.absoluteString)")
         
         guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
@@ -64,11 +64,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             data[component.name] = component.value
         }
         
-        return InvystaBrowserDataModel(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
+        return ProviderModel(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
 
     }
     
-    func launchViewController(_ windowScene: UIWindowScene, _ browserData: InvystaBrowserDataModel? = nil) {
+    func launchViewController(_ windowScene: UIWindowScene, _ browserData: ProviderModel? = nil) {
         
         let tabBarcontroller = UITabBarController()
         

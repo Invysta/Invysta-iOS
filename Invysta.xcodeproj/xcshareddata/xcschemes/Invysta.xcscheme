@@ -49,6 +49,16 @@
                ReferencedContainer = "container:Invysta.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "01B42D06263503B20072FF48"
+               BuildableName = "RegisterInvystaUITests.xctest"
+               BlueprintName = "RegisterInvystaUITests"
+               ReferencedContainer = "container:Invysta.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

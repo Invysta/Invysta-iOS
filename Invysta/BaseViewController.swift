@@ -11,7 +11,7 @@ import InvystaCore
 
 class BaseViewController: UIViewController {
     
-    var browserData: InvystaBrowserDataModel?
+    var browserData: ProviderModel?
     
     let coreDataManager: PersistenceManager = PersistenceManager.shared
     

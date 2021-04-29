@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func process(_ url: URL) -> InvystaBrowserDataModel? {
+    func process(_ url: URL) -> ProviderModel? {
         guard let components = URLComponents(string: url.absoluteString)?.queryItems else { return nil }
         
         var data = [String: String]()
@@ -52,10 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             data[component.name] = component.value
         }
         
-        return InvystaBrowserDataModel(action: data["action"]!, uid: data["uid"]!, nonce: data["nonce"]!)
+        return ProviderModel(action: data["action"]!,
+                                       uid: data["uid"]!,
+                                       nonce: data["nonce"]!)
     }
     
-    func launchViewController(_ browserData: InvystaBrowserDataModel? = nil) {
+    func launchViewController(_ browserData: ProviderModel? = nil) {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let tabViewController = UITabBarController()

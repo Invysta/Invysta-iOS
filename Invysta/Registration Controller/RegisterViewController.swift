@@ -22,7 +22,7 @@ final class RegisterViewController: UITableViewController {
     
     @IBOutlet var cancelButton: UIButton!
     
-    private var registration: Registration?
+    private var process: InvystaProcess<RegistrationModel>?
     
     private let coreDataManager: PersistenceManager = PersistenceManager.shared
 
@@ -82,15 +82,15 @@ final class RegisterViewController: UITableViewController {
         
         InvystaService.log(.warning, "\(type(of: self))","\(#function)" + provider)
         
-        let obj = RegistrationObject(email: email,
+        let obj = RegistrationModel(email: email,
                                      password: password,
                                      otc: otc)
         
         InvystaService.log(.alert,"\(type(of: self))", IdentifierManager.shared.compiledSources)
         
-        registration = Registration(obj, provider)
+        process = InvystaProcess<RegistrationModel>(obj, provider)
         
-        registration?.start { [weak self] (results) in
+        process?.start { [weak self] (results) in
             switch results {
             
             case .success(let statusCode):

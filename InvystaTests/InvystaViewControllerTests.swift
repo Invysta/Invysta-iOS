@@ -6,6 +6,9 @@
 //
 
 import XCTest
+@testable import Invysta
+@testable import InvystaCore
+@testable import Lottie
 
 class InvystaViewControllerTests: XCTestCase {
 
