@@ -6,9 +6,9 @@
 //
 
 import XCTest
+import InvystaCore
+@testable import Invysta
 
 class InvystaNetworkTests: XCTestCase {
-    
-   
-    
+
 }

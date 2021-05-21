@@ -30,7 +30,7 @@ class InvystaUITests: XCTestCase {
         safari.buttons["open app"].tap()
         safari.buttons["Open"].tap()
 
-        _ = app.wait(for: .runningBackground, timeout: 5)
+        _ = app.wait(for: .runningBackground, timeout: 2)
         
         let systemApp = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         systemApp.buttons["Return to Safari"].tap()
@@ -45,11 +45,12 @@ class InvystaUITests: XCTestCase {
         XCTAssertTrue(safari.staticTexts["Welcome to InvystaSafe.com"].exists)
     }
     
-//    func testExample() {
-//
-//        app.tabBars.buttons["Settings"].tap()
-//        app.tableRows.buttons["Register Device"].tap()
-//
-//    }
+    func testExample() {
+
+        app.tabBars.buttons["Settings"].tap()
+        app.tableRows.buttons["Register Device"].tap()
+        
+                
+    }
 
 }

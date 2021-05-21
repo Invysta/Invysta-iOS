@@ -16,10 +16,11 @@ final class AuthenticationViewController: UIViewController {
     
     private let laContext: LAContext = LAContext()
     private let coreDataManager: PersistenceManager = PersistenceManager.shared
+    private let queue: DispatchQueue
     
-    init(_ model: AuthenticationModel) {
-//        authentication = Authenticate(authObject, IVUserDefaults.getString(.providerKey)!)
-        process = InvystaProcess<AuthenticationModel>(model, IVUserDefaults.getString(.providerKey)!)
+    init(_ process: InvystaProcess<AuthenticationModel>, _ queue: DispatchQueue = DispatchQueue.main) {
+        self.process = process
+        self.queue = queue
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,7 +28,7 @@ final class AuthenticationViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Authenticating"
         label.font = .systemFont(ofSize: 35)
@@ -66,7 +67,7 @@ final class AuthenticationViewController: UIViewController {
     
     func deviceAuthentication(with policy: LAPolicy) {
         laContext.evaluatePolicy(policy, localizedReason: "Authenticate to begin the Invysta Authentication Process") { [weak self] (success, error) in
-            DispatchQueue.main.async {
+            self?.queue.async { [weak self] in
                 if success {
                     self?.beginAuthenticationProcess()
                 } else {
@@ -79,7 +80,7 @@ final class AuthenticationViewController: UIViewController {
     func beginAuthenticationProcess() {
         
         process.start { [weak self] (results) in
-             
+            
             switch results {
             case .success(let statusCode):
                 
@@ -88,7 +89,7 @@ final class AuthenticationViewController: UIViewController {
                 
                 InvystaService.log(.check,"\(type(of: self))", "Login Successful")
                 
-                DispatchQueue.main.async {
+                self?.queue.async {
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                     NotificationCenter.default.post(name: Notification.displayPointer(), object: nil)
                 }
@@ -98,11 +99,12 @@ final class AuthenticationViewController: UIViewController {
                 self?.showResults(error)
                 self?.saveActivity(title: error, message: "", statusCode: statusCode)
                 
-                DispatchQueue.main.async {
+                self?.queue.async {
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
                 
                 break
+                
                 
             }
         }
@@ -111,7 +113,7 @@ final class AuthenticationViewController: UIViewController {
     
     func showResults(_ text: String) {
         
-        DispatchQueue.main.async { [weak activityIndicatorView, unowned titleLabel] in
+        queue.async { [weak activityIndicatorView, unowned titleLabel] in
             
             activityIndicatorView?.stopAnimating()
             
@@ -164,6 +166,3 @@ final class AuthenticationViewController: UIViewController {
         InvystaService.reclaimedMemory(self)
     }
 }
-
-//https://provider.invysta-technical.com/interaction/fUmSR3GUsGr3Brlo0_pB0?client=true
-//https://provider.invysta-technical.com/interaction/fUmSR3GUsGr3Brlo0_pB0?client=true

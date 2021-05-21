@@ -69,7 +69,8 @@ class ViewController: BaseViewController {
         
         InvystaService.log(.alert, "\(type(of: self))", IdentifierManager.shared.compiledSources)
         
-        let authViewController = AuthenticationViewController(obj)
+        let process = InvystaProcess<AuthenticationModel>(obj, IVUserDefaults.getString(.providerKey)!)
+        let authViewController = AuthenticationViewController(process)
         
         if #available(iOS 13.0, *) {
             authViewController.isModalInPresentation = true
