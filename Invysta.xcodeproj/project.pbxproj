@@ -107,6 +107,9 @@
 		01AE631C257EB718005DECC6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01AE6319257EB718005DECC6 /* Model.xcdatamodeld */; };
 		01AEAE282634F27F0015CFA9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 01AEAE272634F27F0015CFA9 /* Lottie */; };
 		01AEAE2A2634F2810015CFA9 /* InvystaCore in Frameworks */ = {isa = PBXBuildFile; productRef = 01AEAE292634F2810015CFA9 /* InvystaCore */; };
+		01CCAC9C265DFCC6000AD41E /* LocalIdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCAC9B265DFCC6000AD41E /* LocalIdentifierManager.swift */; };
+		01CCAC9D265DFDD5000AD41E /* LocalIdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCAC9B265DFCC6000AD41E /* LocalIdentifierManager.swift */; };
+		01CCAC9E265DFDD5000AD41E /* LocalIdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CCAC9B265DFCC6000AD41E /* LocalIdentifierManager.swift */; };
 		01D24E45263CDEA7001CCB67 /* AuthenticationControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D24E44263CDEA7001CCB67 /* AuthenticationControllerTest.swift */; };
 		01E6017025F2EE71008D49F0 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */; };
 		01ED2927255D04440033CAE2 /* pointer-black.json in Resources */ = {isa = PBXBuildFile; fileRef = 01ED2925255D04440033CAE2 /* pointer-black.json */; };
@@ -183,6 +186,7 @@
 		01817367254372E80065DB52 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		01A4745A25369FCD00D19006 /* Invysta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Invysta.entitlements; sourceTree = "<group>"; };
 		01AE631A257EB718005DECC6 /* History.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = History.xcdatamodel; sourceTree = "<group>"; };
+		01CCAC9B265DFCC6000AD41E /* LocalIdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalIdentifierManager.swift; sourceTree = "<group>"; };
 		01D24E44263CDEA7001CCB67 /* AuthenticationControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationControllerTest.swift; sourceTree = "<group>"; };
 		01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		01ED2925255D04440033CAE2 /* pointer-black.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pointer-black.json"; sourceTree = "<group>"; };
@@ -316,6 +320,7 @@
 				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
 				01EE31EB265DE4620032ADDB /* LocalAuthenticationManager.swift */,
+				01CCAC9B265DFCC6000AD41E /* LocalIdentifierManager.swift */,
 				01EE2E02265CD11A007B6D60 /* KeychainWrapper.swift */,
 				01EE2E04265CD137007B6D60 /* KeychainItemAccessibility.swift */,
 				01443A69260592AA004770D0 /* Authentication Controller */,
@@ -570,6 +575,7 @@
 				015918802634E81800976BE6 /* PrivacyPolicyItem.swift in Sources */,
 				015918782634E80B00976BE6 /* ActivityManager.swift in Sources */,
 				0159187B2634E81000976BE6 /* SettingsController.swift in Sources */,
+				01CCAC9D265DFDD5000AD41E /* LocalIdentifierManager.swift in Sources */,
 				015918792634E80B00976BE6 /* ActivitySettingsViewController.swift in Sources */,
 				0159186D2634E7E100976BE6 /* BaseViewController.swift in Sources */,
 				015918682634E7D800976BE6 /* VendorIdentifier.swift in Sources */,
@@ -610,6 +616,7 @@
 				017549F32534EF7600487C74 /* AccessibilityIdentifier.swift in Sources */,
 				010AD0AF256789EF00B53B2A /* FirstTimeInstallationIdentifier.swift in Sources */,
 				01FF2B16260DB402006FA8A1 /* ReregisterDeviceItem.swift in Sources */,
+				01CCAC9C265DFCC6000AD41E /* LocalIdentifierManager.swift in Sources */,
 				01AE631B257EB718005DECC6 /* Model.xcdatamodeld in Sources */,
 				01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */,
 				01754A2225351B8600487C74 /* CustomIdentifier.swift in Sources */,
@@ -660,6 +667,7 @@
 				0159186B2634E7E000976BE6 /* AppDelegate.swift in Sources */,
 				01076DF32560985E009847D6 /* ViewController.swift in Sources */,
 				0151865D25FC34F9005CC78A /* ActivityManager.swift in Sources */,
+				01CCAC9E265DFDD5000AD41E /* LocalIdentifierManager.swift in Sources */,
 				0151866025FC34FD005CC78A /* ActivityDetailViewController.swift in Sources */,
 				01076DFD25609866009847D6 /* SettingsController.swift in Sources */,
 				01EE31EE265DEBB30032ADDB /* LocalAuthenticationManager.swift in Sources */,
@@ -872,7 +880,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WC54Z94VC6;
 				INFOPLIST_FILE = Invysta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -880,7 +888,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaTechnologyGroup.InvystaAware;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
@@ -896,7 +904,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Invysta/Invysta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WC54Z94VC6;
 				INFOPLIST_FILE = Invysta/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -904,7 +912,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.InvystaTechnologyGroup.InvystaAware;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;

@@ -30,7 +30,7 @@ class InvystaUITests: XCTestCase {
         safari.buttons["open app"].tap()
         safari.buttons["Open"].tap()
 
-        _ = app.wait(for: .runningBackground, timeout: 2)
+        _ = app.wait(for: .runningBackground, timeout: 5)
         
         let systemApp = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         systemApp.buttons["Return to Safari"].tap()

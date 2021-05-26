@@ -89,6 +89,8 @@ final class RegisterViewController: UITableViewController, LocalAuthenticationMa
             provider = "https://" + provider
         }
         
+        LocalIdentifierManager.resetIdentifiers()
+        
         IVUserDefaults.set(provider, .providerKey)
         
         InvystaService.log(.warning, "\(type(of: self))","\(#function)" + provider)

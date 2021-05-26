@@ -30,13 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if #available(iOS 13, *) { return true }
         
-        IdentifierManager.configure([AccessibilityIdentifier(),
-                                     CellularIdentifier(),
-                                     CustomIdentifier(),
-                                     DeviceCheckIdentifier(),
-                                     DeviceModelIdentifier(),
-                                     FirstTimeInstallationIdentifier(),
-                                     VendorIdentifier()])
+        LocalIdentifierManager.configure()
         
         launchViewController()
         

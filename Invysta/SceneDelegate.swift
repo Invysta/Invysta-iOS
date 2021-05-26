@@ -37,13 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        IdentifierManager.configure([AccessibilityIdentifier(),
-                                     CellularIdentifier(),
-                                     CustomIdentifier(),
-                                     DeviceCheckIdentifier(),
-                                     DeviceModelIdentifier(),
-                                     FirstTimeInstallationIdentifier(),
-                                     VendorIdentifier()])
+        LocalIdentifierManager.configure()
         
         if let url = connectionOptions.urlContexts.first?.url.absoluteURL {
             let browserData = process(url)
