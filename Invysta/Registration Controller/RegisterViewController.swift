@@ -7,8 +7,9 @@
 
 import UIKit
 import InvystaCore
+import LocalAuthentication
 
-final class RegisterViewController: UITableViewController {
+final class RegisterViewController: UITableViewController, LocalAuthenticationManagerDelegate {
     
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
@@ -24,8 +25,9 @@ final class RegisterViewController: UITableViewController {
     
     private var process: InvystaProcess<RegistrationModel>?
     
+    private let localAuth: LocalAuthenticationManager = LocalAuthenticationManager()
     private let coreDataManager: PersistenceManager = PersistenceManager.shared
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +35,7 @@ final class RegisterViewController: UITableViewController {
         
         tableView.estimatedRowHeight = 45
         tableView.keyboardDismissMode = .onDrag
+        
         initUI()
         
         if IVUserDefaults.getBool(.isExistingUser) {
@@ -57,7 +60,15 @@ final class RegisterViewController: UITableViewController {
     }
     
     @IBAction func register() {
-        
+        localAuth.delegate = self
+        localAuth.beginLocalAuthentication(beginRegistration)
+    }
+    
+    func localAuthenticationDidFail(_ error: Error?) {
+        alert("Authentication Failed", error?.localizedDescription ?? "No Error Description Available")
+    }
+    
+    func beginRegistration() {
         guard let email = emailField.text,
               let password = passwordField.text,
               let otc = otcField.text,
@@ -107,7 +118,6 @@ final class RegisterViewController: UITableViewController {
             }
             
         }
-        
     }
     
     @objc

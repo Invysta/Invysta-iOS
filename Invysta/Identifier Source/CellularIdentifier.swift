@@ -39,11 +39,11 @@ final class CellularIdentifier: IdentifierSource {
     }
     
     func identifier() -> String? {
-        if let id = UserDefaults.standard.string(forKey: type) {
+        if let id = KeychainWrapper.standard.string(forKey: type) {
             return id
         } else {
             let id = captureCellularInfo()
-            UserDefaults.standard.setValue(id, forKey: type)
+            KeychainWrapper.standard.set(id, forKey: type)
             return id
         }
     }

@@ -34,12 +34,12 @@ struct DeviceCheckIdentifier: IdentifierSource {
     }()
     
     func identifier() -> String? {
-        if let encData = UserDefaults.standard.string(forKey: type) {
+        if let encData = KeychainWrapper.standard.string(forKey: type) {
             return encData
         } else {
             let val = deviceName + languageCode + regionCode + calendarIdentifier + timeZone
             let encData = SHA256(data: val.data(using: .utf8))
-            UserDefaults.standard.setValue(encData, forKey: type)
+            KeychainWrapper.standard.set(encData, forKey: type)
             return encData
         }
         

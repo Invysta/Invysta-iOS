@@ -46,11 +46,8 @@ class InvystaUITests: XCTestCase {
     }
     
     func testExample() {
-
         app.tabBars.buttons["Settings"].tap()
         app.tableRows.buttons["Register Device"].tap()
-        
-                
     }
 
 }

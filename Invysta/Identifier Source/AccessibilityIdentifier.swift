@@ -36,11 +36,11 @@ struct AccessibilityIdentifier: IdentifierSource {
     }()
     
     func identifier() -> String? {
-        if let val = UserDefaults.standard.string(forKey: type) {
+        if let val = KeychainWrapper.standard.string(forKey: type) {
             return val
         } else {
             let val = isBoldTextEnabled + isShakeToUndoEnabled + isReduceMotionEnabled + isDarkerSystemColorsEnabled + isReduceTransparencyEnabled + isAssistiveTouchRunning
-            UserDefaults.standard.setValue(val, forKey: type)
+            KeychainWrapper.standard.set(val, forKey: type)
             return val
         }
     }

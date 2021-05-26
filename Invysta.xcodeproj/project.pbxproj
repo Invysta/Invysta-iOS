@@ -28,6 +28,7 @@
 		0123704625898093005C49A2 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0123704525898093005C49A2 /* ActivityDetailViewController.swift */; };
 		012774D4255FDB05009C1B8D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 012774D3255FDB05009C1B8D /* Lottie */; };
 		012C3AB625BA3C8D003B2F5D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */; };
+		0143254A2658380C00CDA2CB /* IdentifierSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014325492658380C00CDA2CB /* IdentifierSourceManager.swift */; };
 		01443A452604564D004770D0 /* RegisterViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01443A442604564D004770D0 /* RegisterViewStoryboard.storyboard */; };
 		01443A5A26055D85004770D0 /* IVUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01443A5926055D85004770D0 /* IVUserDefaults.swift */; };
 		01443A6026058E6C004770D0 /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01443A5F26058E6C004770D0 /* NotificationKeys.swift */; };
@@ -109,6 +110,15 @@
 		01D24E45263CDEA7001CCB67 /* AuthenticationControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D24E44263CDEA7001CCB67 /* AuthenticationControllerTest.swift */; };
 		01E6017025F2EE71008D49F0 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */; };
 		01ED2927255D04440033CAE2 /* pointer-black.json in Resources */ = {isa = PBXBuildFile; fileRef = 01ED2925255D04440033CAE2 /* pointer-black.json */; };
+		01EE2E03265CD11B007B6D60 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE2E02265CD11A007B6D60 /* KeychainWrapper.swift */; };
+		01EE2E05265CD137007B6D60 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE2E04265CD137007B6D60 /* KeychainItemAccessibility.swift */; };
+		01EE2E06265CD307007B6D60 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE2E02265CD11A007B6D60 /* KeychainWrapper.swift */; };
+		01EE2E07265CD307007B6D60 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE2E02265CD11A007B6D60 /* KeychainWrapper.swift */; };
+		01EE2E08265CD30A007B6D60 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE2E04265CD137007B6D60 /* KeychainItemAccessibility.swift */; };
+		01EE2E09265CD30A007B6D60 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE2E04265CD137007B6D60 /* KeychainItemAccessibility.swift */; };
+		01EE31EC265DE4620032ADDB /* LocalAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE31EB265DE4620032ADDB /* LocalAuthenticationManager.swift */; };
+		01EE31ED265DEBB30032ADDB /* LocalAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE31EB265DE4620032ADDB /* LocalAuthenticationManager.swift */; };
+		01EE31EE265DEBB30032ADDB /* LocalAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE31EB265DE4620032ADDB /* LocalAuthenticationManager.swift */; };
 		01EFED80255F170B00B50D05 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED7F255F170B00B50D05 /* BaseViewController.swift */; };
 		01EFED84255F199200B50D05 /* DeviceSecurityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED83255F199200B50D05 /* DeviceSecurityItem.swift */; };
 		01EFED92255F273100B50D05 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EFED91255F273100B50D05 /* SettingManager.swift */; };
@@ -147,6 +157,7 @@
 		011AC4452557D30F0044980C /* AppVersionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionItem.swift; sourceTree = "<group>"; };
 		0123704525898093005C49A2 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		012C3AB525BA3C8D003B2F5D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		014325492658380C00CDA2CB /* IdentifierSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierSourceManager.swift; sourceTree = "<group>"; };
 		01443A442604564D004770D0 /* RegisterViewStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterViewStoryboard.storyboard; sourceTree = "<group>"; };
 		01443A5926055D85004770D0 /* IVUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IVUserDefaults.swift; sourceTree = "<group>"; };
 		01443A5F26058E6C004770D0 /* NotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
@@ -175,6 +186,9 @@
 		01D24E44263CDEA7001CCB67 /* AuthenticationControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationControllerTest.swift; sourceTree = "<group>"; };
 		01E6016F25F2EE71008D49F0 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		01ED2925255D04440033CAE2 /* pointer-black.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pointer-black.json"; sourceTree = "<group>"; };
+		01EE2E02265CD11A007B6D60 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		01EE2E04265CD137007B6D60 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		01EE31EB265DE4620032ADDB /* LocalAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthenticationManager.swift; sourceTree = "<group>"; };
 		01EFED7F255F170B00B50D05 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		01EFED83255F199200B50D05 /* DeviceSecurityItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSecurityItem.swift; sourceTree = "<group>"; };
 		01EFED91255F273100B50D05 /* SettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
@@ -301,6 +315,9 @@
 				017549CF2534D99900487C74 /* SceneDelegate.swift */,
 				01EFED7F255F170B00B50D05 /* BaseViewController.swift */,
 				017549D12534D99900487C74 /* ViewController.swift */,
+				01EE31EB265DE4620032ADDB /* LocalAuthenticationManager.swift */,
+				01EE2E02265CD11A007B6D60 /* KeychainWrapper.swift */,
+				01EE2E04265CD137007B6D60 /* KeychainItemAccessibility.swift */,
 				01443A69260592AA004770D0 /* Authentication Controller */,
 				01443A6A260592B6004770D0 /* Registration Controller */,
 				01237049258992AB005C49A2 /* Activity Controller */,
@@ -318,6 +335,7 @@
 		017549EF2534EF2300487C74 /* Identifier Source */ = {
 			isa = PBXGroup;
 			children = (
+				014325492658380C00CDA2CB /* IdentifierSourceManager.swift */,
 				01FF2B1D260DB5F4006FA8A1 /* IdentifierType.swift */,
 				017549F22534EF7600487C74 /* AccessibilityIdentifier.swift */,
 				010AD0B225678CD700B53B2A /* CellularIdentifier.swift */,
@@ -561,7 +579,9 @@
 				015918842634E81B00976BE6 /* IVUserDefaults.swift in Sources */,
 				0159187F2634E81500976BE6 /* DeviceSecurityItem.swift in Sources */,
 				015918822634E81800976BE6 /* SettingTableViewCell.swift in Sources */,
+				01EE2E07265CD307007B6D60 /* KeychainWrapper.swift in Sources */,
 				015918632634E7D800976BE6 /* AccessibilityIdentifier.swift in Sources */,
+				01EE31ED265DEBB30032ADDB /* LocalAuthenticationManager.swift in Sources */,
 				015918732634E80800976BE6 /* RegisterViewController.swift in Sources */,
 				015918872634E82F00976BE6 /* Model.xcdatamodeld in Sources */,
 				0159186E2634E7E100976BE6 /* ViewController.swift in Sources */,
@@ -574,6 +594,7 @@
 				015918762634E80B00976BE6 /* ActivityDetailViewController.swift in Sources */,
 				015918692634E7D800976BE6 /* IdentifierType.swift in Sources */,
 				0159186C2634E7E100976BE6 /* AppDelegate.swift in Sources */,
+				01EE2E08265CD30A007B6D60 /* KeychainItemAccessibility.swift in Sources */,
 				0159187C2634E81000976BE6 /* SettingManager.swift in Sources */,
 				015918672634E7D800976BE6 /* DeviceModelIdentifier.swift in Sources */,
 			);
@@ -598,11 +619,14 @@
 				011AC40D255659C40044980C /* DeviceModelIdentifier.swift in Sources */,
 				01E6017025F2EE71008D49F0 /* AuthenticationViewController.swift in Sources */,
 				011AC42E2557373D0044980C /* SettingsController.swift in Sources */,
+				01EE2E03265CD11B007B6D60 /* KeychainWrapper.swift in Sources */,
 				0179666F2589764F00BF6932 /* PersistenceManager.swift in Sources */,
 				01443A6026058E6C004770D0 /* NotificationKeys.swift in Sources */,
 				0123704625898093005C49A2 /* ActivityDetailViewController.swift in Sources */,
 				014AB32C2589972400645998 /* ActivitySettingsViewController.swift in Sources */,
+				0143254A2658380C00CDA2CB /* IdentifierSourceManager.swift in Sources */,
 				011AC4402557D2540044980C /* PrivacyPolicyItem.swift in Sources */,
+				01EE31EC265DE4620032ADDB /* LocalAuthenticationManager.swift in Sources */,
 				010AD0B325678CD700B53B2A /* CellularIdentifier.swift in Sources */,
 				01FF2B1E260DB5F4006FA8A1 /* IdentifierType.swift in Sources */,
 				0175301F2582F9B100822C03 /* ActivityViewController.swift in Sources */,
@@ -610,6 +634,7 @@
 				017549ED2534EF1900487C74 /* VendorIdentifier.swift in Sources */,
 				012C3AB625BA3C8D003B2F5D /* RegisterViewController.swift in Sources */,
 				01EFED84255F199200B50D05 /* DeviceSecurityItem.swift in Sources */,
+				01EE2E05265CD137007B6D60 /* KeychainItemAccessibility.swift in Sources */,
 				017549D02534D99900487C74 /* SceneDelegate.swift in Sources */,
 				016BC1462565A93B007F6054 /* DeviceCheckIdentifier.swift in Sources */,
 			);
@@ -622,6 +647,7 @@
 				01076E032560986B009847D6 /* PrivacyPolicyItem.swift in Sources */,
 				01076E042560986B009847D6 /* AppVersionItem.swift in Sources */,
 				015918862634E81B00976BE6 /* IVUserDefaults.swift in Sources */,
+				01EE2E06265CD307007B6D60 /* KeychainWrapper.swift in Sources */,
 				014A6E3A2563378000264CE3 /* InvystaViewControllerTests.swift in Sources */,
 				0151865725FC34E0005CC78A /* ActivityViewController.swift in Sources */,
 				01D24E45263CDEA7001CCB67 /* AuthenticationControllerTest.swift in Sources */,
@@ -636,11 +662,13 @@
 				0151865D25FC34F9005CC78A /* ActivityManager.swift in Sources */,
 				0151866025FC34FD005CC78A /* ActivityDetailViewController.swift in Sources */,
 				01076DFD25609866009847D6 /* SettingsController.swift in Sources */,
+				01EE31EE265DEBB30032ADDB /* LocalAuthenticationManager.swift in Sources */,
 				01754A032534F34A00487C74 /* InvystaNetworkTests.swift in Sources */,
 				018355472568870D00F1D868 /* CellularIdentifier.swift in Sources */,
 				01754A132534F35D00487C74 /* VendorIdentifier.swift in Sources */,
 				0151865425FC3236005CC78A /* SceneDelegate.swift in Sources */,
 				01076DFC25609866009847D6 /* SettingManager.swift in Sources */,
+				01EE2E09265CD30A007B6D60 /* KeychainItemAccessibility.swift in Sources */,
 				0151865A25FC34EA005CC78A /* ActivitySettingsViewController.swift in Sources */,
 				0159187D2634E81200976BE6 /* ReregisterDeviceItem.swift in Sources */,
 				01076E052560986B009847D6 /* SettingTableViewCell.swift in Sources */,

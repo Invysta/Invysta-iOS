@@ -6,17 +6,15 @@
 //
 
 import InvystaCore
-import LocalAuthentication
 import UIKit
 
-final class AuthenticationViewController: UIViewController {
+final class AuthenticationViewController: UIViewController, LocalAuthenticationManagerDelegate {
     
     private let process: InvystaProcess<AuthenticationModel>
-    private var error: NSError?
-    
-    private let laContext: LAContext = LAContext()
-    private let coreDataManager: PersistenceManager = PersistenceManager.shared
     private let queue: DispatchQueue
+    
+    private let coreDataManager: PersistenceManager = PersistenceManager.shared
+    private let localAuth: LocalAuthenticationManager = LocalAuthenticationManager()
     
     init(_ process: InvystaProcess<AuthenticationModel>, _ queue: DispatchQueue = DispatchQueue.main) {
         self.process = process
@@ -52,29 +50,8 @@ final class AuthenticationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        guard IVUserDefaults.getBool(.DeviceSecurity) else {
-            beginAuthenticationProcess()
-            return
-        }
-        
-        if laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            deviceAuthentication(with: .deviceOwnerAuthenticationWithBiometrics)
-        } else {
-            deviceAuthentication(with: .deviceOwnerAuthentication)
-        }
-    }
-    
-    func deviceAuthentication(with policy: LAPolicy) {
-        laContext.evaluatePolicy(policy, localizedReason: "Authenticate to begin the Invysta Authentication Process") { [weak self] (success, error) in
-            self?.queue.async { [weak self] in
-                if success {
-                    self?.beginAuthenticationProcess()
-                } else {
-                    self?.showResults(error?.localizedDescription ?? "Login Failed")
-                }
-            }
-        }
+        localAuth.delegate = self
+        localAuth.beginLocalAuthentication(beginAuthenticationProcess)
     }
     
     func beginAuthenticationProcess() {
@@ -102,13 +79,14 @@ final class AuthenticationViewController: UIViewController {
                 self?.queue.async {
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                 }
-                
                 break
-                
-                
             }
         }
         
+    }
+    
+    func localAuthenticationDidFail(_ error: Error?) {
+        showResults(error?.localizedDescription ?? "No Error Description Available")
     }
     
     func showResults(_ text: String) {
